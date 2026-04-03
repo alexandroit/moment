@@ -1,0 +1,15 @@
+moment
+date-library
+date-formatting
+date-parsing
+duration
+time
+timezone
+locale-data
+javascript-library
+typescript
+npm-package
+maintained
+modernized
+revived
+legacy-compatible

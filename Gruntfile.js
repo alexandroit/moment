@@ -135,12 +135,6 @@ module.exports = function (grunt) {
             all: { src: ['benchmarks/*.js'] },
         },
         exec: {
-            'meteor-init': {
-                // Make sure Meteor is installed, per https://meteor.com/install.
-                // The curl'ed script is safe; takes 2 minutes to read source & check.
-                command:
-                    'type meteor >/dev/null 2>&1 || { curl https://install.meteor.com/ | sh; }',
-            },
             'meteor-publish': {
                 command: 'cd meteor && meteor publish',
             },
@@ -231,19 +225,9 @@ module.exports = function (grunt) {
         'env:sauceLabs',
         'karma:sauce',
     ]);
-    grunt.registerTask('test:meteor', [
-        'exec:meteor-init',
-        'exec:meteor-test',
-        'exec:meteor-cleanup',
-    ]);
-
     // travis build task
     grunt.registerTask('build:travis', ['lint', 'exec:coveralls']);
-    grunt.registerTask('meteor-publish', [
-        'exec:meteor-init',
-        'exec:meteor-publish',
-        'exec:meteor-cleanup',
-    ]);
+    grunt.registerTask('meteor-publish', ['exec:meteor-publish']);
 
     // Task to be run when releasing a new version
     grunt.registerTask('release', [

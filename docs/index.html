@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@revivejs/moment demo</title>
+    <meta
+      name="description"
+      content="Interactive demo for the maintained @revivejs/moment package."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="eyebrow">Revived package demo</div>
+        <h1>@revivejs/moment</h1>
+        <p class="lede">
+          A maintained fork of Moment.js for legacy-friendly date parsing, validation,
+          formatting, locale handling, durations, and relative time output.
+        </p>
+        <div class="footer">
+          Package version <strong id="version"></strong> ·
+          <a href="https://github.com/revivejs/moment">Repository</a> ·
+          <a href="https://www.npmjs.com/package/@revivejs/moment">npm</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <section class="panel">
+          <h2>Play with parsing and locale output</h2>
+          <label>
+            Datetime input
+            <input id="date-input" type="datetime-local" />
+          </label>
+          <label>
+            Locale
+            <select id="locale-select"></select>
+          </label>
+        </section>
+
+        <section class="panel">
+          <h2>Live results</h2>
+          <div class="results">
+            <div class="result">
+              <strong>Current time</strong>
+              <span id="output-now"></span>
+            </div>
+            <div class="result">
+              <strong>Localized format</strong>
+              <span id="output-long"></span>
+            </div>
+            <div class="result">
+              <strong>Relative time</strong>
+              <span id="output-relative"></span>
+            </div>
+            <div class="result">
+              <strong>UTC output</strong>
+              <span id="output-utc"></span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="code">
+        <h2>Equivalent package usage</h2>
+        <pre><code id="example-code"></code></pre>
+      </section>
+    </main>
+
+    <script src="./assets/moment.min.js"></script>
+    <script src="./assets/locales.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
