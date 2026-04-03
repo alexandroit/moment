@@ -2,8 +2,8 @@
     "name": "@revivejs/moment",
     "version": "2.30.2",
     "description": "Maintained Moment.js fork for parsing, validating, manipulating, and formatting dates.",
-    "homepage": "https://github.com/revivejs/moment#readme",
-    "author": "ReviveJS (https://github.com/revivejs)",
+    "homepage": "https://github.com/alexandroit/moment#readme",
+    "author": "Alexandroit (https://github.com/alexandroit)",
     "contributors": [
         "Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)",
         "Rocky Meza (http://rockymeza.com)",
@@ -50,10 +50,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/revivejs/moment.git"
+        "url": "git+https://github.com/alexandroit/moment.git"
     },
     "bugs": {
-        "url": "https://github.com/revivejs/moment/issues"
+        "url": "https://github.com/alexandroit/moment/issues"
     },
     "license": "MIT",
     "publishConfig": {

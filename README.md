@@ -5,17 +5,17 @@
 [![npm version](https://img.shields.io/npm/v/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
 [![npm downloads](https://img.shields.io/npm/dt/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
 [![npm monthly](https://img.shields.io/npm/dm/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
-[![license](https://img.shields.io/npm/l/%40revivejs%2Fmoment.svg?style=flat-square)](https://github.com/revivejs/moment/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/%40revivejs%2Fmoment.svg?style=flat-square)](https://github.com/alexandroit/moment/blob/main/LICENSE)
 [![JavaScript ES5+](https://img.shields.io/badge/JavaScript-ES5%2B-f7df1e?style=flat-square&logo=javascript&logoColor=111)](https://developer.mozilla.org/docs/Web/JavaScript)
 [![TypeScript typings](https://img.shields.io/badge/TypeScript-1.8%2B%20%7C%203.1%2B-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![GitHub stars](https://img.shields.io/github/stars/revivejs/moment.svg?style=flat-square)](https://github.com/revivejs/moment/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/alexandroit/moment.svg?style=flat-square)](https://github.com/alexandroit/moment/stargazers)
 
-**[Documentation & Demo](https://revivejs.github.io/moment/)** | **[Repository](https://github.com/revivejs/moment)** | **[npm](https://www.npmjs.com/package/@revivejs/moment)** | **[Changelog](https://github.com/revivejs/moment/blob/main/CHANGELOG.md)**
+**[Documentation & Demo](https://alexandroit.github.io/moment/)** | **[Repository](https://github.com/alexandroit/moment)** | **[npm](https://www.npmjs.com/package/@revivejs/moment)** | **[Changelog](https://github.com/alexandroit/moment/blob/main/CHANGELOG.md)**
 
 ---
 
 > **Credits:** Original project by Iskren Ivov Chernev and the Moment.js contributors.  
-> Maintained and modernized by ReviveJS.
+> Maintained and modernized by Alexandroit.
 
 ---
 
@@ -155,4 +155,4 @@ MIT. See [LICENSE](LICENSE).
 
 - Original project: Iskren Ivov Chernev and the Moment.js contributors
 - Upstream repository: https://github.com/moment/moment
-- Maintained by: ReviveJS
+- Maintained by: Alexandroit
