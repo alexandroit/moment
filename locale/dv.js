@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Maldivian [dv]
+    //! author : Jawish Hameed : https://github.com/jawish
+
 
     var months = [
             'ޖެނުއަރީ',

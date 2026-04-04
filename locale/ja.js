@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Japanese [ja]
+    //! author : LI Long : https://github.com/baryon
+
 
     var ja = moment.defineLocale('ja', {
         eras: [

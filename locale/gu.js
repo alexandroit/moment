@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Gujarati [gu]
+    //! author : Kaushik Thanki : https://github.com/Kaushik1987
+
 
     var symbolMap = {
             1: '૧',

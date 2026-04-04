@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Nynorsk [nn]
+    //! authors : https://github.com/mechuwind
+    //!           Stephen Ramthun : https://github.com/stephenramthun
+
 
     var nn = moment.defineLocale('nn', {
         months: 'januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember'.split(

@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : English (Canada) [en-ca]
+    //! author : Jonathan Abourbih : https://github.com/jonbca
+
 
     var enCa = moment.defineLocale('en-ca', {
         months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split(

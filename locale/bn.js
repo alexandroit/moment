@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Bengali [bn]
+    //! author : Kaushik Gandhi : https://github.com/kaushikgandhi
+
 
     var symbolMap = {
             1: '১',

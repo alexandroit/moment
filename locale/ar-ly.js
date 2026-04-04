@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Arabic (Libya) [ar-ly]
+    //! author : Ali Hmer: https://github.com/kikoanis
+
 
     var symbolMap = {
             1: '1',

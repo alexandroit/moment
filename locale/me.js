@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Montenegrin [me]
+    //! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
+
 
     var translator = {
         words: {

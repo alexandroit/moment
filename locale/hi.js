@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Hindi [hi]
+    //! author : Mayank Singhal : https://github.com/mayanksinghal
+
 
     var symbolMap = {
             1: '१',

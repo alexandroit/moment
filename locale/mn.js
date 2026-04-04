@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Mongolian [mn]
+    //! author : Javkhlantugs Nyamdorj : https://github.com/javkhaanj7
+
 
     function translate(number, withoutSuffix, key, isFuture) {
         switch (key) {

@@ -14,6 +14,13 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Arabic (Algeria) [ar-dz]
+    //! author : Amine Roukh: https://github.com/Amine27
+    //! author : Abdel Said: https://github.com/abdelsaid
+    //! author : Ahmed Elkhatib
+    //! author : forabi https://github.com/forabi
+    //! author : Noureddine LOUAHEDJ : https://github.com/noureddinem
+
 
     var pluralForm = function (n) {
             return n === 0

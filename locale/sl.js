@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Slovenian [sl]
+    //! author : Robert Sedovšek : https://github.com/sedovsek
+
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
         var result = number + ' ';

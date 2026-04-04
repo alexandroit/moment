@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Lithuanian [lt]
+    //! author : Mindaugas Mozūras : https://github.com/mmozuras
+
 
     var units = {
         ss: 'sekundė_sekundžių_sekundes',

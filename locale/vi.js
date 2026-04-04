@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Vietnamese [vi]
+    //! author : Bang Nguyen : https://github.com/bangnk
+    //! author : Chien Kira : https://github.com/chienkira
+
 
     var vi = moment.defineLocale('vi', {
         months: 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split(

@@ -12,6 +12,11 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Albanian [sq]
+    //! author : Flakërim Ismani : https://github.com/flakerimi
+    //! author : Menelion Elensúle : https://github.com/Oire
+    //! author : Oerd Cukalla : https://github.com/oerd
+
 
     var sq = moment.defineLocale('sq', {
         months: 'Janar_Shkurt_Mars_Prill_Maj_Qershor_Korrik_Gusht_Shtator_Tetor_Nëntor_Dhjetor'.split(

@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Latvian [lv]
+    //! author : Kristaps Karlsons : https://github.com/skakri
+    //! author : Jānis Elmeris : https://github.com/JanisE
+
 
     var units = {
         ss: 'sekundes_sekundēm_sekunde_sekundes'.split('_'),

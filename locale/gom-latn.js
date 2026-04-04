@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Konkani Latin script [gom-latn]
+    //! author : The Discoverer : https://github.com/WikiDiscoverer
+
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
         var format = {

@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Turkmen [tk]
+    //! author : Atamyrat Abdyrahmanov : https://github.com/atamyratabdy
+
 
     var suffixes = {
         1: "'inji",

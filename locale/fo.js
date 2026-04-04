@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Faroese [fo]
+    //! author : Ragnar Johannesen : https://github.com/ragnar123
+    //! author : Kristian Sakarisson : https://github.com/sakarisson
+
 
     var fo = moment.defineLocale('fo', {
         months: 'januar_februar_mars_apríl_mai_juni_juli_august_september_oktober_november_desember'.split(

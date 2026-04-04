@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Luxembourgish [lb]
+    //! author : mweimerskirch : https://github.com/mweimerskirch
+    //! author : David Raison : https://github.com/kwisatz
+
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
         var format = {

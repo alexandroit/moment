@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Cambodian [km]
+    //! author : Kruy Vanna : https://github.com/kruyvanna
+
 
     var symbolMap = {
             1: '១',

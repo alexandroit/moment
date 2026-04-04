@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Hungarian [hu]
+    //! author : Adam Brunner : https://github.com/adambrunner
+    //! author : Peter Viszt  : https://github.com/passatgt
+
 
     var weekEndings =
         'vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton'.split(' ');

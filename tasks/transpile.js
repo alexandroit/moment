@@ -83,7 +83,27 @@ module.exports = function (grunt) {
             umdName: umdName,
             format: opts.format,
         }).then(function (code) {
-            var fixed = header + code.split('\n').slice(skipLines).join('\n');
+            var lines = code.split('\n'),
+                bodyStart = skipLines,
+                fixed;
+
+            if (
+                headerFile !== 'none' &&
+                (opts.format == null || opts.format === 'umd')
+            ) {
+                bodyStart = lines.findIndex(function (line) {
+                    return line.indexOf("'use strict';") !== -1;
+                });
+                bodyStart = bodyStart === -1 ? skipLines : bodyStart + 1;
+            }
+
+            fixed = header + lines.slice(bodyStart).join('\n');
+            if (
+                headerFile !== 'none' &&
+                (opts.format == null || opts.format === 'umd')
+            ) {
+                fixed = fixed.replace(/\}\)\);\s*$/, '})));\n');
+            }
             if (opts.moveComments) {
                 fixed = collectComments(entry) + '\n\n' + fixed;
             }

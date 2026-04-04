@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Occitan, lengadocian dialecte [oc-lnc]
+    //! author : Quentin PAGÈS : https://github.com/Quenty31
+
 
     var ocLnc = moment.defineLocale('oc-lnc', {
         months: {

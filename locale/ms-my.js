@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Malay [ms-my]
+    //! note : DEPRECATED, the correct one is [ms]
+    //! author : Weldan Jamili : https://github.com/weldan
+
 
     var msMy = moment.defineLocale('ms-my', {
         months: 'Januari_Februari_Mac_April_Mei_Jun_Julai_Ogos_September_Oktober_November_Disember'.split(

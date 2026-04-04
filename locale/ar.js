@@ -12,6 +12,11 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Arabic [ar]
+    //! author : Abdel Said: https://github.com/abdelsaid
+    //! author : Ahmed Elkhatib
+    //! author : forabi https://github.com/forabi
+
 
     var symbolMap = {
             1: '١',

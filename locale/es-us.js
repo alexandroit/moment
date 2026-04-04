@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Spanish (United States) [es-us]
+    //! author : bustta : https://github.com/bustta
+    //! author : chrisrodz : https://github.com/chrisrodz
+
 
     var monthsShortDot =
             'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(

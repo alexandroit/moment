@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Czech [cs]
+    //! author : petrbela : https://github.com/petrbela
+
 
     var months = {
             standalone:

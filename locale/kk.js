@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Kazakh [kk]
+    //! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
+
 
     var suffixes = {
         0: '-ші',

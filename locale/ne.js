@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Nepalese [ne]
+    //! author : suvash : https://github.com/suvash
+
 
     var symbolMap = {
             1: '१',

@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Arabic (Saudi Arabia) [ar-sa]
+    //! author : Suhail Alkowaileet : https://github.com/xsoh
+
 
     var symbolMap = {
             1: '١',

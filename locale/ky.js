@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Kyrgyz [ky]
+    //! author : Chyngyz Arystan uulu : https://github.com/chyngyz
+
 
     var suffixes = {
         0: '-чү',

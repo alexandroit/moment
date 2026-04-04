@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Kurdish [ku]
+    //! author : Shahram Mebashar : https://github.com/ShahramMebashar
+
 
     var symbolMap = {
             1: '١',

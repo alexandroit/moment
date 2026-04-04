@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Icelandic [is]
+    //! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
+
 
     function plural(n) {
         if (n % 100 === 11) {

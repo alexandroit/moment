@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Breton [br]
+    //! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
+
 
     function relativeTimeWithMutation(number, withoutSuffix, key) {
         var format = {

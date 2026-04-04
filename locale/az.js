@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Azerbaijani [az]
+    //! author : topchiyev : https://github.com/topchiyev
+
 
     var suffixes = {
         1: '-inci',

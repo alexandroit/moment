@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Tibetan [bo]
+    //! author : Thupten N. Chakrishar : https://github.com/vajradog
+
 
     var symbolMap = {
             1: '༡',

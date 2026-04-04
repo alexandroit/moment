@@ -11,6 +11,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Macedonian [mk]
+    //! author : Borislav Mickov : https://github.com/B0k0
+    //! author : Sashko Todorov : https://github.com/bkyceh
 
     var mk = moment.defineLocale('mk', {
         months: 'јануари_февруари_март_април_мај_јуни_јули_август_септември_октомври_ноември_декември'.split(

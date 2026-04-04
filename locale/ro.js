@@ -12,6 +12,11 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Romanian [ro]
+    //! author : Vlad Gurdiga : https://github.com/gurdiga
+    //! author : Valentin Agachi : https://github.com/avaly
+    //! author : Emanuel Cepoi : https://github.com/cepem
+
 
     function relativeTimeWithPlural(number, withoutSuffix, key) {
         var format = {

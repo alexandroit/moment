@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Croatian [hr]
+    //! author : Bojan Marković : https://github.com/bmarkovic
+
 
     function translate(number, withoutSuffix, key) {
         var result = number + ' ';

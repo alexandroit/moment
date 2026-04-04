@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Finnish [fi]
+    //! author : Tarmo Aidantausta : https://github.com/bleadof
+
 
     var numbersPast =
             'nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän'.split(

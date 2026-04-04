@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Northern Kurdish [ku-kmr]
+    //! authors : Mazlum Özdogan : https://github.com/mergehez
+
 
     function processRelativeTime(num, withoutSuffix, key, isFuture) {
         var format = {

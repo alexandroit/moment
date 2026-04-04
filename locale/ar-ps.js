@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Arabic (Palestine) [ar-ps]
+    //! author : Majd Al-Shihabi : https://github.com/majdal
+
 
     var symbolMap = {
             1: '١',

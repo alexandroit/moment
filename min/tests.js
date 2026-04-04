@@ -77,8 +77,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -367,6 +368,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -919,8 +921,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -1209,6 +1212,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -1797,8 +1801,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -2087,6 +2092,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -2639,8 +2645,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -2929,6 +2936,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -3554,8 +3562,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -3844,6 +3853,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -4396,8 +4406,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -4686,6 +4697,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -5240,8 +5252,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -5530,6 +5543,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -6101,8 +6115,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -6391,6 +6406,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -7108,8 +7124,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -7398,6 +7415,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -8023,8 +8041,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -8313,6 +8332,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -8872,8 +8892,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -9162,6 +9183,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -9847,8 +9869,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -10137,6 +10160,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -10702,8 +10726,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -10992,6 +11017,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -11506,8 +11532,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -11796,6 +11823,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -12375,8 +12403,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -12665,6 +12694,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -13252,8 +13282,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -13542,6 +13573,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -14149,8 +14181,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -14439,6 +14472,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -15086,8 +15120,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -15376,6 +15411,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -15971,8 +16007,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -16261,6 +16298,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -16839,8 +16877,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -17129,6 +17168,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -17896,8 +17936,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -18186,6 +18227,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -18751,8 +18793,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -19041,6 +19084,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -19591,8 +19635,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -19881,6 +19926,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -20434,8 +20480,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -20724,6 +20771,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -21306,8 +21354,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -21596,6 +21645,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -22183,8 +22233,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -22473,6 +22524,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -23059,8 +23111,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -23349,6 +23402,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -23871,8 +23925,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -24161,6 +24216,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -24811,8 +24867,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -25101,6 +25158,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -25687,8 +25745,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -25977,6 +26036,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -26534,8 +26594,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -26824,6 +26885,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -27376,8 +27438,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -27666,6 +27729,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -28218,8 +28282,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -28508,6 +28573,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -29068,8 +29134,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -29358,6 +29425,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -29928,8 +29996,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -30218,6 +30287,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -30770,8 +30840,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -31060,6 +31131,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -31596,8 +31668,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -31886,6 +31959,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -32554,8 +32628,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -32844,6 +32919,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -33405,8 +33481,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -33695,6 +33772,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -34274,8 +34352,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -34564,6 +34643,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -35184,8 +35264,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -35474,6 +35555,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -36069,8 +36151,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -36359,6 +36442,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -36941,8 +37025,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -37231,6 +37316,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -37870,8 +37956,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -38160,6 +38247,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -38711,8 +38799,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -39001,6 +39090,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -39568,8 +39658,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -39858,6 +39949,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -40453,8 +40545,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -40743,6 +40836,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -41297,8 +41391,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -41587,6 +41682,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -42147,8 +42243,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -42437,6 +42534,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -43003,8 +43101,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -43293,6 +43392,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -43859,8 +43959,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -44149,6 +44250,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -44738,8 +44840,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -45028,6 +45131,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -45595,8 +45699,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -45885,6 +45990,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -46433,8 +46539,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -46723,6 +46830,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -47290,8 +47398,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -47580,6 +47689,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -48152,8 +48262,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -48442,6 +48553,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -48993,8 +49105,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -49283,6 +49396,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -49848,8 +49962,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -50138,6 +50253,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -50731,8 +50847,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -51021,6 +51138,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -51544,8 +51662,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -51834,6 +51953,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -52473,8 +52593,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -52763,6 +52884,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -53347,8 +53469,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -53637,6 +53760,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -54213,8 +54337,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -54503,6 +54628,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -55222,8 +55348,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -55512,6 +55639,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -56025,8 +56153,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -56315,6 +56444,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -56900,8 +57030,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -57190,6 +57321,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -57723,8 +57855,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -58013,6 +58146,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -58598,8 +58732,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -58888,6 +59023,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -59585,8 +59721,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -59875,6 +60012,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -60399,8 +60537,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -60689,6 +60828,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -61247,8 +61387,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -61537,6 +61678,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -62088,8 +62230,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -62378,6 +62521,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -62955,8 +63099,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -63245,6 +63390,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -63844,8 +63990,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -64134,6 +64281,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -64736,8 +64884,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -65026,6 +65175,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -65711,8 +65861,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -66001,6 +66152,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -66570,8 +66722,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -66860,6 +67013,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -67411,8 +67565,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -67701,6 +67856,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -68239,8 +68395,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -68529,6 +68686,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -69080,8 +69238,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -69370,6 +69529,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -69981,8 +70141,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -70271,6 +70432,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -70944,8 +71106,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -71234,6 +71397,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -71821,8 +71985,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -72111,6 +72276,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -72667,8 +72833,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -72957,6 +73124,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -73523,8 +73691,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -73813,6 +73982,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -74416,8 +74586,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -74706,6 +74877,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -75367,8 +75539,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -75657,6 +75830,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -76260,8 +76434,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -76550,6 +76725,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -77110,8 +77286,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -77400,6 +77577,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -77960,8 +78138,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -78250,6 +78429,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -78802,8 +78982,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -79092,6 +79273,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -79814,8 +79996,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -80104,6 +80287,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -80656,8 +80840,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -80946,6 +81131,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -81536,8 +81722,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -81826,6 +82013,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -82403,8 +82591,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -82693,6 +82882,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -83270,8 +83460,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -83560,6 +83751,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -84111,8 +84303,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -84401,6 +84594,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -84947,8 +85141,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -85237,6 +85432,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -86112,8 +86308,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -86402,6 +86599,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -87066,8 +87264,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -87356,6 +87555,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -87934,8 +88134,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -88224,6 +88425,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -88779,8 +88981,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -89069,6 +89272,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -89660,8 +89864,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -89950,6 +90155,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -90770,8 +90976,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -91060,6 +91267,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -91597,8 +91805,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -91887,6 +92096,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -92449,8 +92659,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -92739,6 +92950,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -93267,8 +93479,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -93557,6 +93770,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -94303,8 +94517,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -94593,6 +94808,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -95515,8 +95731,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -95805,6 +96022,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -96368,8 +96586,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -96658,6 +96877,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -97242,8 +97462,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -97532,6 +97753,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -98116,8 +98338,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -98406,6 +98629,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -99022,8 +99246,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -99312,6 +99537,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -99859,8 +100085,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -100149,6 +100376,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -100704,8 +100932,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -100994,6 +101223,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -101552,8 +101782,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -101842,6 +102073,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -102445,8 +102677,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -102735,6 +102968,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -103287,8 +103521,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -103577,6 +103812,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -104145,8 +104381,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -104435,6 +104672,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -104949,8 +105187,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -105239,6 +105478,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -105790,8 +106030,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -106080,6 +106321,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -106634,8 +106876,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -106924,6 +107167,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -107514,8 +107758,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -107804,6 +108049,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -108371,8 +108617,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -108661,6 +108908,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -109220,8 +109468,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -109510,6 +109759,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -110065,8 +110315,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -110355,6 +110606,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -110910,8 +111162,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -111200,6 +111453,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -111733,8 +111987,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -112023,6 +112278,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -112652,8 +112908,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -112942,6 +113199,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -113484,8 +113742,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -113774,6 +114033,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -114330,8 +114590,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -114620,6 +114881,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -115173,8 +115435,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -115463,6 +115726,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -116021,8 +116285,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -116311,6 +116576,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -116863,8 +117129,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -117153,6 +117420,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -117706,8 +117974,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -117996,6 +118265,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -118561,8 +118831,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -118851,6 +119122,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -119400,8 +119672,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -119690,6 +119963,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -120223,8 +120497,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function hasOwnProp(a, b) {
         return Object.prototype.hasOwnProperty.call(a, b);
@@ -120513,6 +120788,7 @@
     }
 
     /*global QUnit:false*/
+
 
     function localeModule(name, lifecycle) {
         QUnit.module('locale:' + name, {
@@ -121062,8 +121338,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -121710,8 +121987,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -121735,6 +122013,7 @@
     }
 
     // These tests are for locale independent features
+    // locale dependent tests would be in locale test folder
 
     module('calendar');
 
@@ -122027,8 +122306,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -125071,8 +125351,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -125214,8 +125495,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -125478,7 +125760,7 @@
 
     // Plugins that add properties should also add the key here (null value),
     // so we can properly clone ourselves.
-    var momentProperties = (hooks.momentProperties = []);
+    (hooks.momentProperties = []);
 
     function warn(msg) {
         if (
@@ -125980,8 +126262,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -126094,8 +126377,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -126293,8 +126577,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -127020,8 +127305,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -127176,8 +127462,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -127424,8 +127711,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -129557,8 +129845,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -130634,8 +130923,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -130885,8 +131175,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -131492,8 +131783,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -131637,8 +131929,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -131952,8 +132245,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -132661,8 +132955,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function isArray(input) {
         return (
@@ -132768,8 +133063,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -133545,8 +133841,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -134730,8 +135027,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -134865,8 +135163,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -134952,8 +135251,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function isNumber(input) {
         return (
@@ -135068,8 +135368,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -135948,8 +136249,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -136828,8 +137130,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -137485,8 +137788,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -138173,8 +138477,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -138368,8 +138673,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -138482,8 +138788,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -138761,8 +139068,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -139196,8 +139504,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -139620,8 +139929,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -140770,8 +141080,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -140945,8 +141256,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -141074,8 +141386,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -141260,8 +141573,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -141463,8 +141777,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -142000,8 +142315,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -142224,8 +142540,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -142444,8 +142761,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -142971,8 +143289,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -143612,8 +143931,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -143732,8 +144052,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -143888,8 +144209,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -144885,8 +145207,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -145126,8 +145449,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -146312,8 +146636,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -146885,8 +147210,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -147212,8 +147538,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -148176,8 +148503,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {
@@ -148445,8 +148773,9 @@
 
     /*global QUnit:false*/
 
-    var test = QUnit.test,
-        only = QUnit.only;
+
+    var test = QUnit.test;
+        QUnit.only;
 
     function module(name, lifecycle) {
         QUnit.module(name, {

@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Filipino [fil]
+    //! author : Dan Hagman : https://github.com/hagmandan
+    //! author : Matthew Co : https://github.com/matthewdeeco
+
 
     var fil = moment.defineLocale('fil', {
         months: 'Enero_Pebrero_Marso_Abril_Mayo_Hunyo_Hulyo_Agosto_Setyembre_Oktubre_Nobyembre_Disyembre'.split(

@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : German (Switzerland) [de-ch]
+    //! author : sschueller : https://github.com/sschueller
+
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
         var format = {

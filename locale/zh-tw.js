@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Chinese (Taiwan) [zh-tw]
+    //! author : Ben : https://github.com/ben-lin
+    //! author : Chris Lam : https://github.com/hehachris
+
 
     var zhTw = moment.defineLocale('zh-tw', {
         months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(

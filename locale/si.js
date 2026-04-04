@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Sinhalese [si]
+    //! author : Sampath Sitinamaluwa : https://github.com/sampathsris
+
 
     /*jshint -W100*/
     var si = moment.defineLocale('si', {

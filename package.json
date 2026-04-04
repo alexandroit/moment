@@ -1,6 +1,6 @@
 {
     "name": "@revivejs/moment",
-    "version": "2.30.3",
+    "version": "2.30.4",
     "description": "Maintained Moment.js fork for parsing, validating, manipulating, and formatting dates.",
     "homepage": "https://github.com/alexandroit/moment#readme",
     "author": "Alexandroit (https://github.com/alexandroit)",
@@ -105,7 +105,7 @@
         "nyc": "15.1.0",
         "prettier": "3.1.1",
         "qunit": "^2.10.0",
-        "rollup": "2.17.1",
+        "rollup": "3.30.0",
         "typescript": "1.8.10",
         "typescript3": "npm:typescript@3.9.10",
         "uglify-js": "3.17.4"

@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : English (Australia) [en-au]
+    //! author : Jared Morse : https://github.com/jarcoal
+
 
     var enAu = moment.defineLocale('en-au', {
         months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split(

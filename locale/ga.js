@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Irish or Irish Gaelic [ga]
+    //! author : André Silva : https://github.com/askpt
+
 
     var months = [
             'Eanáir',

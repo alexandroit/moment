@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Greek [el]
+    //! author : Aggelos Karalias : https://github.com/mehiel
+
 
     function isFunction(input) {
         return (

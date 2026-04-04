@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : English (United Kingdom) [en-gb]
+    //! author : Chris Gedrim : https://github.com/chrisgedrim
+
 
     var enGb = moment.defineLocale('en-gb', {
         months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split(

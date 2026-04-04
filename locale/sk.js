@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Slovak [sk]
+    //! author : Martin Minka : https://github.com/k2s
+    //! based on work of petrbela : https://github.com/petrbela
+
 
     var months =
             'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split(

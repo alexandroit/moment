@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Tajik [tg]
+    //! author : Orif N. Jr. : https://github.com/orif-jr
+
 
     var suffixes = {
         0: '-ум',

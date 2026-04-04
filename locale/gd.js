@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Scottish Gaelic [gd]
+    //! author : Jon Ashdown : https://github.com/jonashdown
+
 
     var months = [
             'Am Faoilleach',

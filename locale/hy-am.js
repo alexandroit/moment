@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Armenian [hy-am]
+    //! author : Armendarabyan : https://github.com/armendarabyan
+
 
     var hyAm = moment.defineLocale('hy-am', {
         months: {

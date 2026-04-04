@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Persian [fa]
+    //! author : Ebrahim Byagowi : https://github.com/ebraminio
+
 
     var symbolMap = {
             1: '۱',

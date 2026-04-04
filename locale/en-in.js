@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : English (India) [en-in]
+    //! author : Jatin Agrawal : https://github.com/jatinag22
+
 
     var enIn = moment.defineLocale('en-in', {
         months: 'January_February_March_April_May_June_July_August_September_October_November_December'.split(

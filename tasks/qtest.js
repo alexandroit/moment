@@ -4,6 +4,29 @@ module.exports = function (grunt) {
             testrunner,
             tests;
 
+        function runSuite(testFiles, next) {
+            testrunner.run(
+                {
+                    code: 'build/umd/moment.js',
+                    tests: testFiles,
+                },
+                function (err, report) {
+                    if (err) {
+                        console.log('woot', err, report);
+                        next(err);
+                        return;
+                    }
+
+                    if (report.failed !== 0) {
+                        next(new Error(report.failed + ' tests failed'));
+                        return;
+                    }
+
+                    next();
+                }
+            );
+        }
+
         testrunner = require('node-qunit');
         testrunner.options.log.assertions = false;
         testrunner.options.log.tests = false;
@@ -34,23 +57,24 @@ module.exports = function (grunt) {
             );
         }
 
-        testrunner.run(
-            {
-                code: 'build/umd/moment.js',
-                tests: tests,
-            },
-            function (err, report) {
-                if (err) {
-                    console.log('woot', err, report);
-                    done(err);
-                    return;
+        if (grunt.option('only') == null) {
+            runSuite(
+                grunt.file.expand('build/umd/test/moment/*.js'),
+                function (err) {
+                    if (err) {
+                        done(err);
+                        return;
+                    }
+
+                    runSuite(
+                        grunt.file.expand('build/umd/test/locale/*.js'),
+                        done
+                    );
                 }
-                err = null;
-                if (report.failed !== 0) {
-                    err = new Error(report.failed + ' tests failed');
-                }
-                done(err);
-            }
-        );
+            );
+            return;
+        }
+
+        runSuite(tests, done);
     });
 };

@@ -12,6 +12,11 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Tetun Dili (East Timor) [tet]
+    //! author : Joshua Brooks : https://github.com/joshbrooks
+    //! author : Onorio De J. Afonso : https://github.com/marobo
+    //! author : Sonia Simoes : https://github.com/soniasimoes
+
 
     var tet = moment.defineLocale('tet', {
         months: 'Janeiru_Fevereiru_Marsu_Abril_Maiu_Juñu_Jullu_Agustu_Setembru_Outubru_Novembru_Dezembru'.split(

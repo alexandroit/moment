@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Catalan [ca]
+    //! author : Juan G. Hurtado : https://github.com/juanghurtado
+
 
     var ca = moment.defineLocale('ca', {
         months: {

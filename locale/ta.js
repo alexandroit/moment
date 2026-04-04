@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Tamil [ta]
+    //! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
+
 
     var symbolMap = {
             1: '௧',

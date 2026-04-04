@@ -13,6 +13,12 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Chinese (Hong Kong) [zh-hk]
+    //! author : Ben : https://github.com/ben-lin
+    //! author : Chris Lam : https://github.com/hehachris
+    //! author : Konstantin : https://github.com/skfd
+    //! author : Anthony : https://github.com/anthonylau
+
 
     var zhHk = moment.defineLocale('zh-hk', {
         months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(

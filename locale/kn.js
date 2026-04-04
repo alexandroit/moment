@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Kannada [kn]
+    //! author : Rajeev Naik : https://github.com/rajeevnaikte
+
 
     var symbolMap = {
             1: '೧',

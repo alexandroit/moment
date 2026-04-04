@@ -12,6 +12,11 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Bosnian [bs]
+    //! author : Nedim Cholich : https://github.com/frontyard
+    //! author : Rasid Redzic : https://github.com/rasidre
+    //! based on (hr) translation by Bojan Marković
+
 
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
         switch (key) {

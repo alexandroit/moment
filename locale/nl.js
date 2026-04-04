@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Dutch [nl]
+    //! author : Joris Röling : https://github.com/jorisroling
+    //! author : Jacob Middag : https://github.com/middagj
+
 
     var monthsShortWithDots =
             'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),

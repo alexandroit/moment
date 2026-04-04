@@ -11,6 +11,10 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Talossan [tzl]
+    //! author : Robin van der Vliet : https://github.com/robin0van0der0v
+    //! author : Iustì Canun
+
 
     // After the year there should be a slash and the amount of years since December 26, 1979 in Roman numerals.
     // This is currently too difficult (maybe even impossible) to add.

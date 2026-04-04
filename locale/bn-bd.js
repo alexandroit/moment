@@ -10,6 +10,9 @@
 }(this, (function (moment) { 'use strict';
 
     //! moment.js locale configuration
+    //! locale : Bengali (Bangladesh) [bn-bd]
+    //! author : Asraf Hossain Patoary : https://github.com/ashwoolford
+
 
     var symbolMap = {
             1: '১',
