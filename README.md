@@ -128,6 +128,7 @@ There is no component styling layer. Locale loading controls textual output, and
 
 ```bash
 npm install
+npm run lint
 npm test
 npm run build
 npm run docs:build

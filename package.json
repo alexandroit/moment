@@ -1,6 +1,6 @@
 {
     "name": "@revivejs/moment",
-    "version": "2.30.2",
+    "version": "2.30.3",
     "description": "Maintained Moment.js fork for parsing, validating, manipulating, and formatting dates.",
     "homepage": "https://github.com/alexandroit/moment#readme",
     "author": "Alexandroit (https://github.com/alexandroit)",
@@ -73,12 +73,14 @@
         "ts3.1-typings/"
     ],
     "devDependencies": {
+        "@eslint/js": "9.39.4",
         "@types/node": "17.0.21",
         "benchmark": "2.1.4",
         "coveralls": "3.1.1",
         "cross-env": "6.0.3",
         "es6-promise": "4.2.8",
-        "eslint": "8.56.0",
+        "eslint": "9.39.4",
+        "globals": "17.4.0",
         "grunt": "1.6.1",
         "grunt-benchmark": "1.0.0",
         "grunt-cli": "1.4.3",
