@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@revivejs/moment — Versioned Docs</title>
+    <meta
+      name="description"
+      content="Versioned documentation for the maintained @revivejs/moment package."
+    />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-card hero-main">
+          <span class="badge">MOMENT 2.30.x · MAINTAINED FORK</span>
+          <h1>@revivejs/moment</h1>
+          <p>
+            A maintained Moment.js fork for parsing, validating, manipulating, formatting, and
+            localizing dates with the classic API teams still depend on in production.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature">
+              <strong>Legacy-compatible API</strong>
+              Keep the upstream Moment.js surface for parsing, locale loading, durations, and
+              relative time output.
+            </div>
+            <div class="feature">
+              <strong>Versioned docs history</strong>
+              Every published package line gets its own docs source and compiled demo so behavior
+              stays aligned with npm.
+            </div>
+            <div class="feature">
+              <strong>Interactive explorer</strong>
+              Switch between parsing, formatting, UTC, locale, duration, and comparison scenarios
+              without leaving the page.
+            </div>
+            <div class="feature">
+              <strong>Browser-ready assets</strong>
+              Each docs line uses the actual minified assets from the published tarball for that
+              package version.
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn" href="#examples">Explore examples</a>
+            <a
+              class="btn secondary"
+              href="https://github.com/alexandroit/moment#readme"
+              target="_blank"
+              rel="noreferrer">
+              README
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card hero-setup">
+          <h2>Setup in 3 steps</h2>
+
+          <div class="step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Install</strong>
+              <pre>npm install @revivejs/moment</pre>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Import the package</strong>
+              <pre>import moment from '@revivejs/moment';
+import '@revivejs/moment/locale/fr';</pre>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Run the date workflow</strong>
+              <pre>moment.locale('fr');
+
+const value = moment('2026-04-05 09:30', 'YYYY-MM-DD HH:mm', true);
+value.clone().utc().format('YYYY-MM-DDTHH:mm:ss[Z]');</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout" id="examples">
+        <div class="panels">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Example explorer</h2>
+              <p>
+                Browse the maintained Moment.js API by workflow instead of reading a flat README:
+                parsing, strict validation, locale rendering, UTC offsets, durations, and range
+                comparisons all stay visible in one place.
+              </p>
+            </div>
+
+            <div class="example-explorer">
+              <aside class="demo-nav" id="demo-nav"></aside>
+
+              <div class="demo-stage">
+                <div class="demo-stage-header">
+                  <div class="demo-breadcrumb">
+                    <span class="meta-pill" id="demo-category"></span>
+                    <span class="meta-pill light" id="demo-title-pill"></span>
+                  </div>
+                  <h3 id="demo-title"></h3>
+                  <p id="demo-summary"></p>
+                </div>
+
+                <pre class="code" id="demo-code"></pre>
+
+                <div class="demo-stack">
+                  <div class="controls-card">
+                    <h4>Interactive controls</h4>
+                    <div class="control-grid" id="controls"></div>
+                  </div>
+
+                  <div class="results-grid" id="results"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>API reference</h2>
+              <p>
+                These are the core package entry points and helpers that show up repeatedly across
+                the versioned docs.
+              </p>
+            </div>
+
+            <div class="ref-grid">
+              <div class="ref-card">
+                <h4>Core entry points</h4>
+                <table class="api-table">
+                  <thead>
+                    <tr>
+                      <th>API</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>moment(input)</code></td>
+                      <td>Creates a local moment instance from strings, dates, arrays, objects, or timestamps.</td>
+                    </tr>
+                    <tr>
+                      <td><code>moment.utc(input)</code></td>
+                      <td>Creates a UTC-based instance without relying on local timezone output.</td>
+                    </tr>
+                    <tr>
+                      <td><code>moment.parseZone(input)</code></td>
+                      <td>Parses and preserves the original offset encoded in the input string.</td>
+                    </tr>
+                    <tr>
+                      <td><code>moment.duration(value, unit)</code></td>
+                      <td>Creates a duration object for humanize, ISO serialization, and unit math.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="ref-card">
+                <h4>Parsing and validation</h4>
+                <table class="api-table">
+                  <thead>
+                    <tr>
+                      <th>API</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>moment(value, format)</code></td>
+                      <td>Parses custom formatted strings with a declared token pattern.</td>
+                    </tr>
+                    <tr>
+                      <td><code>moment(value, format, true)</code></td>
+                      <td>Strict parsing rejects partial matches and malformed tokens.</td>
+                    </tr>
+                    <tr>
+                      <td><code>isValid()</code></td>
+                      <td>Checks whether the current instance resolved to a valid date.</td>
+                    </tr>
+                    <tr>
+                      <td><code>parsingFlags()</code></td>
+                      <td>Exposes unused tokens, overflow, and other parser diagnostics.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="ref-card">
+                <h4>Formatting and locale</h4>
+                <table class="api-table">
+                  <thead>
+                    <tr>
+                      <th>API</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>format(pattern)</code></td>
+                      <td>Formats the current instance with tokens such as <code>YYYY</code>, <code>MM</code>, and <code>LLLL</code>.</td>
+                    </tr>
+                    <tr>
+                      <td><code>calendar()</code></td>
+                      <td>Returns locale-aware calendar phrases such as “Today at 9:00 AM”.</td>
+                    </tr>
+                    <tr>
+                      <td><code>fromNow()</code></td>
+                      <td>Generates human relative time against the current moment.</td>
+                    </tr>
+                    <tr>
+                      <td><code>moment.locale(locale)</code></td>
+                      <td>Switches the global locale used for long formats and relative time strings.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="ref-card">
+                <h4>Published package artifacts</h4>
+                <table class="api-table">
+                  <thead>
+                    <tr>
+                      <th>File</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>moment.js</code></td>
+                      <td>Classic CommonJS/browser entry kept for legacy integration paths.</td>
+                    </tr>
+                    <tr>
+                      <td><code>dist/moment.js</code></td>
+                      <td>ES module-friendly build distributed with the package.</td>
+                    </tr>
+                    <tr>
+                      <td><code>locale/</code></td>
+                      <td>Individually loadable locale bundles for targeted installs.</td>
+                    </tr>
+                    <tr>
+                      <td><code>min/</code></td>
+                      <td>Browser-ready minified assets used by these versioned demos.</td>
+                    </tr>
+                    <tr>
+                      <td><code>moment.d.ts</code></td>
+                      <td>Bundled TypeScript declarations for classic and TS 3.1+ consumers.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="sidebar">
+          <section class="panel log-panel">
+            <div class="log-header">
+              <div>
+                <h2>Interaction Log</h2>
+                <p>Control changes, demo switches, and recalculated date outputs appear here.</p>
+              </div>
+              <button class="clear-btn" type="button" id="clear-log">Clear</button>
+            </div>
+
+            <div class="log-list" id="log-list"></div>
+
+            <div class="release-card">
+              <h3>Release line</h3>
+              <p>This docs build is pinned to the same package line published on npm.</p>
+              <div class="api-row">
+                <strong>Package line</strong>
+                <span id="package-line"></span>
+              </div>
+              <div class="api-row">
+                <strong>Docs path</strong>
+                <span id="docs-path"></span>
+              </div>
+              <div class="api-row">
+                <strong>Runtime target</strong>
+                <span id="runtime-target"></span>
+              </div>
+              <div class="api-row">
+                <strong>Pattern</strong>
+                <span>versioned docs-src + compiled docs history</span>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./docs-meta.js"></script>
+    <script src="./assets/moment.min.js"></script>
+    <script src="./assets/locales.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 {
     "name": "@revivejs/moment",
-    "version": "2.30.4",
+    "version": "2.30.5",
     "description": "Maintained Moment.js 2.30.x fork for parsing, validating, manipulating, and formatting dates.",
     "homepage": "https://alexandroit.github.io/moment/",
     "author": "Alexandroit (https://github.com/alexandroit)",
@@ -128,11 +128,12 @@
     "scripts": {
         "build": "grunt release",
         "build:package": "npm run build",
-        "build:docs": "node scripts/build-docs.mjs v2.30.4",
+        "build:docs": "node scripts/build-docs.mjs v2.30.5",
         "build:docs:all": "node scripts/build-docs.mjs --all",
         "build:docs:v2.30.2": "node scripts/build-docs.mjs v2.30.2",
         "build:docs:v2.30.3": "node scripts/build-docs.mjs v2.30.3",
         "build:docs:v2.30.4": "node scripts/build-docs.mjs v2.30.4",
+        "build:docs:v2.30.5": "node scripts/build-docs.mjs v2.30.5",
         "docs:build": "npm run build:docs",
         "lint": "grunt lint",
         "pack:check": "npm pack --dry-run",

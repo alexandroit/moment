@@ -5,7 +5,7 @@ const root = process.cwd();
 const docsSrcDir = path.join(root, 'docs-src');
 const docsDir = path.join(root, 'docs');
 
-const requestedTarget = process.argv[2] || 'v2.30.4';
+const requestedTarget = process.argv[2] || 'v2.30.5';
 const buildAll = requestedTarget === '--all';
 
 const versionDirs = readdirSync(docsSrcDir, { withFileTypes: true })

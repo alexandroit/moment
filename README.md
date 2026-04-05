@@ -1,6 +1,6 @@
 # @revivejs/moment
 
-> Maintained Moment.js 2.30.x fork for parsing, validating, manipulating, and formatting dates.
+> A maintained **Moment.js 2.30.x fork** for parsing, validating, manipulating, and formatting dates with support for strict parsing, locale bundles, UTC workflows, durations, browser-ready minified assets, and TypeScript declarations.
 
 [![npm version](https://img.shields.io/npm/v/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
 [![npm downloads](https://img.shields.io/npm/dt/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
@@ -10,7 +10,9 @@
 [![TypeScript typings](https://img.shields.io/badge/TypeScript-1.8%2B%20%7C%203.1%2B-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![GitHub stars](https://img.shields.io/github/stars/alexandroit/moment.svg?style=flat-square)](https://github.com/alexandroit/moment/stargazers)
 
-**[Documentation & Demo](https://alexandroit.github.io/moment/)** | **[Repository](https://github.com/alexandroit/moment)** | **[npm](https://www.npmjs.com/package/@revivejs/moment)** | **[Changelog](https://github.com/alexandroit/moment/blob/develop/CHANGELOG.md)**
+**[Documentation & Live Demos](https://alexandroit.github.io/moment/)** | **[npm](https://www.npmjs.com/package/@revivejs/moment)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
+
+**Latest version:** `2.30.5`
 
 ---
 
@@ -26,33 +28,41 @@ teams that still depend on its parsing, formatting, locale, duration, and relati
 The package stays intentionally close to upstream `moment@2.30.x`, while cleaning up metadata and
 preserving browser-ready bundles, locale files, and TypeScript declarations.
 
----
-
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
-| Parse common date inputs and custom formats | Yes |
-| Strict parsing and validation diagnostics | Yes |
-| Format localized dates and times | Yes |
-| Relative time and duration helpers | Yes |
-| UTC and offset-aware workflows | Yes |
-| 130+ locale bundles | Yes |
-| TypeScript declaration files | Yes |
-| Browser-ready minified bundles | Yes |
-| Versioned docs per published release line | Yes |
+| Maintained Moment.js 2.30.x release line | ✅ |
+| Parse common date inputs and custom formats | ✅ |
+| Strict parsing and validation diagnostics | ✅ |
+| Localized formatting and calendar output | ✅ |
+| Relative time and duration helpers | ✅ |
+| UTC and offset-aware workflows | ✅ |
+| 130+ locale bundles | ✅ |
+| TypeScript declaration files | ✅ |
+| Browser-ready minified bundles | ✅ |
+| Versioned docs per published package release | ✅ |
 
----
+## Table of Contents
 
-## Supported Package Versions
+1. [Published Version Compatibility](#published-version-compatibility)
+2. [Installation](#installation)
+3. [Setup](#setup)
+4. [Basic Usage](#basic-usage)
+5. [Core APIs](#core-apis)
+6. [Browser Assets](#browser-assets)
+7. [Run Locally](#run-locally)
+8. [Publishing](#publishing)
+9. [License](#license)
 
-| Package version | Runtime target | TypeScript declarations | Docs |
-| :--- | :--- | :--- | :--- |
-| `2.30.4` | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.4](https://alexandroit.github.io/moment/v2.30.4/) |
-| `2.30.3` | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.3](https://alexandroit.github.io/moment/v2.30.3/) |
-| `2.30.2` | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.2](https://alexandroit.github.io/moment/v2.30.2/) |
+## Published Version Compatibility
 
-Latest published version: `2.30.4`
+| Package version | Upstream base | Runtime target | TypeScript declarations | Demo link |
+| :---: | :---: | :--- | :--- | :--- |
+| **2.30.5** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.5 docs](https://alexandroit.github.io/moment/v2.30.5/) |
+| **2.30.4** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.4 docs](https://alexandroit.github.io/moment/v2.30.4/) |
+| 2.30.3 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.3 docs](https://alexandroit.github.io/moment/v2.30.3/) |
+| 2.30.2 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.2 docs](https://alexandroit.github.io/moment/v2.30.2/) |
 
 ---
 
