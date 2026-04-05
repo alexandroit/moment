@@ -1,75 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@revivejs/moment demo</title>
-    <meta
-      name="description"
-      content="Interactive demo for the maintained @revivejs/moment package."
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <main class="shell">
-      <section class="hero">
-        <div class="eyebrow">Revived package demo</div>
-        <h1>@revivejs/moment</h1>
-        <p class="lede">
-          A maintained fork of Moment.js for legacy-friendly date parsing, validation,
-          formatting, locale handling, durations, and relative time output.
-        </p>
-        <div class="footer">
-          Package version <strong id="version"></strong> ·
-          <a href="https://github.com/alexandroit/moment">Repository</a> ·
-          <a href="https://www.npmjs.com/package/@revivejs/moment">npm</a>
-        </div>
-      </section>
+<head>
+  <meta charset="utf-8">
+  <title>@revivejs/moment — Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=v2.30.4/">
+  <style>
+    :root {
+      color-scheme: light;
+      --text: #102033;
+      --muted: #59708a;
+      --surface: rgba(255,255,255,0.9);
+      --border: rgba(191,206,223,0.8);
+      --shadow: 0 24px 60px rgba(23, 50, 77, 0.12);
+      --accent: #c15d3f;
+    }
 
-      <section class="grid">
-        <section class="panel">
-          <h2>Play with parsing and locale output</h2>
-          <label>
-            Datetime input
-            <input id="date-input" type="datetime-local" />
-          </label>
-          <label>
-            Locale
-            <select id="locale-select"></select>
-          </label>
-        </section>
+    * { box-sizing: border-box; }
 
-        <section class="panel">
-          <h2>Live results</h2>
-          <div class="results">
-            <div class="result">
-              <strong>Current time</strong>
-              <span id="output-now"></span>
-            </div>
-            <div class="result">
-              <strong>Localized format</strong>
-              <span id="output-long"></span>
-            </div>
-            <div class="result">
-              <strong>Relative time</strong>
-              <span id="output-relative"></span>
-            </div>
-            <div class="result">
-              <strong>UTC output</strong>
-              <span id="output-utc"></span>
-            </div>
-          </div>
-        </section>
-      </section>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(254,228,179,0.5), transparent 32%),
+        radial-gradient(circle at left 18%, rgba(170,219,255,0.4), transparent 28%),
+        linear-gradient(180deg, #fff9f0 0%, #f5fbff 55%, #eef4fb 100%);
+    }
 
-      <section class="code">
-        <h2>Equivalent package usage</h2>
-        <pre><code id="example-code"></code></pre>
-      </section>
-    </main>
+    .card {
+      width: min(760px, 100%);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
 
-    <script src="./assets/moment.min.js"></script>
-    <script src="./assets/locales.min.js"></script>
-    <script src="./app.js"></script>
-  </body>
+    h1 {
+      margin: 0 0 0.75rem;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .versions {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .ver {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.8);
+      color: var(--text);
+    }
+
+    .ver.latest {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), #9e4a31);
+      color: #fff;
+    }
+
+    .ver span {
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 0.75rem;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>@revivejs/moment</h1>
+    <p>Select a published package version to view the matching docs build:</p>
+    <div class="versions">
+      <a class="ver latest" href="v2.30.4/">Moment 2.30.4 <span>(latest)</span></a>
+      <a class="ver other" href="v2.30.3/">Moment 2.30.3</a>
+      <a class="ver other" href="v2.30.2/">Moment 2.30.2</a>
+    </div>
+    <p class="note">Redirecting to the latest version…</p>
+  </div>
+</body>
 </html>
