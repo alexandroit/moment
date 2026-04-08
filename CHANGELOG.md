@@ -3,7 +3,7 @@ Changelog
 
 ### 2.30.5
 * Release Apr 5, 2026
-* Standardize the published README to the ReviveJS package template
+* Standardize the published README to the Stackline package template
 * Add versioned docs history for `2.30.2`, `2.30.3`, `2.30.4`, and `2.30.5`
 * Promote `v2.30.5/` as the latest GitHub Pages docs line
 
