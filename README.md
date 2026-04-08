@@ -1,29 +1,29 @@
-# @revivejs/moment
+# @stackline/moment
 
 > A maintained **Moment.js 2.30.x fork** for parsing, validating, manipulating, and formatting dates with support for strict parsing, locale bundles, UTC workflows, durations, browser-ready minified assets, and TypeScript declarations.
 
-[![npm version](https://img.shields.io/npm/v/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
-[![npm downloads](https://img.shields.io/npm/dt/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
-[![npm monthly](https://img.shields.io/npm/dm/%40revivejs%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@revivejs/moment)
-[![license](https://img.shields.io/npm/l/%40revivejs%2Fmoment.svg?style=flat-square)](https://github.com/alexandroit/moment/blob/develop/LICENSE)
+[![npm version](https://img.shields.io/npm/v/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment)
+[![npm downloads](https://img.shields.io/npm/dt/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment)
+[![npm monthly](https://img.shields.io/npm/dm/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment)
+[![license](https://img.shields.io/npm/l/%40stackline%2Fmoment.svg?style=flat-square)](https://github.com/alexandroit/moment/blob/develop/LICENSE)
 [![JavaScript ES5+](https://img.shields.io/badge/JavaScript-ES5%2B-f7df1e?style=flat-square&logo=javascript&logoColor=111)](https://developer.mozilla.org/docs/Web/JavaScript)
 [![TypeScript typings](https://img.shields.io/badge/TypeScript-1.8%2B%20%7C%203.1%2B-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![GitHub stars](https://img.shields.io/github/stars/alexandroit/moment.svg?style=flat-square)](https://github.com/alexandroit/moment/stargazers)
 
-**[Documentation & Live Demos](https://alexandroit.github.io/moment/)** | **[npm](https://www.npmjs.com/package/@revivejs/moment)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
+**[Documentation & Live Demos](https://alexandroit.github.io/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
 
 **Latest version:** `2.30.5`
 
 ---
 
 > **Credits:** Original project by Iskren Ivov Chernev and the Moment.js contributors.  
-> Maintained and republished by Alexandroit under the ReviveJS scope.
+> Maintained and republished by Alexandroit under the Stackline scope.
 
 ---
 
 ## Why this library?
 
-`@revivejs/moment` keeps the stable Moment.js API available under active package ownership for
+`@stackline/moment` keeps the stable Moment.js API available under active package ownership for
 teams that still depend on its parsing, formatting, locale, duration, and relative-time behavior.
 The package stays intentionally close to upstream `moment@2.30.x`, while cleaning up metadata and
 preserving browser-ready bundles, locale files, and TypeScript declarations.
@@ -69,7 +69,7 @@ preserving browser-ready bundles, locale files, and TypeScript declarations.
 ## Installation
 
 ```bash
-npm install @revivejs/moment
+npm install @stackline/moment
 ```
 
 ---
@@ -77,8 +77,8 @@ npm install @revivejs/moment
 ## Setup
 
 ```ts
-import moment from '@revivejs/moment';
-import '@revivejs/moment/locale/fr';
+import moment from '@stackline/moment';
+import '@stackline/moment/locale/fr';
 
 moment.locale('fr');
 ```
@@ -88,7 +88,7 @@ moment.locale('fr');
 ## Basic Usage
 
 ```ts
-import moment from '@revivejs/moment';
+import moment from '@stackline/moment';
 
 const parsed = moment('2026-04-03 14:30', 'YYYY-MM-DD HH:mm', true);
 

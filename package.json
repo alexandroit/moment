@@ -1,5 +1,5 @@
 {
-    "name": "@revivejs/moment",
+    "name": "@stackline/moment",
     "version": "2.30.5",
     "description": "Maintained Moment.js 2.30.x fork for parsing, validating, manipulating, and formatting dates.",
     "homepage": "https://alexandroit.github.io/moment/",

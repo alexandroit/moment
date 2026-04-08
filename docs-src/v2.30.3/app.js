@@ -47,7 +47,7 @@
           controls: ['baseDateTime', 'locale'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const value = moment('${state.baseDateTime.replace('T', ' ')}');\n` +
               "value.format('LLLL');\n" +
               "value.toISOString();\n" +
@@ -78,7 +78,7 @@
           controls: ['customInput', 'formatString', 'locale'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const parsed = moment('${escapeSingle(state.customInput)}', '${escapeSingle(state.formatString)}');\n` +
               "parsed.isValid();\n" +
               "parsed.format('YYYY-MM-DD HH:mm');"
@@ -104,7 +104,7 @@
           controls: ['strictInput', 'strictFormat'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const lenient = moment('${escapeSingle(state.strictInput)}', '${escapeSingle(state.strictFormat)}');\n` +
               `const strict = moment('${escapeSingle(state.strictInput)}', '${escapeSingle(state.strictFormat)}', true);\n` +
               'strict.isValid();'
@@ -135,8 +135,8 @@
           controls: ['baseDateTime', 'locale'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n" +
-              `import '@revivejs/moment/locale/${state.locale}';\n\n` +
+              "import moment from '@stackline/moment';\n" +
+              `import '@stackline/moment/locale/${state.locale}';\n\n` +
               `moment.locale('${state.locale}');\n` +
               `moment('${state.baseDateTime.replace('T', ' ')}').format('LLLL');`
             );
@@ -161,7 +161,7 @@
           controls: ['baseDateTime', 'comparisonDateTime', 'locale'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const value = moment('${state.baseDateTime.replace('T', ' ')}').locale('${state.locale}');\n` +
               `value.calendar(moment('${state.comparisonDateTime.replace('T', ' ')}'));`
             );
@@ -191,7 +191,7 @@
           controls: ['baseDateTime'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const localValue = moment('${state.baseDateTime.replace('T', ' ')}');\n` +
               "localValue.clone().utc().format('YYYY-MM-DDTHH:mm:ss[Z]');"
             );
@@ -216,7 +216,7 @@
           controls: ['parseZoneText'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const zoned = moment.parseZone('${escapeSingle(state.parseZoneText)}');\n` +
               "zoned.format('YYYY-MM-DD HH:mm:ss Z');"
             );
@@ -245,7 +245,7 @@
           controls: ['baseDateTime', 'comparisonDateTime', 'locale'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const left = moment('${state.baseDateTime.replace('T', ' ')}');\n` +
               `const right = moment('${state.comparisonDateTime.replace('T', ' ')}');\n` +
               'left.from(right);'
@@ -271,7 +271,7 @@
           controls: ['durationAmount', 'durationUnit', 'locale'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const duration = moment.duration(${Number(state.durationAmount)}, '${state.durationUnit}');\n` +
               'duration.humanize();'
             );
@@ -296,7 +296,7 @@
           controls: ['baseDateTime', 'durationAmount', 'durationUnit'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const base = moment('${state.baseDateTime.replace('T', ' ')}');\n` +
               `base.clone().add(${Number(state.durationAmount)}, '${state.durationUnit}');\n` +
               `base.clone().subtract(${Number(state.durationAmount)}, '${state.durationUnit}');`
@@ -322,7 +322,7 @@
           controls: ['baseDateTime', 'boundaryUnit'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const base = moment('${state.baseDateTime.replace('T', ' ')}');\n` +
               `base.clone().startOf('${state.boundaryUnit}');\n` +
               `base.clone().endOf('${state.boundaryUnit}');`
@@ -352,7 +352,7 @@
           controls: ['baseDateTime', 'comparisonDateTime'],
           code() {
             return (
-              "import moment from '@revivejs/moment';\n\n" +
+              "import moment from '@stackline/moment';\n\n" +
               `const left = moment('${state.baseDateTime.replace('T', ' ')}');\n` +
               `const right = moment('${state.comparisonDateTime.replace('T', ' ')}');\n` +
               'left.isBefore(right);'

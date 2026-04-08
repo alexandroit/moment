@@ -68,7 +68,7 @@ function renderVersionIndex(versionList, latestVersion) {
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>@revivejs/moment — Docs</title>
+  <title>@stackline/moment — Docs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh" content="0; url=${latestHref}">
   <style>
@@ -155,7 +155,7 @@ function renderVersionIndex(versionList, latestVersion) {
 </head>
 <body>
   <div class="card">
-    <h1>@revivejs/moment</h1>
+    <h1>@stackline/moment</h1>
     <p>Select a published package version to view the matching docs build:</p>
     <div class="versions">
 ${versionCards}
