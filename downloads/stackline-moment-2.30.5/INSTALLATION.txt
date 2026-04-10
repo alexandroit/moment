@@ -1,0 +1,34 @@
+@stackline/moment 2.30.5
+
+Browser bundle download
+=======================
+
+This folder is for browser applications that do not install packages from npm.
+
+Files
+-----
+- moment.min.js
+- moment-with-locales.min.js
+- locales.min.js
+- LICENSE
+- README.md
+
+Script tag usage
+----------------
+<script src="./moment.min.js"></script>
+<script>
+  const value = moment("2026-04-03 14:30", "YYYY-MM-DD HH:mm", true);
+  console.log(value.isValid(), value.format("LLLL"));
+</script>
+
+With locales
+------------
+<script src="./moment-with-locales.min.js"></script>
+<script>
+  moment.locale("fr");
+  console.log(moment().format("LLLL"));
+</script>
+
+Global name
+-----------
+window.moment

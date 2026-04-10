@@ -54,6 +54,7 @@ function compareVersionDirs(left, right) {
 
 function renderVersionIndex(versionList, latestVersion) {
   const latestHref = `${latestVersion}/`;
+  const downloadUrl = 'https://github.com/alexandroit/moment/tree/develop/downloads';
   const versionCards = [...versionList]
     .reverse()
     .map((versionDir) => {
@@ -161,12 +162,37 @@ function renderVersionIndex(versionList, latestVersion) {
       margin-top: 0.75rem;
       font-size: 0.92rem;
     }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      color: var(--text);
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>@stackline/moment</h1>
-    <p>Select a published package version to view the matching docs build:</p>
+    <p>Select a published package version to view the matching docs build, or download the browser-ready JavaScript release for plain script-tag usage.</p>
+    <div class="actions">
+      <a class="action" href="${downloadUrl}">GitHub Downloads</a>
+      <a class="action" href="${latestHref}#examples">Latest Examples</a>
+    </div>
     <div class="versions">
 ${versionCards}
     </div>

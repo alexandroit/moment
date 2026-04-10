@@ -130,6 +130,7 @@
     "build:package": "npm run build",
     "build:docs": "node scripts/build-docs.mjs v2.30.5",
     "build:docs:all": "node scripts/build-docs.mjs --all",
+    "build:download": "node scripts/build-download.mjs",
     "build:docs:v2.30.2": "node scripts/build-docs.mjs v2.30.2",
     "build:docs:v2.30.3": "node scripts/build-docs.mjs v2.30.3",
     "build:docs:v2.30.4": "node scripts/build-docs.mjs v2.30.4",
