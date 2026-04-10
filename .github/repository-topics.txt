@@ -11,5 +11,5 @@ typescript
 npm-package
 maintained
 modernized
-revived
+maintained
 legacy-compatible

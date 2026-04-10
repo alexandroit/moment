@@ -1,4 +1,4 @@
-window.__REVIVE_MOMENT_DOCS_META__ = {
+window.__STACKLINE_MOMENT_DOCS_META__ = {
   packageVersion: '2.30.5',
   docsPath: 'v2.30.5',
   runtimeTarget: 'ES5+ browsers and Node.js',

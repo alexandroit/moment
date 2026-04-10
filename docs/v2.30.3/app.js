@@ -1,5 +1,5 @@
 (function () {
-  const meta = window.__REVIVE_MOMENT_DOCS_META__;
+  const meta = window.__STACKLINE_MOMENT_DOCS_META__;
 
   const localeChoices = ['en', 'en-gb', 'fr', 'de', 'es', 'ja', 'zh-cn'];
   const durationUnits = ['minutes', 'hours', 'days', 'weeks', 'months'];
