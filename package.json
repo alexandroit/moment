@@ -2,7 +2,7 @@
   "name": "@stackline/moment",
   "version": "2.30.5",
   "description": "Maintained Moment.js 2.30.x fork for parsing, validating, manipulating, and formatting dates.",
-  "homepage": "https://alexandroit.github.io/moment/",
+  "homepage": "https://alexandro.net/docs/vanilla/moment/",
   "author": "Alexandroit (https://github.com/alexandroit)",
   "contributors": [
     "Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)",

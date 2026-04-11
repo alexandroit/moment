@@ -10,7 +10,7 @@
 [![TypeScript typings](https://img.shields.io/badge/TypeScript-1.8%2B%20%7C%203.1%2B-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![GitHub stars](https://img.shields.io/github/stars/alexandroit/moment.svg?style=flat-square)](https://github.com/alexandroit/moment/stargazers)
 
-**[Documentation & Live Demos](https://alexandroit.github.io/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment)** | **[GitHub Download](https://github.com/alexandroit/moment/tree/develop/downloads)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
+**[Documentation & Live Demos](https://alexandro.net/docs/vanilla/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment)** | **[GitHub Download](https://github.com/alexandroit/moment/tree/develop/downloads)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
 
 **Latest version:** `2.30.5`
 
@@ -60,10 +60,10 @@ preserving browser-ready bundles, locale files, and TypeScript declarations.
 
 | Package version | Upstream base | Runtime target | TypeScript declarations | Demo link |
 | :---: | :---: | :--- | :--- | :--- |
-| **2.30.5** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.5 docs](https://alexandroit.github.io/moment/v2.30.5/) |
-| **2.30.4** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.4 docs](https://alexandroit.github.io/moment/v2.30.4/) |
-| 2.30.3 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.3 docs](https://alexandroit.github.io/moment/v2.30.3/) |
-| 2.30.2 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.2 docs](https://alexandroit.github.io/moment/v2.30.2/) |
+| **2.30.5** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.5 docs](https://alexandro.net/docs/vanilla/moment/v2.30.5/) |
+| **2.30.4** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.4 docs](https://alexandro.net/docs/vanilla/moment/v2.30.4/) |
+| 2.30.3 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.3 docs](https://alexandro.net/docs/vanilla/moment/v2.30.3/) |
+| 2.30.2 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.2 docs](https://alexandro.net/docs/vanilla/moment/v2.30.2/) |
 
 ---
 
