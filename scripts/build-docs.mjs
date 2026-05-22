@@ -1,11 +1,13 @@
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
 const docsSrcDir = path.join(root, 'docs-src');
 const docsDir = path.join(root, 'docs');
+const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));
+const packageVersionDir = `v${packageJson.version}`;
 
-const requestedTarget = process.argv[2] || 'v2.30.5';
+const requestedTarget = process.argv[2] || 'v1.0.0';
 const buildAll = requestedTarget === '--all';
 
 const versionDirs = readdirSync(docsSrcDir, { withFileTypes: true })
@@ -13,16 +15,18 @@ const versionDirs = readdirSync(docsSrcDir, { withFileTypes: true })
   .map((entry) => entry.name)
   .sort(compareVersionDirs);
 
-const latestVersionDir = versionDirs[versionDirs.length - 1];
 const selectedVersionDirs = buildAll ? versionDirs : versionDirs.filter((dir) => dir === requestedTarget);
 
 if (!selectedVersionDirs.length) {
   throw new Error(`Unknown docs target "${requestedTarget}". Available targets: ${versionDirs.join(', ')}`);
 }
 
-if (buildAll) {
-  rmSync(docsDir, { force: true, recursive: true });
-}
+rmSync(docsDir, { force: true, recursive: true });
+
+const displayedVersionDirs = buildAll ? versionDirs : selectedVersionDirs;
+const latestVersionDir = displayedVersionDirs.includes(packageVersionDir)
+  ? packageVersionDir
+  : displayedVersionDirs[displayedVersionDirs.length - 1];
 
 mkdirSync(docsDir, { recursive: true });
 writeFileSync(path.join(docsDir, '.nojekyll'), '', 'utf8');
@@ -35,7 +39,7 @@ for (const versionDir of selectedVersionDirs) {
   cpSync(source, destination, { recursive: true });
 }
 
-writeFileSync(path.join(docsDir, 'index.html'), renderVersionIndex(versionDirs, latestVersionDir), 'utf8');
+writeFileSync(path.join(docsDir, 'index.html'), renderVersionIndex(displayedVersionDirs, latestVersionDir), 'utf8');
 
 function compareVersionDirs(left, right) {
   const leftParts = left.slice(1).split('.').map(Number);
@@ -55,8 +59,11 @@ function compareVersionDirs(left, right) {
 function renderVersionIndex(versionList, latestVersion) {
   const latestHref = `${latestVersion}/`;
   const downloadUrl = 'https://github.com/alexandroit/moment/tree/develop/downloads';
-  const versionCards = [...versionList]
-    .reverse()
+  const orderedVersionList = [
+    latestVersion,
+    ...[...versionList].filter((versionDir) => versionDir !== latestVersion).reverse()
+  ];
+  const versionCards = orderedVersionList
     .map((versionDir) => {
       const versionNumber = versionDir.slice(1);
       const latestClass = versionDir === latestVersion ? 'ver latest' : 'ver other';
@@ -69,7 +76,7 @@ function renderVersionIndex(versionList, latestVersion) {
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>@stackline/moment — Docs</title>
+  <title>@stackline/moment-core — Docs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh" content="0; url=${latestHref}">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6353624842390947" crossorigin="anonymous"></script>
@@ -187,7 +194,7 @@ function renderVersionIndex(versionList, latestVersion) {
 </head>
 <body>
   <div class="card">
-    <h1>@stackline/moment</h1>
+    <h1>@stackline/moment-core</h1>
     <p>Select a published package version to view the matching docs build, or download the browser-ready JavaScript release for plain script-tag usage.</p>
     <div class="actions">
       <a class="action" href="${downloadUrl}">GitHub Downloads</a>

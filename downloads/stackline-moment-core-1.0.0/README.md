@@ -1,18 +1,18 @@
-# @stackline/moment
+# @stackline/moment-core
 
-> A maintained **Moment.js 2.30.x fork** for parsing, validating, manipulating, and formatting dates with support for strict parsing, locale bundles, UTC workflows, durations, browser-ready minified assets, and TypeScript declarations.
+> A maintained **Moment.js API package** for parsing, validating, manipulating, and formatting dates with support for strict parsing, locale bundles, UTC workflows, durations, browser-ready minified assets, and TypeScript declarations.
 
-[![npm version](https://img.shields.io/npm/v/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment)
-[![npm downloads](https://img.shields.io/npm/dt/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment)
-[![npm monthly](https://img.shields.io/npm/dm/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment)
+[![npm version](https://img.shields.io/npm/v/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
+[![npm downloads](https://img.shields.io/npm/dt/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
+[![npm monthly](https://img.shields.io/npm/dm/%40stackline%2Fmoment.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
 [![license](https://img.shields.io/npm/l/%40stackline%2Fmoment.svg?style=flat-square)](https://github.com/alexandroit/moment/blob/develop/LICENSE)
 [![JavaScript ES5+](https://img.shields.io/badge/JavaScript-ES5%2B-f7df1e?style=flat-square&logo=javascript&logoColor=111)](https://developer.mozilla.org/docs/Web/JavaScript)
 [![TypeScript typings](https://img.shields.io/badge/TypeScript-1.8%2B%20%7C%203.1%2B-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 [![GitHub stars](https://img.shields.io/github/stars/alexandroit/moment.svg?style=flat-square)](https://github.com/alexandroit/moment/stargazers)
 
-**[Documentation & Live Demos](https://alexandro.net/docs/vanilla/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment)** | **[GitHub Download](https://github.com/alexandroit/moment/tree/develop/downloads)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
+**[Documentation & Live Demos](https://alexandro.net/docs/vanilla/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment-core)** | **[GitHub Download](https://github.com/alexandroit/moment/tree/develop/downloads)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
 
-**Latest version:** `2.30.5`
+**Latest version:** `1.0.0`
 
 ---
 
@@ -23,16 +23,16 @@
 
 ## Why this library?
 
-`@stackline/moment` keeps the stable Moment.js API available under active package ownership for
+`@stackline/moment-core` keeps the stable Moment.js API available under active package ownership for
 teams that still depend on its parsing, formatting, locale, duration, and relative-time behavior.
-The package stays intentionally close to upstream `moment@2.30.x`, while cleaning up metadata and
+The package stays intentionally close to the classic Moment.js API, while cleaning up metadata and
 preserving browser-ready bundles, locale files, and TypeScript declarations.
 
 ## Features
 
 | Feature | Supported |
 | :--- | :---: |
-| Maintained Moment.js 2.30.x release line | ✅ |
+| Stackline 1.0.0 release baseline on the Moment.js API | ✅ |
 | Parse common date inputs and custom formats | ✅ |
 | Strict parsing and validation diagnostics | ✅ |
 | Localized formatting and calendar output | ✅ |
@@ -60,17 +60,14 @@ preserving browser-ready bundles, locale files, and TypeScript declarations.
 
 | Package version | Upstream base | Runtime target | TypeScript declarations | Demo link |
 | :---: | :---: | :--- | :--- | :--- |
-| **2.30.5** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.5 docs](https://alexandro.net/docs/vanilla/moment/v2.30.5/) |
-| **2.30.4** | **Moment 2.30.x** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 2.30.4 docs](https://alexandro.net/docs/vanilla/moment/v2.30.4/) |
-| 2.30.3 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.3 docs](https://alexandro.net/docs/vanilla/moment/v2.30.3/) |
-| 2.30.2 | Moment 2.30.x | ES5+ browsers and Node.js | `moment.d.ts` + `ts3.1-typings/` | [Moment 2.30.2 docs](https://alexandro.net/docs/vanilla/moment/v2.30.2/) |
+| **1.0.0** | **Moment API baseline** | **ES5+ browsers and Node.js** | **`moment.d.ts` + `ts3.1-typings/`** | [Moment 1.0.0 docs](https://alexandro.net/docs/vanilla/moment/v1.0.0/) |
 
 ---
 
 ## Installation
 
 ```bash
-npm install @stackline/moment
+npm install @stackline/moment-core
 ```
 
 ---
@@ -104,8 +101,8 @@ The archive includes `moment.min.js`, `moment-with-locales.min.js`, and `locales
 ## Setup
 
 ```ts
-import moment from '@stackline/moment';
-import '@stackline/moment/locale/fr';
+import moment from '@stackline/moment-core';
+import '@stackline/moment-core/locale/fr';
 
 moment.locale('fr');
 ```
@@ -115,7 +112,7 @@ moment.locale('fr');
 ## Basic Usage
 
 ```ts
-import moment from '@stackline/moment';
+import moment from '@stackline/moment-core';
 
 const parsed = moment('2026-04-03 14:30', 'YYYY-MM-DD HH:mm', true);
 
@@ -167,7 +164,7 @@ npm install
 npm run lint
 npm test
 npm run build
-npm run build:docs:all
+npm run build:docs
 ```
 
 ---
@@ -176,7 +173,7 @@ npm run build:docs:all
 
 ```bash
 npm run build:package
-npm run build:docs:all
+npm run build:docs
 npm run pack:check
 ```
 

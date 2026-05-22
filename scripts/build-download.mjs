@@ -8,11 +8,11 @@ const rootDir = process.cwd();
 const packageJson = JSON.parse(await fs.readFile(path.join(rootDir, "package.json"), "utf8"));
 const version = packageJson.version;
 const downloadRootDir = path.join(rootDir, "downloads");
-const bundleDirName = `stackline-moment-${version}`;
+const bundleDirName = `stackline-moment-core-${version}`;
 const bundleDir = path.join(downloadRootDir, bundleDirName);
 const zipPath = path.join(downloadRootDir, `${bundleDirName}.zip`);
 
-const installGuide = `@stackline/moment ${version}
+const installGuide = `@stackline/moment-core ${version}
 
 Browser bundle download
 =======================
@@ -50,7 +50,7 @@ window.moment
 
 const downloadReadme = `# GitHub Downloads
 
-This directory contains browser-ready downloads for developers who want to use \`@stackline/moment\` with plain JavaScript.
+This directory contains browser-ready downloads for developers who want to use \`@stackline/moment-core\` with plain JavaScript.
 
 Current version:
 
