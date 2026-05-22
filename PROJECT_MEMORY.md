@@ -20,6 +20,7 @@ Last updated: 2026-05-22
 - Rebuilt browser download assets as `stackline-moment-core-1.0.0`.
 - Published `@stackline/moment-core@1.0.0` to public npm.
 - Published `@stackline/moment-core@1.0.0` to the local Verdaccio registry.
+- Removed the old local Verdaccio package `@stackline/moment` so the local registry only lists `@stackline/moment-core@1.0.0`.
 - Published static docs to the production docs root on `codex-server`:
   - source staging: `/storage/data/build/alexandro.net-docs`
   - production target: `/var/www/html/alexandro.net_docs`
