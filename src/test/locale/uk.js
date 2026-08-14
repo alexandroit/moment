@@ -184,7 +184,7 @@ test('format month case', function (assert) {
 
 test('format week', function (assert) {
     var expected =
-            'неділя нд нд_понеділок пн пн_вівторок вт вт_середа ср ср_четвер чт чт_п’ятниця пт пт_субота сб сб'.split(
+            'неділя нд нд_понеділок пн пн_вівторок вт вт_середа ср ср_четвер чт чт_пʼятниця пт пт_субота сб сб'.split(
                 '_'
             ),
         i;
@@ -195,6 +195,27 @@ test('format week', function (assert) {
             expected[i]
         );
     }
+});
+
+test('friday grammatical forms use U+02BC apostrophe', function (assert) {
+    var friday = moment([2011, 0, 7]);
+    // Hard-coded expected strings so an incorrect apostrophe in
+    // accusative or genitive cannot hide behind locale().weekdays().
+    assert.equal(
+        friday.format('dddd'),
+        'пʼятниця',
+        'nominative Friday uses U+02BC'
+    );
+    assert.equal(
+        friday.format('[У] dddd'),
+        'У пʼятницю',
+        'accusative Friday uses U+02BC'
+    );
+    assert.equal(
+        friday.format('[минулої] dddd'),
+        'минулої пʼятниці',
+        'genitive Friday uses U+02BC'
+    );
 });
 
 test('from', function (assert) {
