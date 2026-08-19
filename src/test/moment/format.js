@@ -868,6 +868,19 @@ test('Hmm and Hmmss', function (assert) {
     assert.equal(moment('18:34:56', 'HH:mm:ss').format('Hmmss'), '183456');
 });
 
+test('eHHmm', function (assert) {
+    assert.equal(
+        moment('2026-08-18 15:30', 'YYYY-MM-DD HH:mm').format('eHHmm'),
+        '21530',
+        'locale weekday with compact time'
+    );
+    assert.equal(
+        moment('15:30', 'HH:mm').format('\\eHHmm'),
+        'e1530',
+        'escaped e remains separate from HHmm'
+    );
+});
+
 test('k and kk', function (assert) {
     assert.equal(moment('01:23:45', 'HH:mm:ss').format('k'), '1');
     assert.equal(moment('12:34:56', 'HH:mm:ss').format('k'), '12');
