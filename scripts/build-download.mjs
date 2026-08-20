@@ -48,15 +48,42 @@ Global name
 window.moment
 `;
 
+await fs.mkdir(downloadRootDir, { recursive: true });
+await fs.rm(bundleDir, { recursive: true, force: true });
+await fs.rm(zipPath, { force: true });
+await fs.mkdir(bundleDir, { recursive: true });
+
+await fs.copyFile(path.join(rootDir, "README.md"), path.join(bundleDir, "README.md"));
+await fs.copyFile(path.join(rootDir, "LICENSE"), path.join(bundleDir, "LICENSE"));
+await fs.copyFile(path.join(rootDir, "min", "moment.min.js"), path.join(bundleDir, "moment.min.js"));
+await fs.copyFile(path.join(rootDir, "min", "moment-with-locales.min.js"), path.join(bundleDir, "moment-with-locales.min.js"));
+await fs.copyFile(path.join(rootDir, "min", "locales.min.js"), path.join(bundleDir, "locales.min.js"));
+await fs.writeFile(path.join(bundleDir, "INSTALLATION.txt"), installGuide, "utf8");
+await normalizeTimestamps(bundleDir);
+
+const archiveFiles = (await listFiles(bundleDir))
+  .map((filePath) => path.relative(downloadRootDir, filePath))
+  .sort();
+
+await execFileAsync("zip", ["-Xq", zipPath, ...archiveFiles], {
+  cwd: downloadRootDir
+});
+
+const archiveNames = (await fs.readdir(downloadRootDir))
+  .filter((fileName) => /^stackline-moment-core-\d+\.\d+\.\d+\.zip$/.test(fileName))
+  .sort((left, right) => right.localeCompare(left, "en", { numeric: true }));
+const archiveLinks = archiveNames
+  .map((fileName) => `- [${fileName}](./${fileName})${fileName === `${bundleDirName}.zip` ? " (current)" : ""}`)
+  .join("\n");
 const downloadReadme = `# GitHub Downloads
 
 This directory contains browser-ready downloads for developers who want to use \`@stackline/moment-core\` with plain JavaScript.
 
-Current version:
+Available versions:
 
-- [${bundleDirName}.zip](./${bundleDirName}.zip)
+${archiveLinks}
 
-Inside the archive:
+Each archive contains:
 
 - \`moment.min.js\`
 - \`moment-with-locales.min.js\`
@@ -66,19 +93,38 @@ Inside the archive:
 - \`INSTALLATION.txt\`
 `;
 
-await fs.rm(downloadRootDir, { recursive: true, force: true });
-await fs.mkdir(bundleDir, { recursive: true });
-
-await fs.copyFile(path.join(rootDir, "README.md"), path.join(bundleDir, "README.md"));
-await fs.copyFile(path.join(rootDir, "LICENSE"), path.join(bundleDir, "LICENSE"));
-await fs.copyFile(path.join(rootDir, "min", "moment.min.js"), path.join(bundleDir, "moment.min.js"));
-await fs.copyFile(path.join(rootDir, "min", "moment-with-locales.min.js"), path.join(bundleDir, "moment-with-locales.min.js"));
-await fs.copyFile(path.join(rootDir, "min", "locales.min.js"), path.join(bundleDir, "locales.min.js"));
-await fs.writeFile(path.join(bundleDir, "INSTALLATION.txt"), installGuide, "utf8");
 await fs.writeFile(path.join(downloadRootDir, "README.md"), downloadReadme, "utf8");
 
-await execFileAsync("zip", ["-rq", zipPath, bundleDirName], {
-  cwd: downloadRootDir
-});
-
 console.log(`Built GitHub download bundle into ${path.relative(rootDir, downloadRootDir)}/`);
+
+async function normalizeTimestamps(directory) {
+  const timestamp = new Date("2000-01-01T00:00:00.000Z");
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      await normalizeTimestamps(entryPath);
+    } else {
+      await fs.utimes(entryPath, timestamp, timestamp);
+    }
+  }
+
+  await fs.utimes(directory, timestamp, timestamp);
+}
+
+async function listFiles(directory) {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await listFiles(entryPath)));
+    } else {
+      files.push(entryPath);
+    }
+  }
+
+  return files;
+}

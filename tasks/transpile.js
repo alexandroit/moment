@@ -32,6 +32,12 @@ module.exports = function (grunt) {
 
         var rollupOpts = {
                 input: opts.entry,
+                strictDeprecations: true,
+                onwarn: function (warning, defaultHandler) {
+                    if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+                        defaultHandler(warning);
+                    }
+                },
                 plugins: [
                     // babel({})
                 ],

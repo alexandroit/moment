@@ -1,11 +1,6 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        env: {
-            sauceLabs: grunt.file.exists('.sauce-labs.creds')
-                ? grunt.file.readJSON('.sauce-labs.creds')
-                : {},
-        },
         karma: {
             options: {
                 browserNoActivityTimeout: 60000,
@@ -13,62 +8,6 @@ module.exports = function (grunt) {
                 browserDisconnectTolerance: 2,
                 frameworks: ['qunit'],
                 files: ['min/moment-with-locales.js', 'min/tests.js'],
-                sauceLabs: {
-                    startConnect: true,
-                    testName: 'MomentJS',
-                },
-                customLaunchers: {
-                    slChromeWinXp: {
-                        base: 'SauceLabs',
-                        browserName: 'chrome',
-                        platform: 'Windows XP',
-                    },
-                    slIe10Win7: {
-                        base: 'SauceLabs',
-                        browserName: 'internet explorer',
-                        platform: 'Windows 7',
-                        version: '10',
-                    },
-                    slIe9Win7: {
-                        base: 'SauceLabs',
-                        browserName: 'internet explorer',
-                        platform: 'Windows 7',
-                        version: '9',
-                    },
-                    slIe8Win7: {
-                        base: 'SauceLabs',
-                        browserName: 'internet explorer',
-                        platform: 'Windows 7',
-                        version: '8',
-                    },
-                    slIe11Win10: {
-                        base: 'SauceLabs',
-                        browserName: 'internet explorer',
-                        platform: 'Windows 10',
-                        version: '11',
-                    },
-                    slME25Win10: {
-                        base: 'SauceLabs',
-                        browserName: 'MicrosoftEdge',
-                        platform: 'Windows 10',
-                        version: '20.10240',
-                    },
-                    slFfLinux: {
-                        base: 'SauceLabs',
-                        browserName: 'firefox',
-                        platform: 'Linux',
-                    },
-                    slSafariOsx: {
-                        base: 'SauceLabs',
-                        browserName: 'safari',
-                        platform: 'OS X 10.8',
-                    },
-                    slSafariOsx11: {
-                        base: 'SauceLabs',
-                        browserName: 'safari',
-                        platform: 'OS X 10.11',
-                    },
-                },
             },
             server: {
                 browsers: [],
@@ -80,22 +19,6 @@ module.exports = function (grunt) {
             firefox: {
                 singleRun: true,
                 browsers: ['Firefox'],
-            },
-            sauce: {
-                options: {
-                    reporters: ['dots'],
-                },
-                singleRun: true,
-                browsers: [
-                    'slChromeWinXp',
-                    'slIe10Win7',
-                    'slIe9Win7',
-                    'slIe8Win7',
-                    'slIe11Win10',
-                    'slME25Win10',
-                    'slFfLinux',
-                    'slSafariOsx',
-                ],
             },
         },
         uglify: {
@@ -120,12 +43,6 @@ module.exports = function (grunt) {
                 preserveComments: /^!|@preserve|@license|@cc_on/i,
             },
         },
-        watch: {
-            test: {
-                files: ['src/**/*.js'],
-                tasks: ['test'],
-            },
-        },
         benchmark: {
             compare: { src: ['benchmarks/compare.js'] },
             startOf: { src: ['benchmarks/startOf.js'] },
@@ -140,12 +57,6 @@ module.exports = function (grunt) {
             },
             'typescript-test': {
                 command: 'npm run typescript-test',
-            },
-            'ts3.1-typescript-test': {
-                command: 'npm run ts3.1-typescript-test',
-            },
-            coveralls: {
-                command: 'npm run coveralls',
             },
             eslint: {
                 command: 'npm run eslint',
@@ -198,14 +109,9 @@ module.exports = function (grunt) {
     ]);
 
     // test tasks
-    grunt.registerTask('test', [
-        'test:node',
-        'test:typescript',
-        'test:typescript-3.1',
-    ]);
+    grunt.registerTask('test', ['test:node', 'test:typescript']);
     grunt.registerTask('test:node', ['transpile', 'qtest']);
     grunt.registerTask('test:typescript', ['exec:typescript-test']);
-    grunt.registerTask('test:typescript-3.1', ['exec:ts3.1-typescript-test']);
     // TODO: For some weird reason karma doesn't like the files in
     // build/umd/min/* but works with min/*, so update-index, then git checkout
     grunt.registerTask('test:server', [
@@ -219,14 +125,8 @@ module.exports = function (grunt) {
         'karma:chrome',
         'karma:firefox',
     ]);
-    grunt.registerTask('test:sauce-browser', [
-        'transpile',
-        'update-index',
-        'env:sauceLabs',
-        'karma:sauce',
-    ]);
     // travis build task
-    grunt.registerTask('build:travis', ['lint', 'exec:coveralls']);
+    grunt.registerTask('build:travis', ['lint', 'test']);
     grunt.registerTask('meteor-publish', ['exec:meteor-publish']);
 
     // Task to be run when releasing a new version

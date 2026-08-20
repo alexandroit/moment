@@ -7,13 +7,17 @@ const docsDir = path.join(root, 'docs');
 const packageJson = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));
 const packageVersionDir = `v${packageJson.version}`;
 
-const requestedTarget = process.argv[2] || 'v1.0.0';
+const requestedTarget = process.argv[2] || packageVersionDir;
 const buildAll = requestedTarget === '--all';
 
 const versionDirs = readdirSync(docsSrcDir, { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && /^v\d+\.\d+\.\d+$/.test(entry.name))
   .map((entry) => entry.name)
   .sort(compareVersionDirs);
+
+if (!versionDirs.length) {
+  throw new Error('No versioned docs sources were found in docs-src/.');
+}
 
 const selectedVersionDirs = buildAll ? versionDirs : versionDirs.filter((dir) => dir === requestedTarget);
 
@@ -40,6 +44,14 @@ for (const versionDir of selectedVersionDirs) {
 }
 
 writeFileSync(path.join(docsDir, 'index.html'), renderVersionIndex(displayedVersionDirs, latestVersionDir), 'utf8');
+
+for (const fileName of ['llms.txt', 'llms-full.txt']) {
+  const source = path.join(docsDir, latestVersionDir, fileName);
+  if (!existsSync(source)) {
+    throw new Error(`Missing required AI discovery file: ${source}`);
+  }
+  cpSync(source, path.join(docsDir, fileName));
+}
 
 function compareVersionDirs(left, right) {
   const leftParts = left.slice(1).split('.').map(Number);

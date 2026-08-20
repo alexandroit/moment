@@ -20,7 +20,7 @@ var day7 = moment([2010, 1, 14, 15, 25, 50, 125]);
 var day8 = moment([2010]);
 var day9 = moment([2010, 6]);
 var day10 = moment([2010, 6, 10]);
-var array = [2010, 1, 14, 15, 25, 50, 125];
+var array: [number, number, number, number, number, number, number] = [2010, 1, 14, 15, 25, 50, 125];
 var day11 = moment(Date.UTC.apply({}, array));
 var day12 = moment.unix(1318781876);
 var day13 = moment("/Date(1198908717056-0700)/", true);
@@ -394,10 +394,10 @@ moment.locale('en', {
 });
 
 moment.locale('en', {
-    months : function (momentToFormat: moment.Moment, format: string) {
+    months : function (momentToFormat: moment.Moment, format?: string) {
         // momentToFormat is the moment currently being formatted
         // format is the formatting string
-        if (/^MMMM/.test(format)) { // if the format starts with 'MMMM'
+        if (/^MMMM/.test(format || '')) { // if the format starts with 'MMMM'
             return this.nominative[momentToFormat.month()];
         } else {
             return this.subjective[momentToFormat.month()];
@@ -413,8 +413,8 @@ moment.locale('en', {
 });
 
 moment.locale('en', {
-    monthsShort : function (momentToFormat: moment.Moment, format: string) {
-        if (/^MMMM/.test(format)) {
+    monthsShort : function (momentToFormat: moment.Moment, format?: string) {
+        if (/^MMMM/.test(format || '')) {
             return this.nominative[momentToFormat.month()];
         } else {
             return this.subjective[momentToFormat.month()];
@@ -430,7 +430,7 @@ moment.locale('en', {
 
 moment.locale('en', {
     weekdays : function (momentToFormat: moment.Moment) {
-        return this.weekdays[momentToFormat.day()];
+        return (this.weekdays as string[])[momentToFormat.day()];
     }
 });
 
@@ -440,7 +440,7 @@ moment.locale('en', {
 
 moment.locale('en', {
     weekdaysShort : function (momentToFormat: moment.Moment) {
-        return this.weekdaysShort[momentToFormat.day()];
+        return (this.weekdaysShort as string[])[momentToFormat.day()];
     }
 });
 
@@ -450,7 +450,7 @@ moment.locale('en', {
 
 moment.locale('en', {
     weekdaysMin : function (momentToFormat: moment.Moment) {
-        return this.weekdaysMin[momentToFormat.day()];
+        return (this.weekdaysMin as string[])[momentToFormat.day()];
     }
 });
 
@@ -519,7 +519,7 @@ moment.locale('en', {
     calendar : {
         lastDay : '[Yesterday at] LT',
         sameDay : '[Today at] LT',
-        nextDay : function () {
+        nextDay : function (this: moment.Moment) {
           return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
         },
         lastWeek : '[last] dddd [at] LT',

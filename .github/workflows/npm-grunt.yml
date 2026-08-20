@@ -2,39 +2,53 @@ name: CI
 
 on:
   push:
-    branches: ["main", "master", "develop"]
+    branches: [develop]
   pull_request:
-    branches: ["main", "master", "develop"]
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  compatibility:
+    name: Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
-
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [18.x, 20.x]
-
+        node-version: [20.20.2, 22.22.0]
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: npm
-
-    - name: Install
-      run: npm ci
-
-    - name: Test
-      run: npm test
-
-    - name: Build package artifacts
-      run: npm run build
-
-    - name: Build docs
-      run: npm run docs:build
-
-    - name: Check npm pack
-      run: npm run pack:check
-        
+  package:
+    name: Build release artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22.22.0
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run check
+      - run: npm audit --audit-level=low
+      - name: Create package archive
+        run: |
+          mkdir -p release
+          npm pack --ignore-scripts --pack-destination release
+          (cd release && sha512sum *.tgz > SHA512SUMS)
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: stackline-moment-core-release
+          path: release/
+          if-no-files-found: error
+          retention-days: 30

@@ -105,8 +105,9 @@ test('parse ICU short month names', function (assert) {
     // new Date(2000, m, 15).toLocaleString('de-DE', {month: 'short'})
     // truncates März/Juni/Juli to Mär/Jun/Jul (no dot), unlike moment's own
     // monthsShort output. These must parse too.
-    var icuShortNames =
-            'Jan_Feb_Mär_Apr_Mai_Jun_Jul_Aug_Sep_Okt_Nov_Dez'.split('_'),
+    var icuShortNames = 'Jan_Feb_Mär_Apr_Mai_Jun_Jul_Aug_Sep_Okt_Nov_Dez'.split(
+            '_'
+        ),
         i;
 
     for (i = 0; i < 12; i++) {

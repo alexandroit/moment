@@ -2,7 +2,7 @@
 //! locale : Georgian [ka]
 //! author : Irakli Janiashvili : https://github.com/IrakliJani
 
-import moment from '../moment';
+import moment from '../moment.js';
 
 export default moment.defineLocale('ka', {
     months: 'იანვარი_თებერვალი_მარტი_აპრილი_მაისი_ივნისი_ივლისი_აგვისტო_სექტემბერი_ოქტომბერი_ნოემბერი_დეკემბერი'.split(
@@ -24,7 +24,7 @@ export default moment.defineLocale('ka', {
     longDateFormat: {
         LT: 'HH:mm',
         LTS: 'HH:mm:ss',
-        L: 'DD/MM/YYYY',
+        L: 'DD.MM.YYYY',
         LL: 'D MMMM YYYY',
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm',

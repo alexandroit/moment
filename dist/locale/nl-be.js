@@ -3,7 +3,7 @@
 //! author : Joris Röling : https://github.com/jorisroling
 //! author : Jacob Middag : https://github.com/middagj
 
-import moment from '../moment';
+import moment from '../moment.js';
 
 var monthsShortWithDots =
         'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
@@ -59,7 +59,7 @@ export default moment.defineLocale('nl-be', {
     longDateFormat: {
         LT: 'HH:mm',
         LTS: 'HH:mm:ss',
-        L: 'DD/MM/YYYY',
+        L: 'D/MM/YYYY',
         LL: 'D MMMM YYYY',
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd D MMMM YYYY HH:mm',

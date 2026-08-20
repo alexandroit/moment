@@ -203,17 +203,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -234,7 +228,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -261,22 +255,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -288,7 +266,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -296,7 +274,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -378,19 +356,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('af');
@@ -1047,17 +1019,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -1078,7 +1044,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -1105,22 +1071,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -1132,7 +1082,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -1140,7 +1090,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -1222,19 +1172,494 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
+    }
+
+    localeModule('am-et');
+
+    test('parse', function (assert) {
+        var tests =
+                'ጃንዩወሪ ጃን_ፌብሩወሪ ፌብ_ማርች ማር_ኤፕሪል ኤፕር_ሜይ ሜይ_ጁን ጁን_ጁላይ ጁላይ_ኦገስት ኦገ_ሴፕቴምበር ሴፕ_ኦክቶበር ኦክቶ_ኖቬምበር ኖቬ_ዲሴምበር ዲሴ'.split(
+                    '_'
+                ),
+            i;
+
+        function equalTest(input, mmm, i) {
+            assert.equal(
+                moment(input, mmm).month(),
+                i,
+                input + ' should be month ' + (i + 1)
+            );
+        }
+
+        for (i = 0; i < 12; i++) {
+            tests[i] = tests[i].split(' ');
+            equalTest(tests[i][0], 'MMM', i);
+            equalTest(tests[i][1], 'MMM', i);
+            equalTest(tests[i][0], 'MMMM', i);
+            equalTest(tests[i][1], 'MMMM', i);
+        }
+    });
+
+    test('format', function (assert) {
+        var a = [
+                [
+                    'dddd, MMMM Do YYYY, h:mm:ss a',
+                    'ሀሙስ, ጃንዩወሪ 14ኛ 2010, 3:25:50 ከሰዓት',
+                ],
+                ['ddd, hA', 'ሀሙ, 3ከሰዓት'],
+                ['M Mo MM MMMM MMM', '1 1ኛ 01 ጃንዩወሪ ጃን'],
+                ['YYYY YY', '2010 10'],
+                ['D Do DD', '14 14ኛ 14'],
+                ['d do dddd ddd dd', '4 4ኛ ሀሙስ ሀሙ ሀ'],
+                ['DDD DDDo DDDD', '14 14ኛ 014'],
+                ['w wo ww', '3 3ኛ 03'],
+                ['h hh', '3 03'],
+                ['H HH', '15 15'],
+                ['m mm', '25 25'],
+                ['s ss', '50 50'],
+                ['a A', 'ከሰዓት ከሰዓት'],
+                ['[ዓመተ] DDDD', 'ዓመተ 014'],
+                ['LTS', '3:25:50 ከሰዓት'],
+                ['L', '14/01/2010'],
+                ['LL', '14 ጃንዩወሪ 2010'],
+                ['LLL', '14 ጃንዩወሪ 2010 3:25 ከሰዓት'],
+                ['LLLL', 'ሀሙስ, 14 ጃንዩወሪ 2010 3:25 ከሰዓት'],
+            ],
+            b = moment(new Date(2010, 0, 14, 15, 25, 50, 125)),
+            i;
+
+        for (i = 0; i < a.length; i++) {
+            assert.equal(b.format(a[i][0]), a[i][1], a[i][0] + ' ---> ' + a[i][1]);
+        }
+    });
+
+    test('calendar', function (assert) {
+        var a = moment().hours(12).minutes(0).seconds(0);
+
+        assert.equal(
+            moment(a).calendar(),
+            'ዛሬ በ 12:00 ከሰዓት',
+            'today at the same time'
+        );
+        assert.equal(
+            moment(a).add({ d: 1 }).calendar(),
+            'ነገ በ 12:00 ከሰዓት',
+            'tomorrow at the same time'
+        );
+        assert.equal(
+            moment(a).subtract({ d: 1 }).calendar(),
+            'ትናንትና በ 12:00 ከሰዓት',
+            'yesterday at the same time'
+        );
+    });
+
+    test('relative time', function (assert) {
+        assert.equal(moment(0).from(30000), 'ጥቂት ሰከንዶች በፊት', 'a few seconds ago');
+        assert.equal(moment(30000).from(0), 'ጥቂት ሰከንዶች ውስጥ', 'in a few seconds');
+        assert.equal(
+            moment().add({ m: 1 }).fromNow(),
+            'አንድ ደቂቃ ውስጥ',
+            'in a minute'
+        );
+        assert.equal(
+            moment().subtract({ m: 1 }).fromNow(),
+            'አንድ ደቂቃ በፊት',
+            'a minute ago'
+        );
+    });
+
+    test('weeks year starting sunday formatted', function (assert) {
+        assert.equal(
+            moment([2012, 0, 1]).format('w ww wo'),
+            '1 01 1ኛ',
+            'Jan  1 2012 should be week 1'
+        );
+        assert.equal(
+            moment([2012, 0, 7]).format('w ww wo'),
+            '1 01 1ኛ',
+            'Jan  7 2012 should be week 1'
+        );
+        assert.equal(
+            moment([2012, 0, 8]).format('w ww wo'),
+            '2 02 2ኛ',
+            'Jan  8 2012 should be week 2'
+        );
+    });
+
+})));
+
+
+
+;(function (global, factory) {
+   typeof exports === 'object' && typeof module !== 'undefined'
+       && typeof require === 'function' ? factory(require('../../moment')) :
+   typeof define === 'function' && define.amd ? define(['../../moment'], factory) :
+   factory(global.moment)
+}(this, (function (moment) { 'use strict';
+
+    function each(array, callback) {
+        var i;
+        for (i = 0; i < array.length; i++) {
+            callback(array[i], i, array);
+        }
+    }
+
+    function setupDeprecationHandler(test, moment, scope) {
+        test._expectedDeprecations = null;
+        test._observedDeprecations = null;
+        test._oldSupress = moment.suppressDeprecationWarnings;
+        moment.suppressDeprecationWarnings = true;
+        test.expectedDeprecations = function () {
+            test._expectedDeprecations = arguments;
+            test._observedDeprecations = [];
+        };
+        moment.deprecationHandler = function (name, msg) {
+            var deprecationId = matchedDeprecation(
+                name,
+                msg,
+                test._expectedDeprecations
+            );
+            if (deprecationId === -1) {
+                throw new Error(
+                    'Unexpected deprecation thrown name=' + name + ' msg=' + msg
+                );
+            }
+            test._observedDeprecations[deprecationId] = 1;
+        };
+    }
+
+    function teardownDeprecationHandler(test, moment, scope) {
+        moment.suppressDeprecationWarnings = test._oldSupress;
+
+        if (test._expectedDeprecations != null) {
+            var missedDeprecations = [];
+            each(test._expectedDeprecations, function (deprecationPattern, id) {
+                if (test._observedDeprecations[id] !== 1) {
+                    missedDeprecations.push(deprecationPattern);
+                }
+            });
+            if (missedDeprecations.length !== 0) {
+                throw new Error(
+                    'Expected deprecation warnings did not happen: ' +
+                        missedDeprecations.join(' ')
+                );
+            }
+        }
+    }
+
+    function matchedDeprecation(name, msg, deprecations) {
+        if (deprecations == null) {
+            return -1;
+        }
+        for (var i = 0; i < deprecations.length; ++i) {
+            if (name != null && name === deprecations[i]) {
+                return i;
+            }
+            if (
+                msg != null &&
+                msg.substring(0, deprecations[i].length) === deprecations[i]
+            ) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /*global QUnit:false*/
+
+
+    var test = QUnit.test;
+        QUnit.only;
+
+    function hasOwnProp(a, b) {
+        return Object.prototype.hasOwnProperty.call(a, b);
+    }
+
+    function objectKeys(obj) {
+        if (Object.keys) {
+            return Object.keys(obj);
+        } else {
+            // IE8
+            var res = [],
+                i;
+            for (i in obj) {
+                if (hasOwnProp(obj, i)) {
+                    res.push(i);
+                }
+            }
+            return res;
+        }
+    }
+
+    function eachOwnProp(object, callback) {
+        each(objectKeys(object), callback);
+    }
+
+    function defineCommonLocaleTests(locale, options) {
+        test('lenient day of month ordinal parsing', function (assert) {
+            var i, ordinalStr, testMoment;
+            for (i = 1; i <= 31; ++i) {
+                ordinalStr = moment([2014, 0, i]).format('YYYY MM Do');
+                testMoment = moment(ordinalStr, 'YYYY MM Do');
+                assert.equal(
+                    testMoment.year(),
+                    2014,
+                    'lenient day of month ordinal parsing ' + i + ' year check'
+                );
+                assert.equal(
+                    testMoment.month(),
+                    0,
+                    'lenient day of month ordinal parsing ' + i + ' month check'
+                );
+                assert.equal(
+                    testMoment.date(),
+                    i,
+                    'lenient day of month ordinal parsing ' + i + ' date check'
+                );
+            }
+        });
+
+        test('lenient day of month ordinal parsing of number', function (assert) {
+            var i, testMoment;
+            for (i = 1; i <= 31; ++i) {
+                testMoment = moment('2014 01 ' + i, 'YYYY MM Do');
+                assert.equal(
+                    testMoment.year(),
+                    2014,
+                    'lenient day of month ordinal parsing of number ' +
+                        i +
+                        ' year check'
+                );
+                assert.equal(
+                    testMoment.month(),
+                    0,
+                    'lenient day of month ordinal parsing of number ' +
+                        i +
+                        ' month check'
+                );
+                assert.equal(
+                    testMoment.date(),
+                    i,
+                    'lenient day of month ordinal parsing of number ' +
+                        i +
+                        ' date check'
+                );
+            }
+        });
+
+        test('strict day of month ordinal parsing', function (assert) {
+            var i, ordinalStr, testMoment;
+            for (i = 1; i <= 31; ++i) {
+                ordinalStr = moment([2014, 0, i]).format('YYYY MM Do');
+                testMoment = moment(ordinalStr, 'YYYY MM Do', true);
+                assert.ok(
+                    testMoment.isValid(),
+                    'strict day of month ordinal parsing ' + i
+                );
+            }
+        });
+
+        test('meridiem invariant', function (assert) {
+            var h, m, t1, t2;
+            for (h = 0; h < 24; ++h) {
+                for (m = 0; m < 60; m += 15) {
+                    t1 = moment.utc([2000, 0, 1, h, m]);
+                    t2 = moment.utc(t1.format('A h:mm'), 'A h:mm');
+                    assert.equal(
+                        t2.format('HH:mm'),
+                        t1.format('HH:mm'),
+                        'meridiem at ' + t1.format('HH:mm')
+                    );
+                }
+            }
+        });
+
+        test('date format correctness', function (assert) {
+            var data = moment.localeData()._longDateFormat;
+            eachOwnProp(data, function (srchToken) {
+                // Check each format string to make sure it does not contain any
+                // tokens that need to be expanded.
+                eachOwnProp(data, function (baseToken) {
+                    // strip escaped sequences
+                    var format = data[baseToken].replace(/(\[[^\]]*\])/g, '');
+                    assert.equal(
+                        false,
+                        !!~format.indexOf(srchToken),
+                        'contains ' + srchToken + ' in ' + baseToken
+                    );
+                });
+            });
+        });
+
+        test('month parsing correctness', function (assert) {
+            var i, m;
+            function tester(format) {
+                var r;
+                r = moment(m.format(format), format);
+                assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
+                {
+                    r = moment(m.format(format).toLocaleUpperCase(), format);
+                    assert.equal(
+                        r.month(),
+                        m.month(),
+                        'month ' + i + ' fmt ' + format + ' upper'
+                    );
+                }
+                r = moment(m.format(format).toLocaleLowerCase(), format);
+                assert.equal(
+                    r.month(),
+                    m.month(),
+                    'month ' + i + ' fmt ' + format + ' lower'
+                );
+
+                r = moment(m.format(format), format, true);
+                assert.equal(
+                    r.month(),
+                    m.month(),
+                    'month ' + i + ' fmt ' + format + ' strict'
+                );
+                {
+                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
+                    assert.equal(
+                        r.month(),
+                        m.month(),
+                        'month ' + i + ' fmt ' + format + ' upper strict'
+                    );
+                }
+                r = moment(m.format(format).toLocaleLowerCase(), format, true);
+                assert.equal(
+                    r.month(),
+                    m.month(),
+                    'month ' + i + ' fmt ' + format + ' lower strict'
+                );
+            }
+
+            for (i = 0; i < 12; ++i) {
+                m = moment([2015, i, 15, 18]);
+                tester('MMM');
+                tester('MMM.');
+                tester('MMMM');
+                tester('MMMM.');
+            }
+        });
+
+        test('weekday parsing correctness', function (assert) {
+            var i, m;
+            function tester(format) {
+                var r,
+                    baseMsg =
+                        'weekday ' +
+                        m.weekday() +
+                        ' fmt ' +
+                        format +
+                        ' ' +
+                        m.toISOString();
+                r = moment(m.format(format), format);
+                assert.equal(r.weekday(), m.weekday(), baseMsg);
+                {
+                    r = moment(m.format(format).toLocaleUpperCase(), format);
+                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
+                }
+                r = moment(m.format(format).toLocaleLowerCase(), format);
+                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
+                r = moment(m.format(format), format, true);
+                assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
+                {
+                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
+                    assert.equal(
+                        r.weekday(),
+                        m.weekday(),
+                        baseMsg + ' upper strict'
+                    );
+                }
+                r = moment(m.format(format).toLocaleLowerCase(), format, true);
+                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
+            }
+
+            for (i = 0; i < 7; ++i) {
+                m = moment.utc([2015, 0, i + 1, 18]);
+                tester('dd');
+                tester('ddd');
+                tester('dddd');
+            }
+        });
+
+        test('valid localeData', function (assert) {
+            assert.equal(
+                moment().localeData().months().length,
+                12,
+                'months should return 12 months'
+            );
+            assert.equal(
+                moment().localeData().monthsShort().length,
+                12,
+                'monthsShort should return 12 months'
+            );
+            assert.equal(
+                moment().localeData().weekdays().length,
+                7,
+                'weekdays should return 7 days'
+            );
+            assert.equal(
+                moment().localeData().weekdaysShort().length,
+                7,
+                'weekdaysShort should return 7 days'
+            );
+            assert.equal(
+                moment().localeData().weekdaysMin().length,
+                7,
+                'monthsShort should return 7 days'
+            );
+        });
+
+        test('localeData weekdays can localeSort', function (assert) {
+            var weekdays = moment().localeData().weekdays(),
+                weekdaysShort = moment().localeData().weekdaysShort(),
+                weekdaysMin = moment().localeData().weekdaysMin(),
+                shift = moment().localeData()._week.dow;
+            assert.deepEqual(
+                moment().localeData().weekdays(true),
+                weekdays.slice(shift, 7).concat(weekdays.slice(0, shift)),
+                'weekdays should localeSort'
+            );
+            assert.deepEqual(
+                moment().localeData().weekdaysShort(true),
+                weekdaysShort.slice(shift, 7).concat(weekdaysShort.slice(0, shift)),
+                'weekdaysShort should localeSort'
+            );
+            assert.deepEqual(
+                moment().localeData().weekdaysMin(true),
+                weekdaysMin.slice(shift, 7).concat(weekdaysMin.slice(0, shift)),
+                'weekdaysMin should localeSort'
+            );
+        });
+    }
+
+    /*global QUnit:false*/
+
+
+    function localeModule(name, lifecycle) {
+        QUnit.module('locale:' + name, {
+            beforeEach: function () {
+                moment.locale(name);
+                moment.createFromInputFallback = function (config) {
+                    throw new Error('input not handled by moment: ' + config._i);
+                };
+                setupDeprecationHandler(test, moment);
+            },
+            afterEach: function () {
+                moment.locale('en');
+                teardownDeprecationHandler(test, moment);
+            },
+        });
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-dz');
@@ -1927,17 +2352,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -1958,7 +2377,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -1985,22 +2404,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -2012,7 +2415,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -2020,7 +2423,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -2102,19 +2505,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-kw');
@@ -2771,17 +3168,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -2802,7 +3193,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -2829,22 +3220,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -2856,7 +3231,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -2864,7 +3239,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -2946,19 +3321,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-ly');
@@ -3688,17 +4057,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -3719,7 +4082,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -3746,22 +4109,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -3773,7 +4120,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -3781,7 +4128,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -3863,19 +4210,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-ma');
@@ -4532,17 +4873,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -4563,7 +4898,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -4590,22 +4925,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -4617,7 +4936,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -4625,7 +4944,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -4707,19 +5026,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-ps');
@@ -5378,17 +5691,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -5409,7 +5716,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -5436,22 +5743,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -5463,7 +5754,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -5471,7 +5762,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -5553,19 +5844,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-sa');
@@ -6241,17 +6526,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -6272,7 +6551,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -6299,22 +6578,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -6326,7 +6589,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -6334,7 +6597,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -6416,19 +6679,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar-tn');
@@ -7250,17 +7507,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -7281,7 +7532,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -7308,22 +7559,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -7335,7 +7570,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -7343,7 +7578,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -7425,19 +7660,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ar');
@@ -8167,17 +8396,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -8198,7 +8421,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -8224,15 +8447,8 @@
         });
 
         test('weekday parsing correctness', function (assert) {
-            var i, m;
 
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
+            {
                 // tr, az: There is a lower-case letter (ı), that converted to
                 // upper then lower changes to i
                 // ro: there is the letter ț which behaves weird under IE8
@@ -8240,43 +8456,6 @@
                 // ga: month with spaces
                 assert.expect(0);
                 return;
-            }
-            function tester(format) {
-                var r,
-                    baseMsg =
-                        'weekday ' +
-                        m.weekday() +
-                        ' fmt ' +
-                        format +
-                        ' ' +
-                        m.toISOString();
-                r = moment(m.format(format), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
-                r = moment(m.format(format), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.weekday(),
-                        m.weekday(),
-                        baseMsg + ' upper strict'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
-            }
-
-            for (i = 0; i < 7; ++i) {
-                m = moment.utc([2015, 0, i + 1, 18]);
-                tester('dd');
-                tester('ddd');
-                tester('dddd');
             }
         });
 
@@ -8342,19 +8521,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('az');
@@ -9018,17 +9191,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -9049,7 +9216,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -9076,22 +9243,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -9103,7 +9254,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -9111,7 +9262,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -9193,19 +9344,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('be');
@@ -9995,17 +10140,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -10026,7 +10165,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -10053,22 +10192,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -10080,7 +10203,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -10088,7 +10211,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -10170,19 +10293,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('bg');
@@ -10852,17 +10969,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -10883,7 +10994,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -10910,22 +11021,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -10937,7 +11032,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -10945,7 +11040,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -11027,19 +11122,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('bm');
@@ -11658,17 +11747,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -11689,7 +11772,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -11716,22 +11799,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -11743,7 +11810,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -11751,7 +11818,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -11833,19 +11900,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('bn-bd');
@@ -12529,17 +12590,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -12560,7 +12615,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -12587,22 +12642,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -12614,7 +12653,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -12622,7 +12661,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -12704,19 +12743,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('bn');
@@ -13408,17 +13441,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -13439,7 +13466,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -13466,22 +13493,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -13493,7 +13504,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -13501,7 +13512,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -13583,19 +13594,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('bo');
@@ -14307,17 +14312,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -14338,7 +14337,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -14365,22 +14364,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -14392,7 +14375,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -14400,7 +14383,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -14482,19 +14465,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('br');
@@ -15246,17 +15223,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -15277,7 +15248,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -15304,22 +15275,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -15331,7 +15286,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -15339,7 +15294,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -15421,19 +15376,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('bs');
@@ -16133,17 +16082,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -16164,7 +16107,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -16191,22 +16134,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -16218,7 +16145,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -16226,7 +16153,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -16308,19 +16235,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ca');
@@ -16401,6 +16322,31 @@
         for (i = 0; i < a.length; i++) {
             assert.equal(b.format(a[i][0]), a[i][1], a[i][0] + ' ---> ' + a[i][1]);
         }
+    });
+
+    test('format apostrophed prepositions', function (assert) {
+        const examples = [
+            {
+                date: [2025, 3, 4],
+                format: 'LL',
+                want: '4 d’abril de 2025',
+            },
+            {
+                date: [2025, 7, 8],
+                format: 'LL',
+                want: '8 d’agost de 2025',
+            },
+            {
+                date: [2025, 9, 10],
+                format: 'LL',
+                want: '10 d’octubre de 2025',
+            },
+        ];
+
+        examples.forEach(({ date, format, want }) => {
+            const got = moment(date).format(format);
+            assert.equal(got, want, `${date}, ${format}: got ${got}, want ${want}`);
+        });
     });
 
     test('format ordinal', function (assert) {
@@ -16792,7 +16738,7 @@
 
     test('day and month', function (assert) {
         assert.equal(moment([2012, 1, 15]).format('D MMMM'), '15 de febrer');
-        assert.equal(moment([2012, 9, 15]).format('D MMMM'), "15 d'octubre");
+        assert.equal(moment([2012, 9, 15]).format('D MMMM'), '15 d’octubre');
         assert.equal(moment([2012, 9, 15]).format('MMMM, D'), 'octubre, 15');
     });
 
@@ -17003,17 +16949,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -17034,7 +16974,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -17061,22 +17001,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -17088,7 +17012,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -17096,7 +17020,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -17178,19 +17102,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('cs');
@@ -18062,17 +17980,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -18093,7 +18005,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -18120,22 +18032,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -18147,7 +18043,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -18155,7 +18051,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -18237,19 +18133,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('cv');
@@ -18919,17 +18809,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -18950,7 +18834,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -18977,22 +18861,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -19004,7 +18872,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -19012,7 +18880,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -19094,19 +18962,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('cy');
@@ -19761,17 +19623,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -19792,7 +19648,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -19819,22 +19675,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -19846,7 +19686,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -19854,7 +19694,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -19936,19 +19776,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('da');
@@ -20606,17 +20440,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -20637,7 +20465,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -20664,22 +20492,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -20691,7 +20503,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -20699,7 +20511,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -20781,19 +20593,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('de-at');
@@ -20838,6 +20644,80 @@
             equalTestStrict(tests[i][1].toLocaleUpperCase(), 'MMM', i);
             equalTestStrict(tests[i][0].toLocaleLowerCase(), 'MMMM', i);
             equalTestStrict(tests[i][0].toLocaleUpperCase(), 'MMMM', i);
+        }
+    });
+
+    test('parse short months without trailing dot (issue #6300)', function (assert) {
+        // Feb.toLocaleString('de-AT', {month: 'short'}) yields "Feb" without a
+        // trailing dot, which used to fail to parse and silently default to
+        // month index 0 (January). Both the dotted and undotted spellings must
+        // parse to the correct month for every month name, short and long.
+        var longNames =
+                'Jänner_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split(
+                    '_'
+                ),
+            shortNamesWithDot =
+                'Jän._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split(
+                    '_'
+                ),
+            shortNamesWithoutDot =
+                'Jän_Feb_März_Apr_Mai_Juni_Juli_Aug_Sep_Okt_Nov_Dez'.split('_'),
+            i;
+
+        for (i = 0; i < 12; i++) {
+            assert.equal(
+                moment(shortNamesWithDot[i], 'MMM').month(),
+                i,
+                shortNamesWithDot[i] + ' (MMM, with dot) should be month ' + (i + 1)
+            );
+            assert.equal(
+                moment(shortNamesWithoutDot[i], 'MMM').month(),
+                i,
+                shortNamesWithoutDot[i] +
+                    ' (MMM, without dot) should be month ' +
+                    (i + 1)
+            );
+            assert.equal(
+                moment(longNames[i], 'MMMM').month(),
+                i,
+                longNames[i] + ' (MMMM) should be month ' + (i + 1)
+            );
+
+            assert.equal(
+                moment('15.' + (i + 1) + '.2000', 'DD.MM.YYYY').format('MMM'),
+                shortNamesWithDot[i],
+                'MMM output for month ' + (i + 1) + ' should be unchanged'
+            );
+            assert.equal(
+                moment('15.' + (i + 1) + '.2000', 'DD.MM.YYYY').format('MMMM'),
+                longNames[i],
+                'MMMM output for month ' + (i + 1) + ' should be unchanged'
+            );
+        }
+
+        // The exact repro from the issue, adapted to de-at.
+        assert.equal(
+            moment('Feb 15, 2000', 'MMM DD, YYYY').month(),
+            1,
+            'Feb 15, 2000 should parse as February, not January'
+        );
+    });
+
+    test('parse ICU short month names', function (assert) {
+        // new Date(2000, m, 15).toLocaleString('de-AT', {month: 'short'})
+        // truncates März/Juni/Juli to Mär/Jun/Jul (no dot) and Jänner to Jän
+        // (no dot), unlike moment's own monthsShort output. These must parse too.
+        var icuShortNames = 'Jän_Feb_Mär_Apr_Mai_Jun_Jul_Aug_Sep_Okt_Nov_Dez'.split(
+                '_'
+            ),
+            i;
+
+        for (i = 0; i < 12; i++) {
+            assert.equal(
+                moment(icuShortNames[i], 'MMM').month(),
+                i,
+                icuShortNames[i] + ' (ICU short) should be month ' + (i + 1)
+            );
         }
     });
 
@@ -21480,17 +21360,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -21511,7 +21385,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -21538,22 +21412,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -21565,7 +21423,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -21573,7 +21431,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -21655,19 +21513,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('de-ch');
@@ -21711,6 +21563,80 @@
             equalTestStrict(tests[i][1].toLocaleUpperCase(), 'MMM', i);
             equalTestStrict(tests[i][0].toLocaleLowerCase(), 'MMMM', i);
             equalTestStrict(tests[i][0].toLocaleUpperCase(), 'MMMM', i);
+        }
+    });
+
+    test('parse short months without trailing dot (issue #6300)', function (assert) {
+        // Feb.toLocaleString('de-CH', {month: 'short'}) yields "Feb" without a
+        // trailing dot, which used to fail to parse and silently default to
+        // month index 0 (January). Both the dotted and undotted spellings must
+        // parse to the correct month for every month name, short and long.
+        var longNames =
+                'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split(
+                    '_'
+                ),
+            shortNamesWithDot =
+                'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split(
+                    '_'
+                ),
+            shortNamesWithoutDot =
+                'Jan_Feb_März_Apr_Mai_Juni_Juli_Aug_Sep_Okt_Nov_Dez'.split('_'),
+            i;
+
+        for (i = 0; i < 12; i++) {
+            assert.equal(
+                moment(shortNamesWithDot[i], 'MMM').month(),
+                i,
+                shortNamesWithDot[i] + ' (MMM, with dot) should be month ' + (i + 1)
+            );
+            assert.equal(
+                moment(shortNamesWithoutDot[i], 'MMM').month(),
+                i,
+                shortNamesWithoutDot[i] +
+                    ' (MMM, without dot) should be month ' +
+                    (i + 1)
+            );
+            assert.equal(
+                moment(longNames[i], 'MMMM').month(),
+                i,
+                longNames[i] + ' (MMMM) should be month ' + (i + 1)
+            );
+
+            assert.equal(
+                moment('15.' + (i + 1) + '.2000', 'DD.MM.YYYY').format('MMM'),
+                shortNamesWithDot[i],
+                'MMM output for month ' + (i + 1) + ' should be unchanged'
+            );
+            assert.equal(
+                moment('15.' + (i + 1) + '.2000', 'DD.MM.YYYY').format('MMMM'),
+                longNames[i],
+                'MMMM output for month ' + (i + 1) + ' should be unchanged'
+            );
+        }
+
+        // The exact repro from the issue, adapted to de-ch.
+        assert.equal(
+            moment('Feb 15, 2000', 'MMM DD, YYYY').month(),
+            1,
+            'Feb 15, 2000 should parse as February, not January'
+        );
+    });
+
+    test('parse ICU short month names', function (assert) {
+        // new Date(2000, m, 15).toLocaleString('de-CH', {month: 'short'})
+        // truncates März/Juni/Juli to Mär/Jun/Jul (no dot), unlike moment's own
+        // monthsShort output. These must parse too.
+        var icuShortNames = 'Jan_Feb_Mär_Apr_Mai_Jun_Jul_Aug_Sep_Okt_Nov_Dez'.split(
+                '_'
+            ),
+            i;
+
+        for (i = 0; i < 12; i++) {
+            assert.equal(
+                moment(icuShortNames[i], 'MMM').month(),
+                i,
+                icuShortNames[i] + ' (ICU short) should be month ' + (i + 1)
+            );
         }
     });
 
@@ -22359,17 +22285,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -22390,7 +22310,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -22417,22 +22337,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -22444,7 +22348,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -22452,7 +22356,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -22534,19 +22438,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('de');
@@ -22590,6 +22488,80 @@
             equalTestStrict(tests[i][1].toLocaleUpperCase(), 'MMM', i);
             equalTestStrict(tests[i][0].toLocaleLowerCase(), 'MMMM', i);
             equalTestStrict(tests[i][0].toLocaleUpperCase(), 'MMMM', i);
+        }
+    });
+
+    test('parse short months without trailing dot (issue #6300)', function (assert) {
+        // Feb.toLocaleString('de-DE', {month: 'short'}) yields "Feb" without a
+        // trailing dot, which used to fail to parse and silently default to
+        // month index 0 (January). Both the dotted and undotted spellings must
+        // parse to the correct month for every month name, short and long.
+        var longNames =
+                'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split(
+                    '_'
+                ),
+            shortNamesWithDot =
+                'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split(
+                    '_'
+                ),
+            shortNamesWithoutDot =
+                'Jan_Feb_März_Apr_Mai_Juni_Juli_Aug_Sep_Okt_Nov_Dez'.split('_'),
+            i;
+
+        for (i = 0; i < 12; i++) {
+            assert.equal(
+                moment(shortNamesWithDot[i], 'MMM').month(),
+                i,
+                shortNamesWithDot[i] + ' (MMM, with dot) should be month ' + (i + 1)
+            );
+            assert.equal(
+                moment(shortNamesWithoutDot[i], 'MMM').month(),
+                i,
+                shortNamesWithoutDot[i] +
+                    ' (MMM, without dot) should be month ' +
+                    (i + 1)
+            );
+            assert.equal(
+                moment(longNames[i], 'MMMM').month(),
+                i,
+                longNames[i] + ' (MMMM) should be month ' + (i + 1)
+            );
+
+            assert.equal(
+                moment('15.' + (i + 1) + '.2000', 'DD.MM.YYYY').format('MMM'),
+                shortNamesWithDot[i],
+                'MMM output for month ' + (i + 1) + ' should be unchanged'
+            );
+            assert.equal(
+                moment('15.' + (i + 1) + '.2000', 'DD.MM.YYYY').format('MMMM'),
+                longNames[i],
+                'MMMM output for month ' + (i + 1) + ' should be unchanged'
+            );
+        }
+
+        // The exact repro from the issue.
+        assert.equal(
+            moment('Feb 15, 2000', 'MMM DD, YYYY').month(),
+            1,
+            'Feb 15, 2000 should parse as February, not January'
+        );
+    });
+
+    test('parse ICU short month names', function (assert) {
+        // new Date(2000, m, 15).toLocaleString('de-DE', {month: 'short'})
+        // truncates März/Juni/Juli to Mär/Jun/Jul (no dot), unlike moment's own
+        // monthsShort output. These must parse too.
+        var icuShortNames = 'Jan_Feb_Mär_Apr_Mai_Jun_Jul_Aug_Sep_Okt_Nov_Dez'.split(
+                '_'
+            ),
+            i;
+
+        for (i = 0; i < 12; i++) {
+            assert.equal(
+                moment(icuShortNames[i], 'MMM').month(),
+                i,
+                icuShortNames[i] + ' (ICU short) should be month ' + (i + 1)
+            );
         }
     });
 
@@ -23237,17 +23209,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -23268,7 +23234,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -23295,22 +23261,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -23322,7 +23272,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -23330,7 +23280,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -23412,19 +23362,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('dv');
@@ -24051,17 +23995,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -24082,7 +24020,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -24109,22 +24047,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -24136,7 +24058,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -24144,7 +24066,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -24226,19 +24148,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('el');
@@ -24993,17 +24909,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -25024,7 +24934,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -25051,22 +24961,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -25078,7 +24972,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -25086,7 +24980,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -25168,19 +25062,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-au');
@@ -25871,17 +25759,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -25902,7 +25784,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -25929,22 +25811,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -25956,7 +25822,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -25964,7 +25830,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -26046,19 +25912,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-ca');
@@ -26720,17 +26580,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -26751,7 +26605,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -26778,22 +26632,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -26805,7 +26643,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -26813,7 +26651,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -26895,19 +26733,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-gb');
@@ -27564,17 +27396,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -27595,7 +27421,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -27622,22 +27448,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -27649,7 +27459,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -27657,7 +27467,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -27739,19 +27549,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-ie');
@@ -28408,17 +28212,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -28439,7 +28237,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -28466,22 +28264,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -28493,7 +28275,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -28501,7 +28283,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -28583,19 +28365,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-il');
@@ -29260,17 +29036,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -29291,7 +29061,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -29318,22 +29088,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -29345,7 +29099,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -29353,7 +29107,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -29435,19 +29189,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-in');
@@ -30122,17 +29870,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -30153,7 +29895,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -30180,22 +29922,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -30207,7 +29933,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -30215,7 +29941,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -30297,19 +30023,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-nz');
@@ -30966,17 +30686,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -30997,7 +30711,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -31024,22 +30738,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -31051,7 +30749,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -31059,7 +30757,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -31141,19 +30839,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en-sg');
@@ -31794,17 +31486,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -31825,7 +31511,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -31852,22 +31538,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -31879,7 +31549,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -31887,7 +31557,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -31969,19 +31639,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('en');
@@ -32754,17 +32418,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -32785,7 +32443,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -32812,22 +32470,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -32839,7 +32481,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -32847,7 +32489,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -32929,19 +32571,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('eo');
@@ -33607,17 +33243,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -33638,7 +33268,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -33665,22 +33295,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -33692,7 +33306,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -33700,7 +33314,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -33782,19 +33396,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('es-do');
@@ -34478,17 +34086,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -34509,7 +34111,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -34536,22 +34138,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -34563,7 +34149,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -34571,7 +34157,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -34653,19 +34239,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('es-mx');
@@ -35390,17 +34970,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -35421,7 +34995,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -35448,22 +35022,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -35475,7 +35033,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -35483,7 +35041,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -35565,19 +35123,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('es-us');
@@ -36277,17 +35829,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -36308,7 +35854,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -36335,22 +35881,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -36362,7 +35892,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -36370,7 +35900,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -36452,19 +35982,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('es');
@@ -37151,17 +36675,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -37182,7 +36700,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -37209,22 +36727,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -37236,7 +36738,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -37244,7 +36746,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -37326,19 +36828,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('et');
@@ -38082,17 +37578,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -38113,7 +37603,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -38140,22 +37630,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -38167,7 +37641,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -38175,7 +37649,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -38257,19 +37731,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('eu');
@@ -38925,17 +38393,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -38956,7 +38418,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -38983,22 +38445,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -39010,7 +38456,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -39018,7 +38464,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -39100,19 +38546,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fa');
@@ -39784,17 +39224,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -39815,7 +39249,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -39842,22 +39276,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -39869,7 +39287,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -39877,7 +39295,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -39959,19 +39377,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fi');
@@ -40671,17 +40083,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -40702,7 +40108,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -40729,22 +40135,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -40756,7 +40146,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -40764,7 +40154,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -40846,19 +40236,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fil');
@@ -41517,17 +40901,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -41548,7 +40926,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -41575,22 +40953,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -41602,7 +40964,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -41610,7 +40972,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -41692,19 +41054,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fo');
@@ -42369,17 +41725,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -42400,7 +41750,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -42427,22 +41777,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -42454,7 +41788,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -42462,7 +41796,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -42544,19 +41878,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fr-ca');
@@ -43227,17 +42555,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -43258,7 +42580,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -43285,22 +42607,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -43312,7 +42618,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -43320,7 +42626,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -43402,19 +42708,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fr-ch');
@@ -44085,17 +43385,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -44116,7 +43410,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -44143,22 +43437,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -44170,7 +43448,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -44178,7 +43456,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -44260,19 +43538,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fr');
@@ -44966,17 +44238,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -44997,7 +44263,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -45024,22 +44290,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -45051,7 +44301,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -45059,7 +44309,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -45141,19 +44391,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('fy');
@@ -45825,17 +45069,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -45856,7 +45094,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -45882,15 +45120,8 @@
         });
 
         test('weekday parsing correctness', function (assert) {
-            var i, m;
 
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
+            {
                 // tr, az: There is a lower-case letter (ı), that converted to
                 // upper then lower changes to i
                 // ro: there is the letter ț which behaves weird under IE8
@@ -45898,43 +45129,6 @@
                 // ga: month with spaces
                 assert.expect(0);
                 return;
-            }
-            function tester(format) {
-                var r,
-                    baseMsg =
-                        'weekday ' +
-                        m.weekday() +
-                        ' fmt ' +
-                        format +
-                        ' ' +
-                        m.toISOString();
-                r = moment(m.format(format), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
-                r = moment(m.format(format), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.weekday(),
-                        m.weekday(),
-                        baseMsg + ' upper strict'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
-            }
-
-            for (i = 0; i < 7; ++i) {
-                m = moment.utc([2015, 0, i + 1, 18]);
-                tester('dd');
-                tester('ddd');
-                tester('dddd');
             }
         });
 
@@ -46000,19 +45194,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ga');
@@ -46665,17 +45853,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -46696,7 +45878,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -46723,22 +45905,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -46750,7 +45916,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -46758,7 +45924,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -46840,19 +46006,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('gd');
@@ -47524,17 +46684,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -47555,7 +46709,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -47582,22 +46736,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -47609,7 +46747,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -47617,7 +46755,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -47699,19 +46837,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('gl');
@@ -48388,17 +47520,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -48419,7 +47545,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -48446,22 +47572,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -48473,7 +47583,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -48481,7 +47591,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -48563,19 +47673,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('gom-deva');
@@ -49231,17 +48335,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -49262,7 +48360,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -49289,22 +48387,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -49316,7 +48398,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -49324,7 +48406,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -49406,19 +48488,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('gom-latn');
@@ -50088,17 +49164,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -50119,7 +49189,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -50146,22 +49216,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -50173,7 +49227,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -50181,7 +49235,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -50263,19 +49317,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('gu');
@@ -50973,17 +50021,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -51004,7 +50046,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -51031,22 +50073,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -51058,7 +50084,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -51066,7 +50092,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -51148,19 +50174,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('he');
@@ -51788,17 +50808,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -51819,7 +50833,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -51846,22 +50860,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -51873,7 +50871,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -51881,7 +50879,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -51963,19 +50961,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('hi');
@@ -52719,17 +51711,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -52750,7 +51736,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -52777,22 +51763,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -52804,7 +51774,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -52812,7 +51782,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -52894,19 +51864,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('hr');
@@ -53595,17 +52559,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -53626,7 +52584,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -53653,22 +52611,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -53680,7 +52622,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -53688,7 +52630,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -53770,19 +52712,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('hu');
@@ -54089,6 +53025,33 @@
     test('suffix', function (assert) {
         assert.equal(moment(30000).from(0), 'néhány másodperc múlva', 'prefix');
         assert.equal(moment(0).from(30000), 'néhány másodperce', 'suffix');
+    });
+
+    test('from ss threshold set', function (assert) {
+        var start = moment([2007, 1, 28]),
+            s = moment.relativeTimeThreshold('s'),
+            ss = moment.relativeTimeThreshold('ss');
+        moment.relativeTimeThreshold('s', 45);
+        moment.relativeTimeThreshold('ss', 10);
+
+        assert.equal(
+            start.from(moment([2007, 1, 28]).add({ s: 11 }), true),
+            '11 másodperc',
+            '11 seconds = 11 seconds'
+        );
+        assert.equal(
+            moment(0).from(11000),
+            '11 másodperce',
+            '11 seconds ago with suffix'
+        );
+        assert.equal(
+            moment(11000).from(0),
+            '11 másodperc múlva',
+            '11 seconds future with suffix'
+        );
+
+        moment.relativeTimeThreshold('s', s);
+        moment.relativeTimeThreshold('ss', ss);
     });
 
     test('now from now', function (assert) {
@@ -54463,17 +53426,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -54494,7 +53451,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -54521,22 +53478,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -54548,7 +53489,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -54556,7 +53497,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -54638,19 +53579,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('hy-am');
@@ -55474,17 +54409,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -55505,7 +54434,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -55532,22 +54461,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -55559,7 +54472,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -55567,7 +54480,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -55649,26 +54562,20 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('id');
 
     test('parse', function (assert) {
         var tests =
-                'Januari Jan_Februari Feb_Maret Mar_April Apr_Mei Mei_Juni Jun_Juli Jul_Agustus Agt_September Sep_Oktober Okt_November Nov_Desember Des'.split(
+                'Januari Jan_Februari Feb_Maret Mar_April Apr_Mei Mei_Juni Jun_Juli Jul_Agustus Agu_September Sep_Oktober Okt_November Nov_Desember Des'.split(
                     '_'
                 ),
             i;
@@ -55705,6 +54612,15 @@
             equalTestStrict(tests[i][0].toLocaleLowerCase(), 'MMMM', i);
             equalTestStrict(tests[i][0].toLocaleUpperCase(), 'MMMM', i);
         }
+
+        // Previous releases emitted Agt, so keep accepting it when parsing.
+        equalTest('Agt', 'MMM', 7);
+        equalTest('Agt', 'MMMM', 7);
+        equalTest('agt', 'MMMM', 7);
+        equalTest('AGT', 'MMMM', 7);
+        equalTestStrict('Agt', 'MMM', 7);
+        equalTestStrict('agt', 'MMM', 7);
+        equalTestStrict('AGT', 'MMM', 7);
     });
 
     test('format', function (assert) {
@@ -55745,7 +54661,7 @@
 
     test('format month', function (assert) {
         var expected =
-                'Januari Jan_Februari Feb_Maret Mar_April Apr_Mei Mei_Juni Jun_Juli Jul_Agustus Agt_September Sep_Oktober Okt_November Nov_Desember Des'.split(
+                'Januari Jan_Februari Feb_Maret Mar_April Apr_Mei Mei_Juni Jun_Juli Jul_Agustus Agu_September Sep_Oktober Okt_November Nov_Desember Des'.split(
                     '_'
                 ),
             i;
@@ -56279,17 +55195,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -56310,7 +55220,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -56337,22 +55247,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -56364,7 +55258,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -56372,7 +55266,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -56454,19 +55348,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('is');
@@ -57156,17 +56044,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -57187,7 +56069,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -57214,22 +56096,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -57241,7 +56107,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -57249,7 +56115,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -57331,19 +56197,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('it-ch');
@@ -57981,17 +56841,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -58012,7 +56866,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -58039,22 +56893,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -58066,7 +56904,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -58074,7 +56912,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -58156,19 +56994,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('it');
@@ -58858,17 +57690,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -58889,7 +57715,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -58916,22 +57742,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -58943,7 +57753,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -58951,7 +57761,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -59033,19 +57843,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ja');
@@ -59847,17 +58651,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -59878,7 +58676,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -59905,22 +58703,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -59932,7 +58714,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -59940,7 +58722,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -60022,19 +58804,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('jv');
@@ -60663,24 +59439,10 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(
-                        r.month(),
-                        m.month(),
-                        'month ' + i + ' fmt ' + format + ' upper'
-                    );
-                }
                 r = moment(m.format(format).toLocaleLowerCase(), format);
                 assert.equal(
                     r.month(),
@@ -60694,14 +59456,6 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.month(),
-                        m.month(),
-                        'month ' + i + ' fmt ' + format + ' upper strict'
-                    );
-                }
                 r = moment(m.format(format).toLocaleLowerCase(), format, true);
                 assert.equal(
                     r.month(),
@@ -60721,22 +59475,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -60748,22 +59486,10 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
-                }
                 r = moment(m.format(format).toLocaleLowerCase(), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.weekday(),
-                        m.weekday(),
-                        baseMsg + ' upper strict'
-                    );
-                }
                 r = moment(m.format(format).toLocaleLowerCase(), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
             }
@@ -60838,19 +59564,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ka');
@@ -60904,11 +59624,11 @@
                 ['a A', 'pm PM'],
                 ['წლის DDDo დღე', 'წლის 45-ე დღე'],
                 ['LTS', '15:25:50'],
-                ['L', '14/02/2010'],
+                ['L', '14.02.2010'],
                 ['LL', '14 თებერვალი 2010'],
                 ['LLL', '14 თებერვალი 2010 15:25'],
                 ['LLLL', 'კვირა, 14 თებერვალი 2010 15:25'],
-                ['l', '14/2/2010'],
+                ['l', '14.2.2010'],
                 ['ll', '14 თებ 2010'],
                 ['lll', '14 თებ 2010 15:25'],
                 ['llll', 'კვი, 14 თებ 2010 15:25'],
@@ -61513,17 +60233,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -61544,7 +60258,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -61571,22 +60285,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -61598,7 +60296,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -61606,7 +60304,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -61688,19 +60386,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('kk');
@@ -62356,17 +61048,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -62387,7 +61073,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -62414,22 +61100,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -62441,7 +61111,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -62449,7 +61119,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -62531,19 +61201,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('km');
@@ -63225,17 +61889,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -63256,7 +61914,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -63283,22 +61941,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -63310,7 +61952,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -63318,7 +61960,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -63400,19 +62042,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('kn');
@@ -64116,17 +62752,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -64147,7 +62777,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -64174,22 +62804,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -64201,7 +62815,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -64209,7 +62823,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -64291,19 +62905,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ko');
@@ -65010,17 +63618,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -65041,7 +63643,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -65068,22 +63670,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -65095,7 +63681,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -65103,7 +63689,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -65185,19 +63771,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ku-kmr');
@@ -65987,17 +64567,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -66018,7 +64592,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -66045,22 +64619,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -66072,7 +64630,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -66080,7 +64638,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -66162,19 +64720,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ku');
@@ -66848,17 +65400,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -66879,7 +65425,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -66906,22 +65452,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -66933,7 +65463,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -66941,7 +65471,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -67023,19 +65553,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ky');
@@ -67691,17 +66215,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -67722,7 +66240,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -67749,22 +66267,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -67776,7 +66278,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -67784,7 +66286,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -67866,19 +66368,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('lb');
@@ -68521,17 +67017,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -68552,7 +67042,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -68579,22 +67069,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -68606,7 +67080,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -68614,7 +67088,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -68696,19 +67170,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('lo');
@@ -69364,17 +67832,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -69395,7 +67857,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -69422,22 +67884,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -69449,7 +67895,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -69457,7 +67903,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -69539,19 +67985,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('lt');
@@ -70267,17 +68707,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -70298,7 +68732,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -70325,22 +68759,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -70352,7 +68770,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -70360,7 +68778,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -70442,19 +68860,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('lv');
@@ -71232,17 +69644,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -71263,7 +69669,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -71290,22 +69696,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -71317,7 +69707,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -71325,7 +69715,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -71407,19 +69797,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('me');
@@ -72111,17 +70495,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -72142,7 +70520,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -72169,22 +70547,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -72196,7 +70558,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -72204,7 +70566,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -72286,19 +70648,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('mi');
@@ -72959,17 +71315,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -72990,7 +71340,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -73017,22 +71367,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -73044,7 +71378,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -73052,7 +71386,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -73134,19 +71468,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('mk');
@@ -73817,17 +72145,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -73848,7 +72170,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -73875,22 +72197,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -73902,7 +72208,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -73910,7 +72216,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -73992,19 +72298,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ml');
@@ -74712,17 +73012,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -74743,7 +73037,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -74770,22 +73064,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -74797,7 +73075,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -74805,7 +73083,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -74887,19 +73165,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('mn');
@@ -75665,17 +73937,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -75696,7 +73962,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -75723,22 +73989,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -75750,7 +74000,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -75758,7 +74008,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -75840,19 +74090,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('mr');
@@ -76560,17 +74804,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -76591,7 +74829,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -76618,22 +74856,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -76645,7 +74867,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -76653,7 +74875,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -76735,19 +74957,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ms-my');
@@ -77412,17 +75628,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -77443,7 +75653,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -77470,22 +75680,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -77497,7 +75691,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -77505,7 +75699,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -77587,19 +75781,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ms');
@@ -78264,17 +76452,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -78295,7 +76477,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -78321,15 +76503,8 @@
         });
 
         test('weekday parsing correctness', function (assert) {
-            var i, m;
 
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
+            {
                 // tr, az: There is a lower-case letter (ı), that converted to
                 // upper then lower changes to i
                 // ro: there is the letter ț which behaves weird under IE8
@@ -78337,43 +76512,6 @@
                 // ga: month with spaces
                 assert.expect(0);
                 return;
-            }
-            function tester(format) {
-                var r,
-                    baseMsg =
-                        'weekday ' +
-                        m.weekday() +
-                        ' fmt ' +
-                        format +
-                        ' ' +
-                        m.toISOString();
-                r = moment(m.format(format), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
-                r = moment(m.format(format), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.weekday(),
-                        m.weekday(),
-                        baseMsg + ' upper strict'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
-            }
-
-            for (i = 0; i < 7; ++i) {
-                m = moment.utc([2015, 0, i + 1, 18]);
-                tester('dd');
-                tester('ddd');
-                tester('dddd');
             }
         });
 
@@ -78439,19 +76577,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('mt');
@@ -79108,17 +77240,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -79139,7 +77265,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -79166,22 +77292,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -79193,7 +77303,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -79201,7 +77311,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -79283,19 +77393,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('my');
@@ -80122,17 +78226,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -80153,7 +78251,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -80180,22 +78278,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -80207,7 +78289,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -80215,7 +78297,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -80297,19 +78379,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('nb');
@@ -80966,17 +79042,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -80997,7 +79067,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -81024,22 +79094,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -81051,7 +79105,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -81059,7 +79113,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -81141,19 +79195,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ne');
@@ -81848,17 +79896,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -81879,7 +79921,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -81906,22 +79948,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -81933,7 +79959,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -81941,7 +79967,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -82023,19 +80049,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('nl-be');
@@ -82717,17 +80737,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -82748,7 +80762,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -82775,22 +80789,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -82802,7 +80800,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -82810,7 +80808,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -82892,19 +80890,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('nl');
@@ -83586,17 +81578,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -83617,7 +81603,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -83644,22 +81630,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -83671,7 +81641,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -83679,7 +81649,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -83761,19 +81731,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('nn');
@@ -84429,17 +82393,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -84460,7 +82418,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -84487,22 +82445,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -84514,7 +82456,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -84522,7 +82464,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -84604,19 +82546,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('oc-lnc');
@@ -85267,17 +83203,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -85298,7 +83228,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -85325,22 +83255,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -85352,7 +83266,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -85360,7 +83274,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -85442,19 +83356,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('pa-in');
@@ -86434,17 +84342,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -86465,7 +84367,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -86492,22 +84394,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -86519,7 +84405,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -86527,7 +84413,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -86609,19 +84495,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('pl');
@@ -87390,17 +85270,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -87421,7 +85295,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -87448,22 +85322,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -87475,7 +85333,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -87483,7 +85341,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -87565,19 +85423,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('pt-br');
@@ -87919,22 +85771,44 @@
             'Ontem às 12:00',
             'yesterday at the same time'
         );
+        assert.equal(
+            moment(a).hours(0).minutes(0).calendar(),
+            'Hoje à 00:00',
+            'today at 00:00 uses à'
+        );
+        assert.equal(
+            moment(a).hours(1).minutes(0).calendar(),
+            'Hoje à 01:00',
+            'today at 01:00 uses à'
+        );
+        assert.equal(
+            moment(a).hours(2).minutes(0).calendar(),
+            'Hoje às 02:00',
+            'today at 02:00 uses às'
+        );
     });
 
     test('calendar next week', function (assert) {
         var i, m;
         for (i = 2; i < 7; i++) {
             m = moment().add({ d: i });
-            assert.equal(
-                m.calendar(),
-                m.format('dddd [às] LT'),
-                'Today + ' + i + ' days current time'
-            );
             m.hours(0).minutes(0).seconds(0).milliseconds(0);
             assert.equal(
                 m.calendar(),
+                m.format('dddd [à] LT'),
+                'Today + ' + i + ' days at 00:00'
+            );
+            m.hours(1);
+            assert.equal(
+                m.calendar(),
+                m.format('dddd [à] LT'),
+                'Today + ' + i + ' days at 01:00'
+            );
+            m.hours(2);
+            assert.equal(
+                m.calendar(),
                 m.format('dddd [às] LT'),
-                'Today + ' + i + ' days beginning of day'
+                'Today + ' + i + ' days at 02:00'
             );
             m.hours(23).minutes(59).seconds(59).milliseconds(999);
             assert.equal(
@@ -87946,36 +85820,32 @@
     });
 
     test('calendar last week', function (assert) {
-        var i, m;
+        var i, m, prefix;
         for (i = 2; i < 7; i++) {
             m = moment().subtract({ d: i });
-            assert.equal(
-                m.calendar(),
-                m.format(
-                    m.day() === 0 || m.day() === 6
-                        ? '[Último] dddd [às] LT'
-                        : '[Última] dddd [às] LT'
-                ),
-                'Today - ' + i + ' days current time'
-            );
+            prefix = m.day() === 0 || m.day() === 6 ? '[Último]' : '[Última]';
             m.hours(0).minutes(0).seconds(0).milliseconds(0);
             assert.equal(
                 m.calendar(),
-                m.format(
-                    m.day() === 0 || m.day() === 6
-                        ? '[Último] dddd [às] LT'
-                        : '[Última] dddd [às] LT'
-                ),
-                'Today - ' + i + ' days beginning of day'
+                m.format(prefix + ' dddd [à] LT'),
+                'Today - ' + i + ' days at 00:00'
+            );
+            m.hours(1);
+            assert.equal(
+                m.calendar(),
+                m.format(prefix + ' dddd [à] LT'),
+                'Today - ' + i + ' days at 01:00'
+            );
+            m.hours(2);
+            assert.equal(
+                m.calendar(),
+                m.format(prefix + ' dddd [às] LT'),
+                'Today - ' + i + ' days at 02:00'
             );
             m.hours(23).minutes(59).seconds(59).milliseconds(999);
             assert.equal(
                 m.calendar(),
-                m.format(
-                    m.day() === 0 || m.day() === 6
-                        ? '[Último] dddd [às] LT'
-                        : '[Última] dddd [às] LT'
-                ),
+                m.format(prefix + ' dddd [às] LT'),
                 'Today - ' + i + ' days end of day'
             );
         }
@@ -88260,17 +86130,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -88291,7 +86155,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -88318,22 +86182,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -88345,7 +86193,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -88353,7 +86201,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -88435,19 +86283,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('pt');
@@ -89107,17 +86949,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -89138,7 +86974,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -89164,15 +87000,8 @@
         });
 
         test('weekday parsing correctness', function (assert) {
-            var i, m;
 
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
+            {
                 // tr, az: There is a lower-case letter (ı), that converted to
                 // upper then lower changes to i
                 // ro: there is the letter ț which behaves weird under IE8
@@ -89180,43 +87009,6 @@
                 // ga: month with spaces
                 assert.expect(0);
                 return;
-            }
-            function tester(format) {
-                var r,
-                    baseMsg =
-                        'weekday ' +
-                        m.weekday() +
-                        ' fmt ' +
-                        format +
-                        ' ' +
-                        m.toISOString();
-                r = moment(m.format(format), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
-                r = moment(m.format(format), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.weekday(),
-                        m.weekday(),
-                        baseMsg + ' upper strict'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
-            }
-
-            for (i = 0; i < 7; ++i) {
-                m = moment.utc([2015, 0, i + 1, 18]);
-                tester('dd');
-                tester('ddd');
-                tester('dddd');
             }
         });
 
@@ -89282,19 +87074,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ro');
@@ -89990,17 +87776,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -90021,7 +87801,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -90048,22 +87828,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -90075,7 +87839,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -90083,7 +87847,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -90165,19 +87929,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ru');
@@ -91102,17 +88860,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -91133,7 +88885,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -91160,22 +88912,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -91187,7 +88923,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -91195,7 +88931,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -91277,19 +89013,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sd');
@@ -91931,17 +89661,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -91962,7 +89686,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -91989,22 +89713,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -92016,7 +89724,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -92024,7 +89732,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -92106,19 +89814,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('se');
@@ -92785,17 +90487,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -92816,7 +90512,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -92843,22 +90539,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -92870,7 +90550,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -92878,7 +90558,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -92960,19 +90640,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('si');
@@ -93605,17 +91279,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -93636,7 +91304,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -93663,22 +91331,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -93690,7 +91342,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -93698,7 +91350,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -93780,19 +91432,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sk');
@@ -94643,17 +92289,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -94674,7 +92314,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -94701,22 +92341,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -94728,7 +92352,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -94736,7 +92360,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -94818,19 +92442,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sl');
@@ -95857,17 +93475,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -95888,7 +93500,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -95915,22 +93527,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -95942,7 +93538,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -95950,7 +93546,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -96032,19 +93628,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sq');
@@ -96712,17 +94302,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -96743,7 +94327,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -96770,22 +94354,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -96797,7 +94365,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -96805,7 +94373,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -96887,19 +94455,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sr-cyrl');
@@ -97588,17 +95150,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -97619,7 +95175,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -97646,22 +95202,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -97673,7 +95213,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -97681,7 +95221,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -97763,19 +95303,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sr');
@@ -98464,17 +95998,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -98495,7 +96023,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -98522,22 +96050,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -98549,7 +96061,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -98557,7 +96069,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -98639,19 +96151,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ss');
@@ -99372,17 +96878,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -99403,7 +96903,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -99430,22 +96930,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -99457,7 +96941,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -99465,7 +96949,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -99547,19 +97031,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sv');
@@ -99696,7 +97174,7 @@
 
     test('format week', function (assert) {
         var expected =
-                'söndag sön sö_måndag mån må_tisdag tis ti_onsdag ons on_torsdag tor to_fredag fre fr_lördag lör lö'.split(
+                'söndag sön sö_måndag mån må_tisdag tis ti_onsdag ons on_torsdag tors to_fredag fre fr_lördag lör lö'.split(
                     '_'
                 ),
             i;
@@ -100211,17 +97689,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -100242,7 +97714,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -100269,22 +97741,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -100296,7 +97752,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -100304,7 +97760,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -100386,19 +97842,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('sw');
@@ -100577,27 +98027,27 @@
         );
         assert.equal(
             start.from(moment([2007, 1, 28]).add({ m: 45 }), true),
-            'saa limoja',
+            'saa moja',
             '45 minutes = an hour'
         );
         assert.equal(
             start.from(moment([2007, 1, 28]).add({ m: 89 }), true),
-            'saa limoja',
+            'saa moja',
             '89 minutes = an hour'
         );
         assert.equal(
             start.from(moment([2007, 1, 28]).add({ m: 90 }), true),
-            'masaa 2',
+            'saa 2',
             '90 minutes = 2 hours'
         );
         assert.equal(
             start.from(moment([2007, 1, 28]).add({ h: 5 }), true),
-            'masaa 5',
+            'saa 5',
             '5 hours = 5 hours'
         );
         assert.equal(
             start.from(moment([2007, 1, 28]).add({ h: 21 }), true),
-            'masaa 21',
+            'saa 21',
             '21 hours = 21 hours'
         );
         assert.equal(
@@ -100695,6 +98145,37 @@
     test('suffix', function (assert) {
         assert.equal(moment(30000).from(0), 'hivi punde baadaye', 'prefix');
         assert.equal(moment(0).from(30000), 'tokea hivi punde', 'suffix');
+        assert.equal(
+            moment(0).from(35 * 60 * 1000),
+            'dakika 35 zilizopita',
+            'past relative suffix'
+        );
+    });
+
+    test('past relative time', function (assert) {
+        var locale = moment.localeData(),
+            expected = [
+                ['ss', 2, 'sekunde 2 zilizopita'],
+                ['m', 1, 'dakika moja iliyopita'],
+                ['mm', 2, 'dakika 2 zilizopita'],
+                ['h', 1, 'saa moja iliyopita'],
+                ['hh', 2, 'saa 2 zilizopita'],
+                ['d', 1, 'siku moja iliyopita'],
+                ['dd', 2, 'siku 2 zilizopita'],
+                ['M', 1, 'mwezi mmoja uliopita'],
+                ['MM', 2, 'miezi 2 iliyopita'],
+                ['y', 1, 'mwaka mmoja uliopita'],
+                ['yy', 2, 'miaka 2 iliyopita'],
+            ],
+            i;
+
+        for (i = 0; i < expected.length; i++) {
+            assert.equal(
+                locale.relativeTime(expected[i][1], false, expected[i][0], false),
+                expected[i][2],
+                expected[i][0]
+            );
+        }
     });
 
     test('now from now', function (assert) {
@@ -100758,19 +98239,19 @@
             m = moment().add({ d: i });
             assert.equal(
                 m.calendar(),
-                m.format('[wiki ijayo] dddd [saat] LT'),
+                m.format('dddd [ijayo saa] LT'),
                 'Today + ' + i + ' days current time'
             );
             m.hours(0).minutes(0).seconds(0).milliseconds(0);
             assert.equal(
                 m.calendar(),
-                m.format('[wiki ijayo] dddd [saat] LT'),
+                m.format('dddd [ijayo saa] LT'),
                 'Today + ' + i + ' days beginning of day'
             );
             m.hours(23).minutes(59).seconds(59).milliseconds(999);
             assert.equal(
                 m.calendar(),
-                m.format('[wiki ijayo] dddd [saat] LT'),
+                m.format('dddd [ijayo saa] LT'),
                 'Today + ' + i + ' days end of day'
             );
         }
@@ -100783,19 +98264,19 @@
             m = moment().subtract({ d: i });
             assert.equal(
                 m.calendar(),
-                m.format('[wiki iliyopita] dddd [saat] LT'),
+                m.format('dddd [iliyopita saa] LT'),
                 'Today - ' + i + ' days current time'
             );
             m.hours(0).minutes(0).seconds(0).milliseconds(0);
             assert.equal(
                 m.calendar(),
-                m.format('[wiki iliyopita] dddd [saat] LT'),
+                m.format('dddd [iliyopita saa] LT'),
                 'Today - ' + i + ' days beginning of day'
             );
             m.hours(23).minutes(59).seconds(59).milliseconds(999);
             assert.equal(
                 m.calendar(),
-                m.format('[wiki iliyopita] dddd [saat] LT'),
+                m.format('dddd [iliyopita saa] LT'),
                 'Today - ' + i + ' days end of day'
             );
         }
@@ -101058,17 +98539,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -101089,7 +98564,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -101116,22 +98591,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -101143,7 +98602,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -101151,7 +98610,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -101233,19 +98692,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ta');
@@ -101908,17 +99361,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -101939,7 +99386,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -101966,22 +99413,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -101993,7 +99424,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -102001,7 +99432,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -102083,19 +99514,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('te');
@@ -102803,17 +100228,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -102834,7 +100253,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -102861,22 +100280,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -102888,7 +100291,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -102896,7 +100299,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -102978,19 +100381,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tet');
@@ -103647,17 +101044,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -103678,7 +101069,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -103705,22 +101096,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -103732,7 +101107,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -103740,7 +101115,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -103822,19 +101197,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tg');
@@ -104507,17 +101876,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -104538,7 +101901,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -104565,22 +101928,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -104592,7 +101939,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -104600,7 +101947,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -104682,19 +102029,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('th');
@@ -105313,17 +102654,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -105344,7 +102679,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -105371,22 +102706,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -105398,7 +102717,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -105406,7 +102725,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -105488,19 +102807,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tk');
@@ -106156,17 +103469,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -106187,7 +103494,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -106214,22 +103521,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -106241,7 +103532,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -106249,7 +103540,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -106331,19 +103622,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tl-ph');
@@ -107002,17 +104287,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -107033,7 +104312,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -107060,22 +104339,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -107087,7 +104350,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -107095,7 +104358,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -107177,19 +104440,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tlh');
@@ -107883,73 +105140,17 @@
         });
 
         test('month parsing correctness', function (assert) {
-            var i, m;
 
-            if (locale === 'tr') {
+            {
                 // I can't fix it :(
                 assert.expect(0);
                 return;
             }
-            function tester(format) {
-                var r;
-                r = moment(m.format(format), format);
-                assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(
-                        r.month(),
-                        m.month(),
-                        'month ' + i + ' fmt ' + format + ' upper'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format);
-                assert.equal(
-                    r.month(),
-                    m.month(),
-                    'month ' + i + ' fmt ' + format + ' lower'
-                );
-
-                r = moment(m.format(format), format, true);
-                assert.equal(
-                    r.month(),
-                    m.month(),
-                    'month ' + i + ' fmt ' + format + ' strict'
-                );
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.month(),
-                        m.month(),
-                        'month ' + i + ' fmt ' + format + ' upper strict'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format, true);
-                assert.equal(
-                    r.month(),
-                    m.month(),
-                    'month ' + i + ' fmt ' + format + ' lower strict'
-                );
-            }
-
-            for (i = 0; i < 12; ++i) {
-                m = moment([2015, i, 15, 18]);
-                tester('MMM');
-                tester('MMM.');
-                tester('MMMM');
-                tester('MMMM.');
-            }
         });
 
         test('weekday parsing correctness', function (assert) {
-            var i, m;
 
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
+            {
                 // tr, az: There is a lower-case letter (ı), that converted to
                 // upper then lower changes to i
                 // ro: there is the letter ț which behaves weird under IE8
@@ -107957,43 +105158,6 @@
                 // ga: month with spaces
                 assert.expect(0);
                 return;
-            }
-            function tester(format) {
-                var r,
-                    baseMsg =
-                        'weekday ' +
-                        m.weekday() +
-                        ' fmt ' +
-                        format +
-                        ' ' +
-                        m.toISOString();
-                r = moment(m.format(format), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format);
-                    assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
-                r = moment(m.format(format), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
-                    r = moment(m.format(format).toLocaleUpperCase(), format, true);
-                    assert.equal(
-                        r.weekday(),
-                        m.weekday(),
-                        baseMsg + ' upper strict'
-                    );
-                }
-                r = moment(m.format(format).toLocaleLowerCase(), format, true);
-                assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower strict');
-            }
-
-            for (i = 0; i < 7; ++i) {
-                m = moment.utc([2015, 0, i + 1, 18]);
-                tester('dd');
-                tester('ddd');
-                tester('dddd');
             }
         });
 
@@ -108059,19 +105223,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tr');
@@ -108743,17 +105901,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -108774,7 +105926,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -108801,22 +105953,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -108828,7 +105964,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -108836,7 +105972,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -108918,19 +106054,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tzl');
@@ -109594,17 +106724,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -109625,7 +106749,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -109652,22 +106776,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -109679,7 +106787,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -109687,7 +106795,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -109769,19 +106877,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tzm-latn');
@@ -110441,17 +107543,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -110472,7 +107568,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -110499,22 +107595,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -110526,7 +107606,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -110534,7 +107614,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -110616,19 +107696,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('tzm');
@@ -111288,17 +108362,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -111319,7 +108387,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -111346,22 +108414,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -111373,7 +108425,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -111381,7 +108433,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -111463,19 +108515,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ug-cn');
@@ -112113,17 +109159,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -112144,7 +109184,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -112171,22 +109211,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -112198,7 +109222,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -112206,7 +109230,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -112288,19 +109312,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('uk');
@@ -112359,7 +109377,7 @@
                 ['D Do DD', '14 14-го 14'],
                 ['d do dddd ddd dd', '0 0-й неділя нд нд'],
                 ['DDD DDDo DDDD', '45 45-й 045'],
-                ['w wo ww', '7 7-й 07'],
+                ['w wo ww', '6 6-й 06'],
                 ['h hh', '3 03'],
                 ['H HH', '15 15'],
                 ['m mm', '25 25'],
@@ -112486,7 +109504,7 @@
 
     test('format week', function (assert) {
         var expected =
-                'неділя нд нд_понеділок пн пн_вівторок вт вт_середа ср ср_четвер чт чт_п’ятниця пт пт_субота сб сб'.split(
+                'неділя нд нд_понеділок пн пн_вівторок вт вт_середа ср ср_четвер чт чт_пʼятниця пт пт_субота сб сб'.split(
                     '_'
                 ),
             i;
@@ -112497,6 +109515,27 @@
                 expected[i]
             );
         }
+    });
+
+    test('friday grammatical forms use U+02BC apostrophe', function (assert) {
+        var friday = moment([2011, 0, 7]);
+        // Hard-coded expected strings so an incorrect apostrophe in
+        // accusative or genitive cannot hide behind locale().weekdays().
+        assert.equal(
+            friday.format('dddd'),
+            'пʼятниця',
+            'nominative Friday uses U+02BC'
+        );
+        assert.equal(
+            friday.format('[У] dddd'),
+            'У пʼятницю',
+            'accusative Friday uses U+02BC'
+        );
+        assert.equal(
+            friday.format('[минулої] dddd'),
+            'минулої пʼятниці',
+            'genitive Friday uses U+02BC'
+        );
     });
 
     test('from', function (assert) {
@@ -112802,28 +109841,28 @@
     test('weeks year starting sunday formatted', function (assert) {
         assert.equal(
             moment([2011, 11, 26]).format('w ww wo'),
-            '1 01 1-й',
-            'Dec 26 2011 should be week 1'
+            '52 52 52-й',
+            'Dec 26 2011 should be week 52 of 2011'
         );
         assert.equal(
             moment([2012, 0, 1]).format('w ww wo'),
-            '1 01 1-й',
-            'Jan  1 2012 should be week 1'
+            '52 52 52-й',
+            'Jan  1 2012 should be week 52 of 2011'
         );
         assert.equal(
             moment([2012, 0, 2]).format('w ww wo'),
-            '2 02 2-й',
-            'Jan  2 2012 should be week 2'
+            '1 01 1-й',
+            'Jan  2 2012 should be week 1'
         );
         assert.equal(
             moment([2012, 0, 8]).format('w ww wo'),
-            '2 02 2-й',
-            'Jan  8 2012 should be week 2'
+            '1 01 1-й',
+            'Jan  8 2012 should be week 1'
         );
         assert.equal(
             moment([2012, 0, 9]).format('w ww wo'),
-            '3 03 3-й',
-            'Jan  9 2012 should be week 3'
+            '2 02 2-й',
+            'Jan  9 2012 should be week 2'
         );
     });
 
@@ -113034,17 +110073,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -113065,7 +110098,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -113092,22 +110125,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -113119,7 +110136,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -113127,7 +110144,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -113209,19 +110226,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('ur');
@@ -113868,17 +110879,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -113899,7 +110904,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -113926,22 +110931,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -113953,7 +110942,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -113961,7 +110950,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -114043,19 +111032,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('uz-latn');
@@ -114716,17 +111699,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -114747,7 +111724,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -114774,22 +111751,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -114801,7 +111762,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -114809,7 +111770,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -114891,19 +111852,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('uz');
@@ -115561,17 +112516,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -115592,7 +112541,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -115619,22 +112568,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -115646,7 +112579,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -115654,7 +112587,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -115736,19 +112669,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('vi');
@@ -116411,17 +113338,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -116442,7 +113363,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -116469,22 +113390,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -116496,7 +113401,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -116504,7 +113409,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -116586,19 +113491,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('x-pseudo');
@@ -117255,17 +114154,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -117286,7 +114179,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -117313,22 +114206,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -117340,7 +114217,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -117348,7 +114225,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -117430,19 +114307,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('yo');
@@ -118100,17 +114971,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -118131,7 +114996,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -118158,22 +115023,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -118185,7 +115034,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -118193,7 +115042,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -118275,19 +115124,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('zh-cn');
@@ -118957,17 +115800,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -118988,7 +115825,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -119015,22 +115852,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -119042,7 +115863,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -119050,7 +115871,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -119132,19 +115953,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('zh-hk');
@@ -119798,17 +116613,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -119829,7 +116638,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -119856,22 +116665,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -119883,7 +116676,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -119891,7 +116684,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -119973,19 +116766,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('zh-mo');
@@ -120623,17 +117410,11 @@
 
         test('month parsing correctness', function (assert) {
             var i, m;
-
-            if (locale === 'tr') {
-                // I can't fix it :(
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r;
                 r = moment(m.format(format), format);
                 assert.equal(r.month(), m.month(), 'month ' + i + ' fmt ' + format);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(
                         r.month(),
@@ -120654,7 +117435,7 @@
                     m.month(),
                     'month ' + i + ' fmt ' + format + ' strict'
                 );
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.month(),
@@ -120681,22 +117462,6 @@
 
         test('weekday parsing correctness', function (assert) {
             var i, m;
-
-            if (
-                locale === 'tr' ||
-                locale === 'az' ||
-                locale === 'ro' ||
-                locale === 'mt' ||
-                locale === 'ga'
-            ) {
-                // tr, az: There is a lower-case letter (ı), that converted to
-                // upper then lower changes to i
-                // ro: there is the letter ț which behaves weird under IE8
-                // mt: letter Ħ
-                // ga: month with spaces
-                assert.expect(0);
-                return;
-            }
             function tester(format) {
                 var r,
                     baseMsg =
@@ -120708,7 +117473,7 @@
                         m.toISOString();
                 r = moment(m.format(format), format);
                 assert.equal(r.weekday(), m.weekday(), baseMsg);
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format);
                     assert.equal(r.weekday(), m.weekday(), baseMsg + ' upper');
                 }
@@ -120716,7 +117481,7 @@
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' lower');
                 r = moment(m.format(format), format, true);
                 assert.equal(r.weekday(), m.weekday(), baseMsg + ' strict');
-                if (locale !== 'ka') {
+                {
                     r = moment(m.format(format).toLocaleUpperCase(), format, true);
                     assert.equal(
                         r.weekday(),
@@ -120798,19 +117563,13 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 moment.locale('en');
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
-        defineCommonLocaleTests(name);
+        defineCommonLocaleTests();
     }
 
     localeModule('zh-tw');
@@ -121342,7 +118101,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -121350,20 +118109,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('add and subtract');
+    module$1('add and subtract');
 
     test('add short reverse args', function (assert) {
         var a = moment(),
@@ -121991,7 +118744,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -121999,15 +118752,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -122015,7 +118762,7 @@
     // These tests are for locale independent features
     // locale dependent tests would be in locale test folder
 
-    module('calendar');
+    module$1('calendar');
 
     test('passing a function', function (assert) {
         var a = moment().hours(13).minutes(0).seconds(0);
@@ -122310,7 +119057,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -122318,15 +119065,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -122355,7 +119096,7 @@
         each(objectKeys(object), callback);
     }
 
-    module('create');
+    module$1('create');
 
     test('array', function (assert) {
         assert.ok(moment([2010]).toDate() instanceof Date, '[2010]');
@@ -122679,7 +119420,7 @@
         );
         assert.equal(
             moment('Date(-1325132654000)').valueOf(),
-            -1325132654000,
+            -1325132654e3,
             'Date(-1325132654000)'
         );
         assert.equal(
@@ -123472,7 +120213,7 @@
             '(Init Comment) Tue,\n 1 Nov              2016 (Split\n Comment)  07:23:45 +0000 (GMT)':
                 [2016, 10, 1, 7, 23, 45, 0],
             'Mon, 02 Jan 2017 06:00:00 -0800': [2017, 0, 2, 6, 0, 0, -8 * 60],
-            'Mon, 02 Jan 2017 06:00:00 +0800': [2017, 0, 2, 6, 0, 0, +8 * 60],
+            'Mon, 02 Jan 2017 06:00:00 +0800': [2017, 0, 2, 6, 0, 0, 8 * 60],
             'Mon, 02 Jan 2017 06:00:00 +0330': [
                 2017,
                 0,
@@ -123480,7 +120221,7 @@
                 6,
                 0,
                 0,
-                +(3 * 60 + 30),
+                210,
             ],
             'Mon, 02 Jan 2017 06:00:00 -0330': [
                 2017,
@@ -123489,7 +120230,7 @@
                 6,
                 0,
                 0,
-                -(3 * 60 + 30),
+                -210,
             ],
             'Mon, 02 Jan 2017 06:00:00 PST': [2017, 0, 2, 6, 0, 0, -8 * 60],
             'Mon, 02 Jan 2017 06:00:00 PDT': [2017, 0, 2, 6, 0, 0, -7 * 60],
@@ -124345,7 +121086,7 @@
 
     test('six digit years', function (assert) {
         assert.equal(
-            moment([-270000, 0, 1]).format('YYYYY-MM-DD'),
+            moment([-27e4, 0, 1]).format('YYYYY-MM-DD'),
             '-270000-01-01',
             'format BC 270,001'
         );
@@ -124356,7 +121097,7 @@
         );
         assert.equal(
             moment('-270000-01-01', 'YYYYY-MM-DD').toDate().getFullYear(),
-            -270000,
+            -27e4,
             'parse BC 270,001'
         );
         assert.equal(
@@ -124371,7 +121112,7 @@
         );
         assert.equal(
             moment.utc('-270000-01-01', 'YYYYY-MM-DD').toDate().getUTCFullYear(),
-            -270000,
+            -27e4,
             'parse utc BC 270,001'
         );
         assert.equal(
@@ -124389,12 +121130,12 @@
     test('negative four digit years', function (assert) {
         assert.equal(
             moment('-1000-01-01', 'YYYYY-MM-DD').toDate().getFullYear(),
-            -1000,
+            -1e3,
             'parse BC 1,001'
         );
         assert.equal(
             moment.utc('-1000-01-01', 'YYYYY-MM-DD').toDate().getUTCFullYear(),
-            -1000,
+            -1e3,
             'parse utc BC 1,001'
         );
     });
@@ -125355,7 +122096,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -125363,20 +122104,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('creation data');
+    module$1('creation data');
 
     test('valid date', function (assert) {
         var dat = moment('1992-10-22'),
@@ -125499,7 +122234,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -125507,15 +122242,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -125853,12 +122582,21 @@
 
     addFormatToken('e', 0, 0, 'weekday');
     addFormatToken('E', 0, 0, 'isoWeekday');
+    addFormatToken('eHHmm', 0, 0, function () {
+        return (
+            '' +
+            this.weekday() +
+            zeroFill(this.hours(), 2) +
+            zeroFill(this.minutes(), 2)
+        );
+    });
 
     // PARSING
 
     addRegexToken('d', match1to2);
     addRegexToken('e', match1to2);
     addRegexToken('E', match1to2);
+    addRegexToken('eHHmm', match5to6);
     addRegexToken('dd', function (isStrict, locale) {
         return locale.weekdaysMinRegex(isStrict);
     });
@@ -125881,6 +122619,14 @@
 
     addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
         week[token] = toInt(input);
+    });
+
+    addWeekParseToken('eHHmm', function (input, week, config) {
+        var weekdayEnd = input.length - 4;
+
+        week.e = toInt(input.substr(0, weekdayEnd));
+        config._a[HOUR] = toInt(input.substr(weekdayEnd, 2));
+        config._a[MINUTE] = toInt(input.substr(weekdayEnd + 2));
     });
 
     // FORMATTING
@@ -126063,7 +122809,7 @@
         }
     });
 
-    module('days in month');
+    module$1('days in month');
 
     test('days in month of all but february', function (assert) {
         var days = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
@@ -126266,7 +123012,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -126274,20 +123020,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('days in year');
+    module$1('days in year');
 
     // https://github.com/moment/moment/issues/3717
     test('YYYYDDD should not parse DDD=000', function (assert) {
@@ -126381,7 +123121,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -126389,15 +123129,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -126484,7 +123218,7 @@
     hooks.suppressDeprecationWarnings = false;
     hooks.deprecationHandler = null;
 
-    module('deprecate');
+    module$1('deprecate');
 
     test('deprecate', function (assert) {
         // NOTE: hooks inside deprecate.js and moment are different, so this is can
@@ -126581,7 +123315,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -126589,15 +123323,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -126637,12 +123365,12 @@
         }
     }
 
-    module('diff');
+    module$1('diff');
 
     test('diff', function (assert) {
         assert.equal(moment(1000).diff(0), 1000, '1 second - 0 = 1000');
         assert.equal(moment(1000).diff(500), 500, '1 second - 0.5 seconds = 500');
-        assert.equal(moment(0).diff(1000), -1000, '0 - 1 second = -1000');
+        assert.equal(moment(0).diff(1000), -1e3, '0 - 1 second = -1000');
         assert.equal(
             moment(new Date(1000)).diff(1000),
             0,
@@ -127086,7 +123814,7 @@
         equal(
             assert,
             moment([2012, 0, 1]).diff([2012, 0, 31], 'months', true),
-            -(30 / 31),
+            -0.967741935483871,
             'Jan 1 to Jan 31 should be 30 / 31 months'
         );
         assert.ok(
@@ -127309,7 +124037,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -127317,20 +124045,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('duration from moments');
+    module$1('duration from moments');
 
     test('pure year diff', function (assert) {
         var m1 = moment('2012-01-01T00:00:00.000Z'),
@@ -127466,7 +124188,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -127474,20 +124196,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('invalid');
+    module$1('invalid');
 
     test('invalid duration', function (assert) {
         var m = moment.duration.invalid(); // should be invalid
@@ -127715,7 +124431,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -127723,20 +124439,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('duration');
+    module$1('duration');
 
     test('object instantiation', function (assert) {
         var d = moment.duration({
@@ -128354,22 +125064,22 @@
             '1 year less 2 days ago'
         );
         assert.equal(
-            moment.duration({ M: +1 }).toISOString(),
+            moment.duration({ M: 1 }).toISOString(),
             'P1M',
             'one month ago'
         );
         assert.equal(
-            moment.duration({ m: +1 }).toISOString(),
+            moment.duration({ m: 1 }).toISOString(),
             'PT1M',
             'one minute ago'
         );
         assert.equal(
-            moment.duration({ s: +0.5 }).toISOString(),
+            moment.duration({ s: 0.5 }).toISOString(),
             'PT0.5S',
             'one half second ago'
         );
         assert.equal(
-            moment.duration({ y: +1, M: 1 }).toISOString(),
+            moment.duration({ y: 1, M: 1 }).toISOString(),
             'P1Y1M',
             'a month after a year in future'
         );
@@ -128422,19 +125132,19 @@
             '-P11M',
             'a month after a year ago'
         );
-        assert.equal(moment.duration({ M: +1 }).toString(), 'P1M', 'one month ago');
+        assert.equal(moment.duration({ M: 1 }).toString(), 'P1M', 'one month ago');
         assert.equal(
-            moment.duration({ m: +1 }).toString(),
+            moment.duration({ m: 1 }).toString(),
             'PT1M',
             'one minute ago'
         );
         assert.equal(
-            moment.duration({ s: +0.5 }).toString(),
+            moment.duration({ s: 0.5 }).toString(),
             'PT0.5S',
             'one half second ago'
         );
         assert.equal(
-            moment.duration({ y: +1, M: 1 }).toString(),
+            moment.duration({ y: 1, M: 1 }).toString(),
             'P1Y1M',
             'a month after a year in future'
         );
@@ -128884,7 +125594,7 @@
             '44 seconds = a few seconds'
         );
         assert.equal(
-            moment.duration({ seconds: +44 }).humanize(true),
+            moment.duration({ seconds: 44 }).humanize(true),
             'in a few seconds',
             '44 seconds = a few seconds'
         );
@@ -129648,7 +126358,7 @@
         assert.equal(d.hours(), -23, '-1 day + 1 hour == -23 hour (component)');
         assert.equal(d.asHours(), -23, '-1 day + 1 hour == -23 hours');
 
-        d = moment.duration(+1, 'day').add(1, 'hour');
+        d = moment.duration(1, 'day').add(1, 'hour');
         assert.equal(d.hours(), 1, '1 day + 1 hour == 1 hour (component)');
         assert.equal(d.asHours(), 25, '1 day + 1 hour == 25 hour');
 
@@ -129658,7 +126368,7 @@
         assert.equal(d.years(), 0, '- 1 year + 1 day == 0 years (component)');
         assert.equal(d.asDays(), -364, '- 1 year + 1 day == -364 days');
 
-        d = moment.duration(+1, 'year').add(1, 'day');
+        d = moment.duration(1, 'year').add(1, 'day');
         assert.equal(d.days(), 1, '+ 1 year + 1 day == 1 days (component)');
         assert.equal(d.months(), 0, '+ 1 year + 1 day == 0 month (component)');
         assert.equal(d.years(), 1, '+ 1 year + 1 day == 1 year (component)');
@@ -129674,7 +126384,7 @@
         );
         assert.equal(d.years(), 0, '- 1 year + 1 hour == 0 years (component)');
 
-        d = moment.duration(+1, 'year').add(1, 'hour');
+        d = moment.duration(1, 'year').add(1, 'hour');
         assert.equal(d.hours(), 1, '+ 1 year + 1 hour == 1 hour (component)');
         assert.equal(d.days(), 0, '+ 1 year + 1 hour == 1 day (component)');
         assert.equal(d.months(), 0, '+ 1 year + 1 hour == 1 month (component)');
@@ -129849,7 +126559,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -129857,15 +126567,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -129894,7 +126598,7 @@
         each(objectKeys(object), callback);
     }
 
-    module('format');
+    module$1('format');
 
     test('format using constants', function (assert) {
         var m = moment('2016-01-02T23:40:40.678');
@@ -130760,6 +127464,19 @@
         assert.equal(moment('18:34:56', 'HH:mm:ss').format('Hmmss'), '183456');
     });
 
+    test('eHHmm', function (assert) {
+        assert.equal(
+            moment('2026-08-18 15:30', 'YYYY-MM-DD HH:mm').format('eHHmm'),
+            '21530',
+            'locale weekday with compact time'
+        );
+        assert.equal(
+            moment('15:30', 'HH:mm').format('\\eHHmm'),
+            'e1530',
+            'escaped e remains separate from HHmm'
+        );
+    });
+
     test('k and kk', function (assert) {
         assert.equal(moment('01:23:45', 'HH:mm:ss').format('k'), '1');
         assert.equal(moment('12:34:56', 'HH:mm:ss').format('k'), '12');
@@ -130839,6 +127556,26 @@
                 .split(' ')
                 .reverse(),
             'issue #5681 regression'
+        );
+    });
+
+    test('format strings matching Object prototype keys', function (assert) {
+        var m = moment([2025, 2, 16, 12, 34, 56, 789]);
+
+        assert.equal(
+            m.format('constructor'),
+            'con56tructor',
+            'constructor is treated as a format string'
+        );
+        assert.equal(
+            m.format('toString'),
+            'to7tring',
+            'toString is treated as a format string'
+        );
+        assert.equal(
+            m.format('__proto__'),
+            '__proto__',
+            '__proto__ is treated as a format string'
         );
     });
 
@@ -130927,7 +127664,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -130935,20 +127672,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('from_to');
+    module$1('from_to');
 
     test('from', function (assert) {
         var start = moment();
@@ -131179,7 +127910,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -131187,20 +127918,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('getters and setters');
+    module$1('getters and setters');
 
     test('getters', function (assert) {
         var a = moment([2011, 9, 12, 6, 7, 8, 9]);
@@ -131787,7 +128512,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -131795,20 +128520,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('instanceof');
+    module$1('instanceof');
 
     test('instanceof', function (assert) {
         var extend = function (a, b) {
@@ -131933,7 +128652,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -131941,20 +128660,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('invalid');
+    module$1('invalid');
 
     test('invalid', function (assert) {
         var m = moment.invalid();
@@ -132249,7 +128962,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -132257,20 +128970,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is after');
+    module$1('is after');
 
     test('is after without units', function (assert) {
         var m = moment(new Date(2011, 3, 2, 3, 4, 5, 10)),
@@ -133067,7 +129774,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -133075,20 +129782,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is before');
+    module$1('is before');
 
     test('is after without units', function (assert) {
         var m = moment(new Date(2011, 3, 2, 3, 4, 5, 10)),
@@ -133845,7 +130546,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -133853,20 +130554,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is between');
+    module$1('is between');
 
     test('is between without units', function (assert) {
         var m = moment(new Date(2011, 3, 2, 3, 4, 5, 10)),
@@ -135031,7 +131726,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -135039,20 +131734,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is date');
+    module$1('is date');
 
     test('isDate recognizes Date objects', function (assert) {
         assert.ok(moment.isDate(new Date()), 'no args (now)');
@@ -135167,7 +131856,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -135175,20 +131864,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is moment');
+    module$1('is moment');
 
     test('is moment object', function (assert) {
         var MyObj = function () {},
@@ -135372,7 +132055,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -135380,20 +132063,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is same or after');
+    module$1('is same or after');
 
     test('is same or after without units', function (assert) {
         var m = moment(new Date(2011, 3, 2, 3, 4, 5, 10)),
@@ -136253,7 +132930,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -136261,20 +132938,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is same or before');
+    module$1('is same or before');
 
     test('is same or before without units', function (assert) {
         var m = moment(new Date(2011, 3, 2, 3, 4, 5, 10)),
@@ -137134,7 +133805,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -137142,20 +133813,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is same');
+    module$1('is same');
 
     test('is same without units', function (assert) {
         var m = moment(new Date(2011, 3, 2, 3, 4, 5, 10)),
@@ -137792,7 +134457,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -137800,20 +134465,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('is valid');
+    module$1('is valid');
 
     test('array bad month', function (assert) {
         assert.equal(moment([2010, -1]).isValid(), false, 'month -1 invalid');
@@ -138481,7 +135140,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -138489,15 +135148,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -138506,7 +135159,7 @@
         return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
     }
 
-    module('is leap year');
+    module$1('is leap year');
 
     test('leap years', function (assert) {
         var tests = [
@@ -138677,7 +135330,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -138685,20 +135338,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('leap year');
+    module$1('leap year');
 
     test('leap year', function (assert) {
         assert.equal(moment([2010, 0, 1]).isLeapYear(), false, '2010');
@@ -138792,7 +135439,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -138800,20 +135447,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('listers');
+    module$1('listers');
 
     test('default', function (assert) {
         assert.deepEqual(moment.months(), [
@@ -139072,7 +135713,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -139080,20 +135721,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('locale inheritance');
+    module$1('locale inheritance');
 
     test('calendar', function (assert) {
         moment.defineLocale('base-cal', {
@@ -139400,7 +136035,7 @@
 
     test('lazy load parentLocale', function (assert) {
         moment.defineLocale('de_test', {
-            parentLocale: 'de',
+            parentLocale: 'DE',
             monthsShort: [
                 'M1',
                 'M2',
@@ -139419,7 +136054,7 @@
         assert.equal(
             moment.locale(),
             'de_test',
-            'failed to lazy load parentLocale'
+            'lazy loads a parentLocale with a normalized name'
         );
     });
 
@@ -139508,7 +136143,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -139516,20 +136151,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('locale update');
+    module$1('locale update');
 
     test('calendar', function (assert) {
         moment.defineLocale('cal', null);
@@ -139814,6 +136443,31 @@
         moment.updateLocale('de', null);
     });
 
+    test('lazy load locale with normalized name before update', function (assert) {
+        var locale = moment.updateLocale('DE', { monthsShort: ['JAN'] }),
+            january = locale.months(moment.utc([2017, 0]));
+
+        assert.equal(
+            january,
+            'Januar',
+            'inherits the lazy-loaded locale configuration'
+        );
+        assert.equal(locale._abbr, 'de', 'returns the normalized locale');
+        assert.equal(moment.locale(), 'de', 'sets the normalized locale globally');
+        assert.equal(
+            moment.locales().indexOf('DE'),
+            -1,
+            'does not create an unnormalized locale entry'
+        );
+
+        moment.updateLocale('DE', null);
+        assert.notEqual(
+            moment.localeData('de').monthsShort(moment.utc([2017, 0]), ''),
+            'JAN',
+            'resets the normalized locale using the original name'
+        );
+    });
+
     test('update non-existing locale', function (assert) {
         moment.locale('en');
         moment.updateLocale('dude', { months: ['Movember'] });
@@ -139933,7 +136587,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -139971,7 +136625,7 @@
         };
     }
 
-    module('locale', {
+    module$1('locale', {
         setup: function () {
             // TODO: Remove once locales are switched to ES6
             each(
@@ -140059,6 +136713,46 @@
 
         moment.locale('EN_gb');
         assert.equal(moment.locale(), 'en-gb', 'Normalize locale key underscore');
+        assert.equal(
+            indexOf.call(moment.locales(), 'EN_gb'),
+            -1,
+            'Do not cache the unnormalized locale key'
+        );
+        assert.equal(
+            indexOf.call(moment.locales(), 'en_gb'),
+            -1,
+            'Do not cache a partially normalized locale key'
+        );
+    });
+
+    test('preserve exact custom locale names', function (assert) {
+        moment.defineLocale('Mixed_Custom', { months: ['Movember'] });
+
+        assert.equal(
+            moment.localeData('Mixed_Custom')._abbr,
+            'Mixed_Custom',
+            'finds a custom locale before normalizing its name'
+        );
+        assert.equal(
+            moment.locale(),
+            'Mixed_Custom',
+            'sets a custom locale using its exact name'
+        );
+
+        moment.defineLocale('Mixed_Custom', null);
+    });
+
+    test('do not load invalid built-in locale names', function (assert) {
+        var invalidNames = ['.', '..', 'locale name', 'en@gb'];
+
+        each(invalidNames, function (name) {
+            moment.localeData(name);
+            assert.equal(
+                indexOf.call(moment.locales(), name),
+                -1,
+                'does not cache invalid locale name "' + name + '"'
+            );
+        });
     });
 
     test('library setter array of locales', function (assert) {
@@ -141084,7 +137778,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -141092,20 +137786,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('min max');
+    module$1('min max');
 
     test('min', function (assert) {
         var now = moment(),
@@ -141260,7 +137948,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -141268,20 +137956,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('mutable');
+    module$1('mutable');
 
     test('manipulation methods', function (assert) {
         var m = moment();
@@ -141390,7 +138072,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -141398,20 +138080,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('normalize units');
+    module$1('normalize units');
 
     test('normalize units', function (assert) {
         var fullKeys = [
@@ -141577,7 +138253,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -141585,20 +138261,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('now');
+    module$1('now');
 
     test('now', function (assert) {
         var startOfTest = new Date().valueOf(),
@@ -141781,7 +138451,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -141789,20 +138459,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('parsing flags');
+    module$1('parsing flags');
 
     function flags() {
         return moment.apply(null, arguments).parsingFlags();
@@ -142319,7 +138983,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -142365,7 +139029,7 @@
             ')': '0',
         };
 
-    module('preparse and postformat', {
+    module$1('preparse and postformat', {
         setup: function () {
             moment.locale('symbol', {
                 preparse: function (string) {
@@ -142544,7 +139208,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -142552,20 +139216,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('quarter');
+    module$1('quarter');
 
     test('library quarter getter', function (assert) {
         assert.equal(moment([1985, 1, 4]).quarter(), 1, 'Feb  4 1985 is Q1');
@@ -142765,7 +139423,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -142773,20 +139431,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('relative time');
+    module$1('relative time');
 
     test('default thresholds fromNow', function (assert) {
         var a = moment();
@@ -143293,7 +139945,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -143301,20 +139953,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('start and end of units');
+    module$1('start and end of units');
 
     test('start of year', function (assert) {
         var m = moment(new Date(2011, 1, 2, 3, 4, 5, 6)).startOf('year'),
@@ -143935,7 +140581,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -143943,20 +140589,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('string prototype');
+    module$1('string prototype');
 
     test('string prototype overrides call', function (assert) {
         var prior = String.prototype.call,
@@ -144056,7 +140696,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -144064,20 +140704,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('to type');
+    module$1('to type');
 
     test('toObject', function (assert) {
         var expected = {
@@ -144213,7 +140847,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -144221,20 +140855,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('utc offset');
+    module$1('utc offset');
 
     test('setter / getter blackbox', function (assert) {
         var m = moment([2010]);
@@ -144461,7 +141089,7 @@
         zoneD.utcOffset(-480);
         assert.equal(+zoneA, +zoneD, 'moment should equal moment.utcOffset(-480)');
 
-        zoneE.utcOffset(-1000);
+        zoneE.utcOffset(-1e3);
         assert.equal(+zoneA, +zoneE, 'moment should equal moment.utcOffset(-1000)');
     });
 
@@ -145211,7 +141839,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -145219,20 +141847,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('utc');
+    module$1('utc');
 
     test('utc and local', function (assert) {
         var m = moment(Date.UTC(2011, 1, 2, 3, 4, 5, 6)),
@@ -145453,7 +142075,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -145461,20 +142083,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('week year');
+    module$1('week year');
 
     test('iso week year', function (assert) {
         // Some examples taken from https://en.wikipedia.org/wiki/ISO_week
@@ -146640,7 +143256,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -146648,20 +143264,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('week day');
+    module$1('week day');
 
     test('iso weekday', function (assert) {
         var i;
@@ -146704,6 +143314,26 @@
                 'Jan  2 2000 is Sunday    -- 7th day'
             );
         }
+    });
+
+    test('compact locale weekday and time parsing', function (assert) {
+        moment.locale('en');
+
+        [false, true].forEach(function (strict) {
+            var compact = moment('21530', 'eHHmm', strict),
+                padded = moment('021530', 'eHHmm', strict),
+                mode = strict ? 'strict' : 'non-strict';
+
+            assert.ok(compact.isValid(), mode + ' compact input is valid');
+            assert.equal(compact.weekday(), 2, mode + ' compact weekday');
+            assert.equal(compact.hour(), 15, mode + ' compact hour');
+            assert.equal(compact.minute(), 30, mode + ' compact minute');
+
+            assert.ok(padded.isValid(), mode + ' padded input remains valid');
+            assert.equal(padded.weekday(), 2, mode + ' padded weekday');
+            assert.equal(padded.hour(), 15, mode + ' padded hour');
+            assert.equal(padded.minute(), 30, mode + ' padded minute');
+        });
     });
 
     test('iso weekday setter', function (assert) {
@@ -147214,7 +143844,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -147222,20 +143852,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('weeks in year');
+    module$1('weeks in year');
 
     test('isoWeeksInYear', function (assert) {
         assert.equal(
@@ -147542,7 +144166,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -147550,20 +144174,14 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
 
-    module('weeks');
+    module$1('weeks');
 
     test('day of year', function (assert) {
         assert.equal(
@@ -148507,7 +145125,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -148515,15 +145133,9 @@
                     throw new Error('input not handled by moment: ' + config._i);
                 };
                 setupDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.setup) {
-                    lifecycle.setup();
-                }
             },
             afterEach: function () {
                 teardownDeprecationHandler(test, moment);
-                if (lifecycle && lifecycle.teardown) {
-                    lifecycle.teardown();
-                }
             },
         });
     }
@@ -148535,7 +145147,7 @@
         );
     }
 
-    module('zone switching');
+    module$1('zone switching');
 
     test('local to utc, keepLocalTime = true', function (assert) {
         var m = moment(),
@@ -148777,7 +145389,7 @@
     var test = QUnit.test;
         QUnit.only;
 
-    function module(name, lifecycle) {
+    function module$1(name, lifecycle) {
         QUnit.module(name, {
             beforeEach: function () {
                 moment.locale('en');
@@ -148798,7 +145410,7 @@
         });
     }
 
-    module('zones', {
+    module$1('zones', {
         setup: function () {
             test.expectedDeprecations('moment().zone');
         },
@@ -149562,9 +146174,9 @@
         assert.equal(moment().zone(-90).format('ZZ'), '+0130', '-90 -> +0130');
         assert.equal(moment().zone(-120).format('ZZ'), '+0200', '-120 -> +0200');
 
-        assert.equal(moment().zone(+60).format('ZZ'), '-0100', '+60 -> -0100');
-        assert.equal(moment().zone(+90).format('ZZ'), '-0130', '+90 -> -0130');
-        assert.equal(moment().zone(+120).format('ZZ'), '-0200', '+120 -> -0200');
+        assert.equal(moment().zone(60).format('ZZ'), '-0100', '+60 -> -0100');
+        assert.equal(moment().zone(90).format('ZZ'), '-0130', '+90 -> -0130');
+        assert.equal(moment().zone(120).format('ZZ'), '-0200', '+120 -> -0200');
     });
 
     test('parse zone without a timezone', function (assert) {

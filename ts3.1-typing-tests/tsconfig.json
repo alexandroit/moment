@@ -6,6 +6,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "lib": ["ES2015"],
+    "types": [],
   },
   "files": [
     "../ts3.1-typings/moment.d.ts",

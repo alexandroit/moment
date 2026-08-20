@@ -22,11 +22,27 @@ module.exports = function (grunt) {
         cwd: 'src',
         src: ['locale/*.js'],
         dest: 'dist',
+        options: {
+            process: function (content) {
+                return content.replace(
+                    /from ['"]\.\.\/moment['"];?/,
+                    "from '../moment.js';"
+                );
+            },
+        },
+    });
+
+    grunt.registerTask('write-esm-package', function () {
+        grunt.file.write(
+            'dist/package.json',
+            JSON.stringify({ type: 'module' }, null, 2) + '\n'
+        );
     });
 
     grunt.registerTask('update-index', [
         'copy:index-files',
         'copy:esm',
         'copy:esm-locales',
+        'write-esm-package',
     ]);
 };

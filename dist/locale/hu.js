@@ -3,7 +3,7 @@
 //! author : Adam Brunner : https://github.com/adambrunner
 //! author : Peter Viszt  : https://github.com/passatgt
 
-import moment from '../moment';
+import moment from '../moment.js';
 
 var weekEndings =
     'vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton'.split(' ');
@@ -15,9 +15,9 @@ function translate(number, withoutSuffix, key, isFuture) {
                 ? 'néhány másodperc'
                 : 'néhány másodperce';
         case 'ss':
-            return num + (isFuture || withoutSuffix)
-                ? ' másodperc'
-                : ' másodperce';
+            return (
+                num + (isFuture || withoutSuffix ? ' másodperc' : ' másodperce')
+            );
         case 'm':
             return 'egy' + (isFuture || withoutSuffix ? ' perc' : ' perce');
         case 'mm':

@@ -21,6 +21,7 @@ module.exports = [
             'no-console': 0,
             'no-empty': ['error', { allowEmptyCatch: true }],
             'no-unused-vars': ['error', { args: 'none', caughtErrors: 'none' }],
+            'no-useless-assignment': 'off',
             'no-useless-escape': 0,
             'one-var': 'error',
         },

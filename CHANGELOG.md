@@ -1,6 +1,33 @@
 Changelog
 =========
 
+## Stackline releases
+
+### 1.0.1
+
+* Release Aug 19, 2026
+* Preserve the Moment `2.30.1` public API and runtime version while incorporating compatible fixes
+  accepted upstream through Aug 18, 2026.
+* Prevent inherited object-prototype properties from being used as cached format functions.
+* Normalize locale identifiers before lazy loading and correctly parse compact localized weekdays
+  before adjacent time tokens.
+* Add the Amharic (Ethiopia) locale and correct Catalan, German, Georgian, Hungarian, Indonesian,
+  Flemish, Brazilian Portuguese, Swedish, Swahili, and Ukrainian locale behavior.
+* Upgrade the development toolchain, replace the abandoned Node QUnit runner, and reduce the full
+  development dependency audit from 37 findings to zero.
+* Verify declarations with TypeScript 1.8, 2.9, 3.0, 3.1, 3.9, 4.9, 5.9, 6.0, and 7.0.
+* Add reproducible package inspection, versioned AI discovery docs, preserved browser downloads,
+  and a public security policy.
+
+### 1.0.0
+
+* Release May 22, 2026
+* Publish the Moment-compatible package under the permanent `@stackline/moment-core` name.
+* Preserve CommonJS, ESM-friendly, locale, browser bundle, and TypeScript entry points from the
+  Moment `2.30.1` baseline.
+
+## Upstream Moment history
+
 ### 2.30.5
 * Release Apr 5, 2026
 * Standardize the published README to the Stackline package template

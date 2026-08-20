@@ -1,38 +1,41 @@
 module.exports = function (grunt) {
     grunt.task.registerTask('qtest', 'run tests locally', function () {
         var done = this.async(),
-            testrunner,
+            spawn = require('child_process').spawn,
             tests;
 
         function runSuite(testFiles, next) {
-            testrunner.run(
-                {
-                    code: 'build/umd/moment.js',
-                    tests: testFiles,
-                },
-                function (err, report) {
-                    if (err) {
-                        console.log('woot', err, report);
-                        next(err);
-                        return;
-                    }
+            var completed = false,
+                child = spawn(
+                    process.execPath,
+                    [
+                        require.resolve('qunit/bin/qunit'),
+                        '--reporter',
+                        require.resolve('./qunit-reporter'),
+                    ].concat(testFiles),
+                    { stdio: 'inherit' }
+                );
 
-                    if (report.failed !== 0) {
-                        next(new Error(report.failed + ' tests failed'));
-                        return;
-                    }
-
-                    next();
+            function complete(err) {
+                if (!completed) {
+                    completed = true;
+                    next(err);
                 }
-            );
-        }
+            }
 
-        testrunner = require('node-qunit');
-        testrunner.options.log.assertions = false;
-        testrunner.options.log.tests = false;
-        testrunner.options.log.summary = false;
-        testrunner.options.log.testing = false;
-        testrunner.options.maxBlockDuration = 600000;
+            child.on('error', complete);
+            child.on('exit', function (code, signal) {
+                if (signal) {
+                    complete(new Error('QUnit exited due to signal ' + signal));
+                } else {
+                    complete(
+                        code === 0
+                            ? null
+                            : new Error('QUnit exited with code ' + code)
+                    );
+                }
+            });
+        }
 
         if (grunt.option('only') != null) {
             tests = grunt.file.expand.apply(
