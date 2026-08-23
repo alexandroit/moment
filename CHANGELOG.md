@@ -3,6 +3,11 @@ Changelog
 
 ## Stackline releases
 
+### Unreleased
+
+* Preserve the intentional first format-token escape removal without using an
+  incomplete multi-character sanitization pattern.
+
 ### 1.0.1
 
 * Release Aug 19, 2026

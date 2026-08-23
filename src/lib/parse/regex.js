@@ -67,15 +67,20 @@ export function getParseRegexForToken(token, config) {
 
 // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
 function unescapeFormat(s) {
+    var firstBackslash = s.indexOf('\\');
+    if (firstBackslash !== -1) {
+        // Format tokens contain at most one leading escape. Keep the historical
+        // one-removal behavior without modeling this as a general sanitizer.
+        s = s.slice(0, firstBackslash) + s.slice(firstBackslash + 1);
+    }
+
     return regexEscape(
-        s
-            .replace('\\', '')
-            .replace(
-                /\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,
-                function (matched, p1, p2, p3, p4) {
-                    return p1 || p2 || p3 || p4;
-                }
-            )
+        s.replace(
+            /\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,
+            function (matched, p1, p2, p3, p4) {
+                return p1 || p2 || p3 || p4;
+            }
+        )
     );
 }
 
