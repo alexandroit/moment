@@ -25,6 +25,7 @@ Files
 - moment-with-locales.min.js
 - locales.min.js
 - LICENSE
+- SECURITY.md
 - README.md
 
 Script tag usage
@@ -55,6 +56,7 @@ await fs.mkdir(bundleDir, { recursive: true });
 
 await fs.copyFile(path.join(rootDir, "README.md"), path.join(bundleDir, "README.md"));
 await fs.copyFile(path.join(rootDir, "LICENSE"), path.join(bundleDir, "LICENSE"));
+await fs.copyFile(path.join(rootDir, "SECURITY.md"), path.join(bundleDir, "SECURITY.md"));
 await fs.copyFile(path.join(rootDir, "min", "moment.min.js"), path.join(bundleDir, "moment.min.js"));
 await fs.copyFile(path.join(rootDir, "min", "moment-with-locales.min.js"), path.join(bundleDir, "moment-with-locales.min.js"));
 await fs.copyFile(path.join(rootDir, "min", "locales.min.js"), path.join(bundleDir, "locales.min.js"));
@@ -90,6 +92,7 @@ Each archive contains:
 - \`locales.min.js\`
 - \`README.md\`
 - \`LICENSE\`
+- \`SECURITY.md\`
 - \`INSTALLATION.txt\`
 `;
 

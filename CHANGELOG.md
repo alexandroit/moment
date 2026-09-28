@@ -3,7 +3,12 @@ Changelog
 
 ## Stackline releases
 
-### Unreleased
+### 1.0.2
+
+* Release Sep 28, 2026
+* Organize the README with package links and the Stackline Reddit community.
+* Refine npm discovery keywords and publish verified artifacts through GitHub Actions.
+* Update development-only qs, body-parser, and js-yaml to compatible patched releases.
 
 * Preserve the intentional first format-token escape removal without using an
   incomplete multi-character sanitization pattern.

@@ -4,7 +4,8 @@ This directory contains browser-ready downloads for developers who want to use `
 
 Available versions:
 
-- [stackline-moment-core-1.0.1.zip](./stackline-moment-core-1.0.1.zip) (current)
+- [stackline-moment-core-1.0.2.zip](./stackline-moment-core-1.0.2.zip) (current)
+- [stackline-moment-core-1.0.1.zip](./stackline-moment-core-1.0.1.zip)
 - [stackline-moment-core-1.0.0.zip](./stackline-moment-core-1.0.0.zip)
 
 Each archive contains:
@@ -14,4 +15,5 @@ Each archive contains:
 - `locales.min.js`
 - `README.md`
 - `LICENSE`
+- `SECURITY.md`
 - `INSTALLATION.txt`
