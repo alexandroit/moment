@@ -1,0 +1,33 @@
+{
+  "repository": "alexandroit/moment",
+  "packages": [
+    {
+      "name": "@stackline/moment-core",
+      "path": "README.md",
+      "version": "1.0.4",
+      "baselineVersion": "1.0.3",
+      "keywords": [
+        "stackline",
+        "npm-package",
+        "moment-core",
+        "typescript",
+        "nodejs",
+        "moment",
+        "date",
+        "datetime",
+        "date-parsing",
+        "date-formatting",
+        "duration",
+        "locale",
+        "i18n",
+        "javascript",
+        "browser"
+      ],
+      "homepage": "https://alexandro.net/docs/vanilla/moment/",
+      "baselineTarball": "https://registry.npmjs.org/@stackline/moment-core/-/moment-core-1.0.3.tgz",
+      "baselineIntegrity": "sha512-Ryr3MulZFSbmebQtzL75EU4QFQVmAK2bo6XJW5HP45q/1UrD8UUWLPIeMl6vqaNhwqZFl73yxmkaMmRpzoCz3A==",
+      "expectedSha512": "f150499b9dc050d736830c29052010aa309c5d88744c9d606424e617e89125089569062898e4241f4c1ca2b708df44c87f95beac9c8ee65ea94f5230dd9dfb73",
+      "tag": "docs-stackline-moment-core-v1.0.4"
+    }
+  ]
+}
