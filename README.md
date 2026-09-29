@@ -1,15 +1,47 @@
 # @stackline/moment-core
 
+> Maintained Moment.js API package for parsing, validating, manipulating, and formatting dates.
+
+[![npm version](https://img.shields.io/npm/v/@stackline/moment-core.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
+[![license](https://img.shields.io/npm/l/@stackline/moment-core.svg?style=flat-square)](https://github.com/alexandroit/moment)
+[![GitHub repository](https://img.shields.io/badge/GitHub-alexandroit%2Fmoment-181717?style=flat-square&logo=github)](https://github.com/alexandroit/moment)
+[![Docs](https://img.shields.io/badge/docs-alexandro.net-0f766e?style=flat-square)](https://alexandro.net/docs/vanilla/moment/)
+[![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
+
+**[Documentation](https://alexandro.net/docs/vanilla/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment-core)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
+
+**Current package version:** `1.0.4`
+
+---
+
+## Why this package?
+
+`@stackline/moment-core` is maintained as part of the Stackline package collection.
+
+## Compatibility
+
+| Item | Value |
+| :--- | :--- |
+| Package | `@stackline/moment-core@1.0.4` |
+| API target | `See the package-specific API reference` |
+| Supported Node.js | `*` |
+| License | `MIT` |
+| Module type | `commonjs` |
+| Main entry | `./moment.js` |
+| Module entry | `./dist/moment.js` |
+| Types | `./moment.d.ts` |
+| Runtime dependencies | `none` |
+
+## Installation
+
+```bash
+npm install @stackline/moment-core
+```
+
+## Usage and API reference
+
 > A maintained **Moment.js API package** for parsing, validating, manipulating, and formatting dates with support for strict parsing, locale bundles, UTC workflows, durations, browser-ready minified assets, and TypeScript declarations.
 
-[![npm version](https://img.shields.io/npm/v/%40stackline%2Fmoment-core.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
-[![npm downloads](https://img.shields.io/npm/dt/%40stackline%2Fmoment-core.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
-[![npm monthly](https://img.shields.io/npm/dm/%40stackline%2Fmoment-core.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/moment-core)
-[![license](https://img.shields.io/npm/l/%40stackline%2Fmoment-core.svg?style=flat-square)](https://github.com/alexandroit/moment/blob/develop/LICENSE)
-[![JavaScript ES5+](https://img.shields.io/badge/JavaScript-ES5%2B-f7df1e?style=flat-square&logo=javascript&logoColor=111)](https://developer.mozilla.org/docs/Web/JavaScript)
-[![TypeScript typings](https://img.shields.io/badge/TypeScript-1.8%2B%20%7C%203.1%2B-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![GitHub stars](https://img.shields.io/github/stars/alexandroit/moment.svg?style=flat-square)](https://github.com/alexandroit/moment/stargazers)
-[![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
 **[Documentation & Live Demos](https://alexandro.net/docs/vanilla/moment/)** | **[npm](https://www.npmjs.com/package/@stackline/moment-core)** | **[GitHub Download](https://github.com/alexandroit/moment/tree/develop/downloads)** | **[Security](SECURITY.md)** | **[Issues](https://github.com/alexandroit/moment/issues)** | **[Repository](https://github.com/alexandroit/moment)**
 
@@ -228,3 +260,25 @@ MIT. See [LICENSE](LICENSE).
 - Original project: Iskren Ivov Chernev and the Moment.js contributors
 - Upstream repository: https://github.com/moment/moment
 - Maintained by: Alexandroit
+
+## Credits and original authors
+
+- Alexandroit.
+- Tim Wood.
+- Rocky Meza.
+- Matt Johnson.
+- Isaac Cambron.
+- Andre Polykanine.
+- Stackline maintenance: [Alexandro Paixao Marques](https://www.linkedin.com/in/aleinfo/) and [Stackline contributors](https://github.com/alexandroit).
+
+Original copyright, license notices and contributor acknowledgements remain part of this distribution. Stackline maintenance does not replace authorship of the original work.
+
+## Community and Links
+
+- [Stackline website](https://alexandro.net/)
+- [GitHub projects](https://github.com/alexandroit)
+- [npm packages](https://www.npmjs.com/~alex360qc)
+- [Reddit community — r/Stackline](https://www.reddit.com/r/Stackline/)
+- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
+
+Use this repository's issue tracker for reproducible bugs and feature requests. Join r/Stackline for examples, usage questions and release discussions.

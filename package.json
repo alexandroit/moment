@@ -1,6 +1,6 @@
 {
   "name": "@stackline/moment-core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Maintained Moment.js API package for parsing, validating, manipulating, and formatting dates.",
   "homepage": "https://alexandro.net/docs/vanilla/moment/",
   "author": "Alexandroit (https://github.com/alexandroit)",
@@ -13,6 +13,10 @@
   ],
   "keywords": [
     "stackline",
+    "npm-package",
+    "moment-core",
+    "typescript",
+    "nodejs",
     "moment",
     "date",
     "datetime",
@@ -21,9 +25,7 @@
     "duration",
     "locale",
     "i18n",
-    "typescript",
     "javascript",
-    "nodejs",
     "browser"
   ],
   "type": "commonjs",
