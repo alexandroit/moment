@@ -19,7 +19,7 @@ const sha256 = createHash('sha256').update(localBytes).digest('hex')
 const expectedSourceCommit = process.env.EXPECTED_SOURCE_COMMIT
 const expectedPublicationRun = process.env.EXPECTED_PUBLICATION_RUN
 assert.match(expectedSourceCommit || '', /^[0-9a-f]{40}$/, 'EXPECTED_SOURCE_COMMIT is required')
-assert.match(expectedPublicationRun || '', /^https:\/\/github\.com\/alexandroit\/stackline-moment-core\/actions\/runs\/[0-9]+\/attempts\/[0-9]+$/, 'EXPECTED_PUBLICATION_RUN is required')
+assert.match(expectedPublicationRun || '', /^https:\/\/github\.com\/alexandroit\/moment\/actions\/runs\/[0-9]+\/attempts\/[0-9]+$/, 'EXPECTED_PUBLICATION_RUN is required')
 
 async function get(url) {
   for (let attempt = 0; attempt < 120; attempt++) {
