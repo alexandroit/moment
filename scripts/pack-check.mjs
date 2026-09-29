@@ -19,7 +19,8 @@ try {
     [npmCli, 'pack', '--dry-run', '--json', '--ignore-scripts', '--pack-destination', destination],
     { cwd: process.cwd(), maxBuffer: 10 * 1024 * 1024 }
   );
-  const result = JSON.parse(stdout)[0];
+  const packedResults = JSON.parse(stdout);
+  const result = Array.isArray(packedResults) ? packedResults[0] : Object.values(packedResults)[0];
   const paths = new Set(result.files.map((file) => file.path));
   const requiredPaths = [
     'dist/moment.js',

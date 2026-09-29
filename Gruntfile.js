@@ -14,11 +14,11 @@ module.exports = function (grunt) {
             },
             chrome: {
                 singleRun: true,
-                browsers: ['Chrome'],
+                browsers: ['ChromeHeadless'],
             },
             firefox: {
                 singleRun: true,
-                browsers: ['Firefox'],
+                browsers: ['FirefoxHeadless'],
             },
         },
         uglify: {

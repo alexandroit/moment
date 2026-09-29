@@ -3,6 +3,14 @@ Changelog
 
 ## Stackline releases
 
+### 1.0.3
+
+- Replace stale direct development dependencies with compatible, provenance-verified Stackline maintenance forks while retaining historical TypeScript versions as independent compiler-compatibility fixtures.
+- Qualify the Karma fork alias with `overrides: {"karma":"$karma"}` in a fresh dependency tree; keep every plugin peer valid without legacy-peer-deps.
+- Accept both npm 11 and npm 12 JSON pack-report formats.
+- Keep Moment's runtime API/version and all distributed locales unchanged; the package remains free of runtime dependencies.
+- Verify the exact CI tarball, npm signatures/provenance and immutable GitHub release. Transitive deprecation warnings inherited by Grunt/Karma are recorded under the original-parent-only scope; they are not an unrestricted dependency-closure policy pass.
+
 ### 1.0.2
 
 * Release Sep 28, 2026
